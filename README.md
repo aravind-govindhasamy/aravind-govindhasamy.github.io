@@ -1,11 +1,16 @@
 <h1 align="center">Hi <img src="https://user-images.githubusercontent.com/18350557/176309783-0785949b-9127-417c-8b55-ab5a4333674e.gif" />, My name is Aravind Govindhasamy👨‍💻</h1>
-<div align="center">
- <img alt="GIF" src="https://github.com/abhisheknaiidu/abhisheknaiidu/raw/master/code.gif?raw=true" height="320">
+<div style="display: flex; flex-direction: row;">
+  <div style="flex: 1;">
+    <h3 align="center">Visit My Personal Portfolio site</h3>
+    <p align="center"> 
+      <a href="https://aravind-govindhasamy.github.io/">https://aravind-govindhasamy.github.io/</a>
+    </p>
+  </div>
+  <div align="center">
+    <img alt="GIF" src="https://github.com/abhisheknaiidu/abhisheknaiidu/raw/master/code.gif?raw=true">
+  </div>
 </div>
-<h3 align="center">Visit My Personal Portfolio site</h3>
-<p align="center"> 
-https://aravind-govindhasamy.github.io/
-</p>
+
 <p align="center">
   <a href="https://github.com/ryo-ma/github-profile-trophy">
     <img src="https://github-profile-trophy.vercel.app/?username=aravind-govindhasamy" alt="aravind-govindhasamy" />
