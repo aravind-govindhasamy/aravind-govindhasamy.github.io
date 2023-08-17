@@ -1,3 +1,10 @@
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?animation=fadeIn&type=waving&color=gradient&height=200&fontAlignY=40"/>
+  <div id="badges">
+    <a href="https://gists.github.com/0xfff0800">
+      <img src="https://img.shields.io/badge/Gists-blue?logo=github">
+  </div>
+
 <h1 align="center">Hi <img src="https://user-images.githubusercontent.com/18350557/176309783-0785949b-9127-417c-8b55-ab5a4333674e.gif" />, My name is Aravind Govindhasamy👨‍💻</h1>
 <div style="display: flex; flex-direction: row;">
   <div style="flex: 1;">
