@@ -49,8 +49,72 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.btn-download {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  background-color: #000;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-download:hover {
+  background-color: #fff;
+  color: #000;
+  border-color: #000;
+}
+
+.btn-download:active {
+  background-color: #333;
+  color: #fff;
+}
+
+.center-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Add hover effect for scaling */
+.container-fluid:hover {
+  transform: scale(1.05);
+}
+
+.skill-icon {
+  text-align: center;
+  font-size: 2.5rem; /* Adjust font size as needed */
+}
+
+.skill-icon i {
+  font-size: 5rem; /* Adjust icon size as needed */
+  margin-bottom: 10px; /* Space between icon and text */
+}
+
+.nav-tabs .nav-link {
+  font-size: 1.2rem; /* Adjust tab font size as needed */
+}
+
+.display-4 {
+  font-size: 5.5rem; /* Adjust main title font size */
+}
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
+}
+
+.social-icon {
+  font-size: 40px; /* Adjust size as needed */
+  color: #ffffff; /* Icon color */
+  transition: transform 0.3s, color 0.3s; /* Transition effects */
+}
+
+.social-icon:hover {
+  transform: scale(1.1); /* Slightly enlarge on hover */
+  color: #007bff; /* Change color on hover */
 }
 
 body {
@@ -9572,16 +9636,10 @@ a.text-danger:hover, a.text-danger:focus {
   color: #a71d2a !important;
 }
 
-.text-light {
-  color: #ffffff !important;
-}
+
 
 a.text-light:hover, a.text-light:focus {
   color: #d9d9d9 !important;
-}
-
-.text-dark {
-  color: #343a40 !important;
 }
 
 a.text-dark:hover, a.text-dark:focus {

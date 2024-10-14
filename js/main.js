@@ -88,14 +88,23 @@
 
         portfolioIsotope.isotope({filter: $(this).data('filter')});
     });
-
     $(document).ready(function () {
-        var startDate = new Date(2022,7,13);
-        var diffDate = new Date(new Date() - startDate);
-        var totalExpStr = (diffDate.toISOString().slice(0, 4) - 1970) + "." + diffDate.getMonth() + " Years";
+        var startDate = new Date(2022, 7, 13); // Starting date: August 13, 2022
+        var endDate = new Date(2024, 10, 15); // Ending date: November 15, 2024
+    
+        // Calculate the difference in years and months
+        var years = endDate.getFullYear() - startDate.getFullYear();
+        var months = endDate.getMonth() - startDate.getMonth();    
+        // Adjust for negative months
+        if (months < 0) {
+            years--;
+            months += 12;
+        }    
+        var totalExpStr = years + " Years " + months + " Months";
         document.getElementById('totalWorkExpSummary').innerText = totalExpStr;
         document.getElementById('totalWorkExp').innerText = totalExpStr;
     });
+    
     
     
     // Back to top button
@@ -132,4 +141,69 @@
     setInterval(slides2, 3000);
     
 })(jQuery);
+const themeButton = document.getElementById("theme-button");
+const home = document.getElementById("home");
+const content = document.getElementById("content");
+const greeting = document.getElementById("greeting");
+const name = document.getElementById("name");
+const qrLabel = document.getElementById("qr-label");
+const typedOutput = document.getElementById("typed-output");
+const typedText = document.getElementById("typed-text");
+const body = document.body; // Reference to the entire body
+let isNight = false; // Move this outside to retain its value
 
+// Function to apply theme
+function applyTheme() {
+    if (isNight) {
+        // Night mode
+        themeButton.textContent = "🌙";
+        home.style.backgroundImage = "url('img/1.png')";
+
+        home.classList.add("bg-dark");
+        home.classList.remove("bg-light");
+        greeting.classList.add("text-white");
+        name.classList.add("text-white");
+        qrLabel.classList.add("text-white");
+        typedOutput.classList.add("text-white");
+        typedOutput.classList.remove("text-dark");
+        content.classList.add("text-right");
+        content.classList.remove("text-left");
+         // Move content to the left
+         content.classList.add("move-right");
+         content.classList.remove("move-left");
+
+         //body.style.backgroundColor = "#121212"; // Dark background color
+         //body.style.color = "#ffffff"; // Light text color
+
+    } else {
+        // Day mode
+        
+        themeButton.textContent = "☀️";
+        home.style.backgroundImage = "url('img/2.jpg')";
+        
+        home.classList.add("bg-light");
+        home.classList.remove("bg-dark");
+        greeting.classList.remove("text-white");
+        name.classList.remove("text-white");
+        qrLabel.classList.remove("text-white");
+        typedOutput.classList.remove("text-white");
+        typedOutput.classList.add("text-dark");
+        content.classList.add("text-left");
+        content.classList.remove("text-right");
+         // Move content to the left
+         content.classList.add("move-left");
+         content.classList.remove("move-right");
+
+         //body.style.backgroundColor = "#ffffff"; // Light background color
+         //body.style.color = "#000000"; // Dark text color
+    }
+}
+
+// Event Listener for the Theme Button
+themeButton.addEventListener("click", function () {
+    isNight = !isNight; // Toggle theme
+    applyTheme(); // Apply the new theme
+});
+
+// Apply initial theme
+applyTheme();
