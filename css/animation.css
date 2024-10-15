@@ -164,6 +164,70 @@ body {
     animation-duration: 11s;
 }
 
+/* General styling for dark and light themes */
+.bg-dark {
+    background-color: #121212;
+}
+
+.bg-light {
+    background-color: #ffffff;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+.text-dark {
+    color: #000000;
+}
+
+/* Add smooth transitions to theme changes */
+#home, #content, #greeting, #name, #qr-label, #typed-output {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Move content with animations */
+.move-right {
+    transform: translateX(100%); /* Move to the right */
+    transition: transform 0.5s ease;
+}
+
+.move-left {
+    transform: translateX(0); /* Move to the left */
+    transition: transform 0.5s ease;
+}
+
+/* Media queries for mobile responsiveness */
+@media (max-width: 768px) {
+    /* On smaller screens, ensure text and content adjust properly */
+    .text-left {
+        text-align: center !important; /* Center text on mobile */
+    }
+
+    .text-right {
+        text-align: center !important; /* Center text on mobile */
+    }
+
+    .move-right, .move-left {
+        transform: translateX(0); /* Disable movement on mobile for better UX */
+        transition: none;
+    }
+
+    /* Ensure buttons and fonts are responsive */
+    #theme-button {
+        font-size: 24px; /* Adjust button size for smaller screens */
+    }
+
+    #greeting, #name, #qr-label, #typed-output {
+        font-size: 18px; /* Make sure text is not too large */
+    }
+
+    /* Adjust background size */
+    #home {
+        background-size: cover;
+        background-position: center;
+    }
+}
 
 
 @keyframes animate {
@@ -180,4 +244,30 @@ body {
         border-radius: 50%;
     }
 
+}
+
+.testimonial-container {
+    background-color: #f8f9fa; /* Light background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    padding: 30px; /* Inner spacing */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: center; /* Centering text */
+    margin: 20px; /* Spacing between testimonials */
+}
+
+.testimonial-text {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #333; /* Dark text for readability */
+}
+
+.carousel-inner {
+    padding: 20px; /* Adjust padding as needed */
+}
+
+/* Additional button styling */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(255, 255, 255, 0.5); /* Light background for icons */
+    border-radius: 50%; /* Circular buttons */
 }

@@ -7513,6 +7513,52 @@ button.bg-dark:focus {
   position: fixed !important;
 }
 
+/* Ensure the main heading scales well on all screens */
+.stroke-text {
+  -webkit-text-stroke: 1px #dee2e6; /* Default stroke for large screens */
+}
+
+/* Responsive font size scaling with viewport */
+.certification-heading {
+  font-size: 4.5rem; /* Initial size */
+}
+
+@media (max-width: 1200px) {
+  .certification-heading {
+      font-size: 4rem; /* Slightly smaller on large tablets */
+      -webkit-text-stroke: 0.8px; /* Reduce text-stroke on large tablets */
+  }
+}
+
+@media (max-width: 992px) {
+  .certification-heading {
+      font-size: 3.5rem; /* Even smaller on medium devices */
+      -webkit-text-stroke: 0.6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .certification-heading {
+      font-size: 3rem; /* Adjust for smaller screens (tablets) */
+      -webkit-text-stroke: 0.5px;
+  }
+}
+
+@media (max-width: 576px) {
+  .certification-heading {
+      font-size: 2.5rem; /* Further reduce size for mobile phones */
+      -webkit-text-stroke: 0.4px;
+  }
+}
+
+@media (max-width: 400px) {
+  .certification-heading {
+      font-size: 2rem; /* Final adjustment for very small screens */
+      -webkit-text-stroke: 0.3px;
+  }
+}
+
+
 .position-sticky {
   position: sticky !important;
 }
