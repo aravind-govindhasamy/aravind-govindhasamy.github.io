@@ -191,37 +191,37 @@ applyTheme();
 
 
 
-// $(document).ready(function() {
-//     const data = [
-//         {
-//             "name": "John Doe",
-//             "position": "CEO, Example Co.",
-//             "testimonial": "Aravind's expertise in backend development helped us streamline our processes significantly. His innovative solutions made a real difference!"
-//         },
-//         {
-//             "name": "Jane Smith",
-//             "position": "Project Manager, Tech Solutions",
-//             "testimonial": "Working with Aravind was a fantastic experience. He was always available to answer questions and provided exceptional quality work."
-//         },
-//         {
-//             "name": "Alice Johnson",
-//             "position": "Lead Developer, Web Innovations",
-//             "testimonial": "Aravind is a talented developer who consistently delivers high-quality solutions. I highly recommend him for any software projects!"
-//         }
-//     ];
+$(document).ready(function() {
+    const data = [
+        {
+            "name": "John Doe",
+            "position": "CEO, Example Co.",
+            "testimonial": "Aravind's expertise in backend development helped us streamline our processes significantly. His innovative solutions made a real difference!"
+        },
+        {
+            "name": "Jane Smith",
+            "position": "Project Manager, Tech Solutions",
+            "testimonial": "Working with Aravind was a fantastic experience. He was always available to answer questions and provided exceptional quality work."
+        },
+        {
+            "name": "Alice Johnson",
+            "position": "Lead Developer, Web Innovations",
+            "testimonial": "Aravind is a talented developer who consistently delivers high-quality solutions. I highly recommend him for any software projects!"
+        }
+    ];
 
-//     let testimonials = '';
-//     $.each(data, function(index, testimonial) {
-//         testimonials += `
-//         <div class="carousel-item ${index === 0 ? 'active' : ''}">
-//             <div class="testimonial-container"> <!-- Boxed layout -->
-//                 <p class="testimonial-text">"${testimonial.testimonial}"</p>
-//                 <h5 class="mt-3">${testimonial.name}</h5>
-//                 <small class="text-muted">${testimonial.position}</small>
-//             </div>
-//         </div>
-//     `;
-//     });
-//     $('#testimonial-content').html(testimonials);
-// });
+    let testimonials = '';
+    $.each(data, function(index, testimonial) {
+        testimonials += `
+        <div class="carousel-item ${index === 0 ? 'active' : ''}">
+            <div class="testimonial-container"> <!-- Boxed layout -->
+                <p class="testimonial-text">"${testimonial.testimonial}"</p>
+                <h5 class="mt-3">${testimonial.name}</h5>
+                <small class="text-muted">${testimonial.position}</small>
+            </div>
+        </div>
+    `;
+    });
+    $('#testimonial-content').html(testimonials);
+});
 
