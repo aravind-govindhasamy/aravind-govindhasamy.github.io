@@ -43,13 +43,14 @@ body {
     transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .card-img-top-ser {
-        height: 100%;
-        width: 480px;
+        height: auto;
+        width: 100%;
         max-height: 480px; /* For smaller screens, reduce height but maintain aspect ratio */
     }
 }
+
 
 
 .card {

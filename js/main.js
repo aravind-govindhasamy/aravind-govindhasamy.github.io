@@ -153,26 +153,27 @@ let isNight = false; // Retain value across theme changes
 
 // Function to apply theme
 function applyTheme() {
-    if (isNight) {
-        themeButton.textContent = "🌙";
-        home.style.backgroundImage = "url('img/1.png')";
-        home.classList.add("bg-dark");
+     home.classList.add("bg-dark");
         home.classList.remove("bg-light");
         greeting.classList.add("text-white");
         name.classList.add("text-white");
         qrLabel.classList.add("text-white");
+    if (isNight) {
+        themeButton.textContent = "🌙";
+        home.style.backgroundImage = "url('img/1.png')";
+       
         typedOutput.classList.add("text-white");
         typedOutput.classList.remove("text-dark");
         //content.classList.add("move-right");
         //content.classList.remove("move-left");
     } else {
         themeButton.textContent = "☀️";
-        home.style.backgroundImage = "url('img/2.jpg')";
-        home.classList.add("bg-light");
-        home.classList.remove("bg-dark");
-        greeting.classList.remove("text-white");
-        name.classList.remove("text-white");
-        qrLabel.classList.remove("text-white");
+        home.style.backgroundImage = "url('img/3.png')";
+        // home.classList.add("bg-light");
+        // home.classList.remove("bg-dark");
+        // greeting.classList.remove("text-white");
+        // name.classList.remove("text-white");
+        // qrLabel.classList.remove("text-white");
         typedOutput.classList.remove("text-white");
         typedOutput.classList.add("text-dark");
         //content.classList.add("move-left");
