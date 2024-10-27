@@ -195,19 +195,19 @@ applyTheme();
 $(document).ready(function() {
     const data = [
         {
-            "name": "John Doe",
-            "position": "CEO, Example Co.",
-            "testimonial": "Aravind's expertise in backend development helped us streamline our processes significantly. His innovative solutions made a real difference!"
+            "name": "Gomathi",
+            "position": "Software Developer, 2CQR",
+            "testimonial": "Thanks for being a positive and supportive team mate with me. Your enthusiasm and dedication to your work have always been inspiring. It's clear you have a great passion and drive, and I have no doubt that you’ll achieve every goal you set for yourself. I wish you all the best as you take on new challenges and explore exciting opportunities. Thank you for being such a positive influence. We'll miss you here, but I'm excited to see all the amazing things you'll accomplish in the future! All the very best aravind ❣️. Really I am feeling very bad you leaving but definitely you will have a great future 😊. be strong 💪💯 and positive 🔥"
         },
         {
-            "name": "Jane Smith",
-            "position": "Project Manager, Tech Solutions",
-            "testimonial": "Working with Aravind was a fantastic experience. He was always available to answer questions and provided exceptional quality work."
+            "name": "Ganesh",
+            "position": "Senior Analyst, 2CQR",
+            "testimonial": "Thank you for the dedication and inspiration you brought to 2CQR. You’ve made a lasting impact, and we’ll miss your energy. Wishing you all the best in your future endeavors. You’ll always be a part of the 2CQR family."
         },
         {
-            "name": "Alice Johnson",
-            "position": "Lead Developer, Web Innovations",
-            "testimonial": "Aravind is a talented developer who consistently delivers high-quality solutions. I highly recommend him for any software projects!"
+            "name": "Revathy",
+            "position": "HR, 2CQR",
+            "testimonial": "As you move on to new challenges, we want to express our deepest gratitude for the incredible impact you have made here. We appreciate your passion, creativity and troubleshooting skills. Thank you for your contributions and we wish you all the best in your future endeavors!!!"
         }
     ];
 
