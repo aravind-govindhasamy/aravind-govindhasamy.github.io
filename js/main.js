@@ -200,6 +200,11 @@ $(document).ready(function() {
             "testimonial": "Thanks for being a positive and supportive team mate with me. Your enthusiasm and dedication to your work have always been inspiring. It's clear you have a great passion and drive, and I have no doubt that you’ll achieve every goal you set for yourself. I wish you all the best as you take on new challenges and explore exciting opportunities. Thank you for being such a positive influence. We'll miss you here, but I'm excited to see all the amazing things you'll accomplish in the future! All the very best aravind ❣️. Really I am feeling very bad you leaving but definitely you will have a great future 😊. be strong 💪💯 and positive 🔥"
         },
         {
+            "name": "Shivagami",
+            "position": "COO, 2CQR",
+            "testimonial": "Thanks for being part of 2CQR. Really appreciate your contribution towards the company. Wishing you all the best for your future endeavours. And I hope  we will stay connected as good friends."
+        },
+        {
             "name": "Ganesh",
             "position": "Senior Analyst, 2CQR",
             "testimonial": "Thank you for the dedication and inspiration you brought to 2CQR. You’ve made a lasting impact, and we’ll miss your energy. Wishing you all the best in your future endeavors. You’ll always be a part of the 2CQR family."
