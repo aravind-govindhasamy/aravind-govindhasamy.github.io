@@ -36,7 +36,7 @@ jobs:
       - name: Deploy Hugo blog
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.GH_PAGES_TOKEN }}   # <-- Add your PAT here
+          personal_token: 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  # <-- Add your PAT here
           publish_dir: ./blog-output
           publish_branch: gh-pages
           force_orphan: true
