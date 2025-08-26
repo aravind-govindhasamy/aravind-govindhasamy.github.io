@@ -34,8 +34,8 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./blog-output
-          publish_branch: main    # Deploy into main branch
+          publish_dir: ./my-blog
+          publish_branch: gh-pages
           force_orphan: true      # Optional: clean deploy
           user_name: github-actions
           user_email: github-actions@github.com
