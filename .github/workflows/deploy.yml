@@ -40,7 +40,8 @@ jobs:
                   extended: true
 
             - name: Build
-              run: hugo --minify --gc
+              run: hugo --source blog --destination public --minify --gc
+
 
             - name: Deploy 🚀
               uses: JamesIves/github-pages-deploy-action@v4
