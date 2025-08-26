@@ -27,7 +27,7 @@ jobs:
 
       - name: Build Hugo site
         run: |
-          hugo --source blog --destination blog-output --minify --baseURL "https://aravind-govindhasamy.github.io/blog/"
+          hugo --source blog --destination blog-output --minify --baseURL "https://aravind-govindhasamy.github.io/my-blog/"
 
       - name: Deploy Hugo blog
         uses: peaceiris/actions-gh-pages@v3
