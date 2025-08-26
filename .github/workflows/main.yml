@@ -33,7 +33,7 @@ jobs:
       - name: Deploy Hugo blog
         uses: peaceiris/actions-gh-pages@v3
         with:
-          personal_token: ${{ secrets.GH_PAGES_TOKEN }}   # <-- must match secret name
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./my-blog
           publish_branch: gh-pages
           force_orphan: true
