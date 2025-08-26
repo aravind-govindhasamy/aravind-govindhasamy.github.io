@@ -31,13 +31,15 @@ jobs:
         run: |
           hugo --source ./blog --destination ./blog-output --minify --baseURL "https://aravind-govindhasamy.github.io/my-blog/"
 
-      # 3️⃣ Prepare combined deployment
       - name: Prepare gh-pages directory
         run: |
-          mkdir gh-pages-temp
-          cp -r !(.git|blog|blog-output|.github|README.md) gh-pages-temp/  # copy portfolio files
+          mkdir -p gh-pages-temp
+          cp -r index.html about.html contact.html gh-pages-temp/
+          # Add any other portfolio files/folders here
           mkdir -p gh-pages-temp/my-blog
-          cp -r blog-output/* gh-pages-temp/my-blog/                       # copy Hugo output
+          cp -r blog-output/* gh-pages-temp/my-blog/
+
+
 
       # 4️⃣ Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
