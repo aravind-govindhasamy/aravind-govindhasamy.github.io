@@ -1,0 +1,40 @@
+name: Build and Deploy Hugo Blog
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.148.2'
+          extended: true
+
+      - name: Build Hugo site
+        run: |
+          cd blog-src
+          hugo --minify --baseURL "https://aravind-govindhasamy.github.io/blog/"
+
+      - name: Deploy to /blog
+        run: |
+          rm -rf blog/*
+          mkdir -p blog
+          cp -r blog-src/public/* blog/
+          rm -rf blog-src/public
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add blog
+          git commit -m "Deploy Hugo blog to /blog" || echo "No changes to commit"
+          git push
