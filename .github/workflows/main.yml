@@ -24,15 +24,15 @@ jobs:
 
       - name: Build Hugo site
         run: |
-          cd blog-src
+          cd blog
           hugo --minify --baseURL "https://aravind-govindhasamy.github.io/blog/"
 
-      - name: Deploy to /blog
+      - name: Deploy generated files
         run: |
+          cd blog
           rm -rf blog/*
-          mkdir -p blog
-          cp -r blog/public/* blog/
-          rm -rf blog/public
+          cp -r public/* blog/
+          rm -rf public
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add blog
