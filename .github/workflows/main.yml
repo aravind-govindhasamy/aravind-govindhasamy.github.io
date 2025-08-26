@@ -1,41 +1,44 @@
 name: Build and Deploy Hugo Blog
 
 on:
-  push:
-    branches:
-      - gh-pages
+  push:
+    branches:
+      - main
 
 jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write # Essential for deploying to GitHub Pages
 
-    steps:
-      # 1️⃣ Checkout repository
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          submodules: true
-          fetch-depth: 0
+    steps:
+      # 1️⃣ Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+          fetch-depth: 0
 
-      # 2️⃣ Setup Hugo
-      - name: Setup Hugo
-        uses: peaceiris/actions-hugo@v2
-        with:
-          hugo-version: '0.148.2'
-          extended: true
+      # 2️⃣ Setup Hugo
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.148.2'
+          extended: true
 
-      # 3️⃣ Build Hugo site
-      - name: Build Hugo site
-        run: |
-          hugo --source blog --destination blog-output --minify --baseURL "https://aravind-govindhasamy.github.io/blog/"
+      # 3️⃣ Build Hugo site
+      - name: Build Hugo site
+        run: |
+          hugo --source blog --destination blog-output --minify --baseURL "https://aravind-govindhasamy.github.io/blog/my-blog"
 
-      # 4️⃣ Deploy to GitHub Pages
-      - name: Deploy Hugo blog
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./my-blog
-          publish_branch: gh-pages
-          force_orphan: true
-          user_name: github-actions
-          user_email: github-actions@github.com
+      # 4️⃣ Deploy to GitHub Pages
+      - name: Deploy Hugo blog
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./blog-output
+          publish_branch: gh-pages
+          force_orphan: true
+          user_name: github-actions
+          user_email: github-actions@github.com
