@@ -3,14 +3,14 @@ name: Build and Deploy Hugo Blog
 on:
   push:
     branches:
-      - main
+      - main  # Trigger on push to main branch
 
 jobs:
-  build-deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Checkout the repo
+      # 1️⃣ Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
@@ -24,16 +24,18 @@ jobs:
           hugo-version: '0.148.2'
           extended: true
 
-      # 3️⃣ Build Hugo blog into 'blog-output'
+      # 3️⃣ Build Hugo site
       - name: Build Hugo site
         run: |
           hugo --source blog --destination blog-output --minify --baseURL "https://aravind-govindhasamy.github.io/blog/"
 
-      # 4️⃣ Deploy static files to 'blog/' folder
+      # 4️⃣ Deploy to GitHub Pages
       - name: Deploy Hugo blog
-        run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-          git add blog
-          git commit -m "Deploy Hugo blog" || echo "No changes to commit"
-          git push
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./blog-output
+          publish_branch: main    # Deploy into main branch
+          force_orphan: true      # Optional: clean deploy
+          user_name: github-actions
+          user_email: github-actions@github.com
