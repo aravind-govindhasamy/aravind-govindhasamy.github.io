@@ -90,7 +90,7 @@
     });
     $(document).ready(function () {
         var startDate = new Date(2022, 7, 13); // Starting date: August 13, 2022
-        var endDate = new Date(2024, 10, 15); // Ending date: November 15, 2024
+        var endDate = new Date(2025, 10, 30); // Ending date: November 2025
 
         // Calculate the difference in years and months
         var years = endDate.getFullYear() - startDate.getFullYear();
