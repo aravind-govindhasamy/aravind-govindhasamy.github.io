@@ -227,7 +227,7 @@ export const DATA = {
     },
     {
       school: "Govt Hr Sec School, Periyampatti",
-      href: "https://cms.tnschools.gov.in/",
+      href: "#",
       degree: "Higher Secondary Certificate (State Board) - 74.9%",
       logoUrl: "/logos/tnschools.png",
       start: "2016",
@@ -235,7 +235,7 @@ export const DATA = {
     },
     {
       school: "Govt Hr Sec School, Periyampatti",
-      href: "https://cms.tnschools.gov.in/",
+      href: "#",
       degree: "Secondary School Certificate (State Board) - 86%",
       logoUrl: "/logos/tnschools.png",
       start: "2014",
@@ -514,13 +514,18 @@ export const DATA = {
     },
     {
       title: "Daily Tech News Buddy",
-      href: "https://github.com/aravind-govindhasamy/Daily-Tech-News-Buddy",
+      href: "https://news.budeglobal.in/",
       dates: "Apr 2026 - Present",
       active: true,
       description:
-        "AI-powered daily tech news companion built with Google AI Studio - fetches and summarizes the day's tech headlines using the Gemini API.",
-      technologies: ["TypeScript", "Gemini API", "Google AI Studio"],
+        "AI-powered daily tech news companion deployed on BUDE Global infrastructure (news.budeglobal.in) and built with Google AI Studio - fetches and summarizes the day's tech headlines using the Gemini API.",
+      technologies: ["Next.js", "TypeScript", "Gemini API", "Google AI Studio", "Cloudflare Tunnels"],
       links: [
+        {
+          type: "Website",
+          href: "https://news.budeglobal.in/",
+          icon: <Icons.globe className="size-3" />,
+        },
         {
           type: "Source",
           href: "https://github.com/aravind-govindhasamy/Daily-Tech-News-Buddy",
@@ -583,13 +588,18 @@ export const DATA = {
     },
     {
       title: "BUDE Global - Tech Presentations",
-      href: "https://github.com/BUDEGlobalEnterprise/bude-global-tech-presentations",
+      href: "https://ppt.budeglobal.in/",
       dates: "Jun 2025 - Present",
       active: true,
       description:
-        "A curated, version-controlled collection of technical presentations and slide decks covering enterprise tech topics, architecture patterns, and product walkthroughs maintained for the BUDE Global Enterprise team.",
-      technologies: ["Markdown", "Slide Frameworks", "GitHub Pages"],
+        "An interactive, web-based technical presentation and slide delivery platform hosted at ppt.budeglobal.in. A curated, version-controlled collection of slide decks and architecture walkthroughs covering enterprise tech topics and engineering patterns for the BUDE Global Enterprise team.",
+      technologies: ["Slidev", "Markdown", "Next.js", "Linux systemd", "Cloudflare Tunnels"],
       links: [
+        {
+          type: "Website",
+          href: "https://ppt.budeglobal.in/",
+          icon: <Icons.globe className="size-3" />,
+        },
         {
           type: "Source",
           href: "https://github.com/BUDEGlobalEnterprise/bude-global-tech-presentations",
