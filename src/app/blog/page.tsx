@@ -4,18 +4,34 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { paginate, normalizePage } from "@/lib/pagination";
 import { ChevronRight } from "lucide-react";
+import { DATA } from "@/data/resume";
 
 export const metadata: Metadata = {
   title: "Blog",
-  description: "Thoughts on software development, life, and more.",
+  description: "Technical articles, guides, and thoughts on full-stack development, IoT architecture, and engineering by Aravind Govindhasamy.",
+  alternates: {
+    canonical: "/blog",
+  },
   openGraph: {
-    title: "Blog",
-    description: "Thoughts on software development, life, and more.",
+    title: `Blog | ${DATA.name}`,
+    description: "Technical articles, guides, and thoughts on full-stack development, IoT architecture, and engineering by Aravind Govindhasamy.",
+    url: `${DATA.url}/blog`,
+    siteName: DATA.name,
+    type: "website",
+    images: [
+      {
+        url: `${DATA.url}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: `Blog — ${DATA.name}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog",
-    description: "Thoughts on software development, life, and more.",
+    title: `Blog | ${DATA.name}`,
+    description: "Technical articles, guides, and thoughts on full-stack development, IoT architecture, and engineering by Aravind Govindhasamy.",
+    images: [`${DATA.url}/opengraph-image`],
   },
 };
 

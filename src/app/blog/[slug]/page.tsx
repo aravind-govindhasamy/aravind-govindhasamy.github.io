@@ -47,27 +47,29 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
     openGraph: {
       title,
       description,
       type: "article",
       publishedTime,
       url: `${DATA.url}/blog/${slug}`,
-      ...(image && {
-        images: [
-          {
-            url: `${DATA.url}${image}`,
-          },
-        ],
-      }),
+      images: [
+        {
+          url: image ? `${DATA.url}${image}` : `${DATA.url}/blog/${slug}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      ...(image && {
-        images: [`${DATA.url}${image}`],
-      }),
+      images: [image ? `${DATA.url}${image}` : `${DATA.url}/blog/${slug}/opengraph-image`],
     },
   };
 }
@@ -101,8 +103,12 @@ export default async function Blog({
     "@type": "BlogPosting",
     headline: post.title,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
     description: post.summary,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${DATA.url}/blog/${slug}`,
+    },
     image: post.image
       ? `${DATA.url}${post.image}`
       : `${DATA.url}/blog/${slug}/opengraph-image`,
@@ -110,6 +116,12 @@ export default async function Blog({
     author: {
       "@type": "Person",
       name: DATA.name,
+      url: DATA.url,
+    },
+    publisher: {
+      "@type": "Person",
+      name: DATA.name,
+      url: DATA.url,
     },
   }).replace(/</g, "\\u003c");
 

@@ -25,38 +25,74 @@ export default function Page() {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "Person",
-            name: DATA.name,
-            url: DATA.url,
-            image: `${DATA.url}${DATA.avatarUrl}`,
-            jobTitle: DATA.role,
-            email: `mailto:${DATA.contact.email}`,
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "Coimbatore",
-              addressRegion: "Tamil Nadu",
-              addressCountry: "IN",
-            },
-            worksFor: {
-              "@type": "Organization",
-              name: "Semicon Media Pvt Ltd",
-            },
-            sameAs: [
-              DATA.contact.social.GitHub.url,
-              DATA.contact.social.LinkedIn.url,
-              DATA.contact.social.X.url,
-            ],
-            knowsAbout: [
-              "Full Stack Development",
-              "IoT Platforms",
-              "FastAPI",
-              "React",
-              "Next.js",
-              "MQTT",
-              "RFID",
-              "ERPNext",
-              "PostgreSQL",
-              "Computer Vision",
+            "@graph": [
+              {
+                "@type": "Person",
+                "@id": `${DATA.url}/#person`,
+                name: DATA.name,
+                url: DATA.url,
+                image: `${DATA.url}${DATA.avatarUrl}`,
+                jobTitle: DATA.role,
+                description: DATA.description,
+                email: `mailto:${DATA.contact.email}`,
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Coimbatore",
+                  addressRegion: "Tamil Nadu",
+                  addressCountry: "IN",
+                },
+                worksFor: {
+                  "@type": "Organization",
+                  name: "Semicon Media Pvt Ltd",
+                  url: "https://www.circuitdigest.cloud/",
+                },
+                alumniOf: [
+                  {
+                    "@type": "CollegeOrUniversity",
+                    name: "Sri Ramakrishna Mission Vidyalaya College of Arts and Science, Coimbatore",
+                    url: "https://www.srmvcas.edu.in/",
+                  },
+                ],
+                sameAs: [
+                  DATA.contact.social.GitHub.url,
+                  DATA.contact.social.LinkedIn.url,
+                  DATA.contact.social.X.url,
+                ],
+                knowsAbout: [
+                  "Full Stack Development",
+                  "IoT Platforms",
+                  "FastAPI",
+                  "React",
+                  "Next.js",
+                  "TypeScript",
+                  "Python",
+                  "MQTT",
+                  "RFID",
+                  "ERPNext",
+                  "PostgreSQL",
+                  "Computer Vision",
+                  "Hardware Integration",
+                ],
+              },
+              {
+                "@type": "WebSite",
+                "@id": `${DATA.url}/#website`,
+                url: DATA.url,
+                name: `${DATA.name} | ${DATA.role}`,
+                description: DATA.description,
+                publisher: {
+                  "@id": `${DATA.url}/#person`,
+                },
+              },
+              {
+                "@type": "ProfilePage",
+                "@id": `${DATA.url}/#profilepage`,
+                url: DATA.url,
+                name: `${DATA.name} — ${DATA.role}`,
+                mainEntity: {
+                  "@id": `${DATA.url}/#person`,
+                },
+              },
             ],
           }),
         }}
@@ -69,17 +105,20 @@ export default function Page() {
                 delay={BLUR_FADE_DELAY}
                 className="text-sm font-medium text-primary tracking-wide uppercase"
                 yOffset={8}
+                as="p"
                 text={DATA.role}
               />
               <BlurFadeText
                 delay={BLUR_FADE_DELAY}
                 className="text-3xl font-semibold tracking-tighter sm:text-4xl lg:text-5xl"
                 yOffset={8}
+                as="h1"
                 text={`Hi, I'm ${DATA.name.split(" ")[0]}`}
               />
               <BlurFadeText
                 className="text-muted-foreground max-w-[600px] md:text-lg"
                 delay={BLUR_FADE_DELAY}
+                as="p"
                 text={DATA.tagline}
               />
               <BlurFade delay={BLUR_FADE_DELAY * 2}>
