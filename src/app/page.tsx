@@ -17,6 +17,57 @@ import { ArrowUpRight } from "lucide-react";
 
 const BLUR_FADE_DELAY = 0.04;
 
+const categoryStyles: Record<
+  string,
+  {
+    badge: string;
+    text: string;
+    dot: string;
+  }
+> = {
+  "Backend & APIs": {
+    badge: "bg-blue-500/10 border-blue-500/25 hover:bg-blue-500/15",
+    text: "text-blue-700 dark:text-blue-300",
+    dot: "bg-blue-500",
+  },
+  "Frontend": {
+    badge: "bg-purple-500/10 border-purple-500/25 hover:bg-purple-500/15",
+    text: "text-purple-700 dark:text-purple-300",
+    dot: "bg-purple-500",
+  },
+  "Databases": {
+    badge: "bg-cyan-500/10 border-cyan-500/25 hover:bg-cyan-500/15",
+    text: "text-cyan-700 dark:text-cyan-300",
+    dot: "bg-cyan-500",
+  },
+  "IoT & Hardware Integration": {
+    badge: "bg-emerald-500/10 border-emerald-500/25 hover:bg-emerald-500/15",
+    text: "text-emerald-700 dark:text-emerald-300",
+    dot: "bg-emerald-500",
+  },
+  "Cloud, DevOps & Deployment": {
+    badge: "bg-amber-500/10 border-amber-500/25 hover:bg-amber-500/15",
+    text: "text-amber-700 dark:text-amber-300",
+    dot: "bg-amber-500",
+  },
+  "ERP & Enterprise Systems": {
+    badge: "bg-indigo-500/10 border-indigo-500/25 hover:bg-indigo-500/15",
+    text: "text-indigo-700 dark:text-indigo-300",
+    dot: "bg-indigo-500",
+  },
+  "AI & Automation": {
+    badge: "bg-rose-500/10 border-rose-500/25 hover:bg-rose-500/15",
+    text: "text-rose-700 dark:text-rose-300",
+    dot: "bg-rose-500",
+  },
+};
+
+const defaultCategoryStyle = {
+  badge: "bg-muted/60 border-border hover:bg-muted/80",
+  text: "text-foreground",
+  dot: "bg-muted-foreground",
+};
+
 export default function Page() {
   return (
     <main className="min-h-dvh flex flex-col gap-14 relative">
@@ -203,33 +254,40 @@ export default function Page() {
             <h2 className="text-xl font-bold">Skills</h2>
           </BlurFade>
           <div className="flex flex-col gap-6">
-            {DATA.skills.map((group, groupId) => (
-              <BlurFade
-                key={group.category}
-                delay={BLUR_FADE_DELAY * 10 + groupId * 0.05}
-              >
-                <div className="flex flex-col gap-2.5">
-                  <h3 className="text-sm font-semibold text-muted-foreground">
-                    {group.category}
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {group.items.map((skill) => (
-                      <div
-                        key={skill.name}
-                        className="border bg-background border-border ring-2 ring-border/20 rounded-xl h-8 w-fit px-3 flex items-center gap-2"
-                      >
-                        {skill.icon && (
-                          <skill.icon className="size-4 rounded overflow-hidden object-contain" />
-                        )}
-                        <span className="text-foreground text-sm font-medium">
-                          {skill.name}
-                        </span>
-                      </div>
-                    ))}
+            {DATA.skills.map((group, groupId) => {
+              const style = categoryStyles[group.category] ?? defaultCategoryStyle;
+              return (
+                <BlurFade
+                  key={group.category}
+                  delay={BLUR_FADE_DELAY * 10 + groupId * 0.05}
+                >
+                  <div className="flex flex-col gap-2.5">
+                    <h3 className="text-sm font-semibold text-muted-foreground flex items-center gap-2">
+                      <span className={cn("size-2 rounded-full", style.dot)} />
+                      {group.category}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {group.items.map((skill) => (
+                        <div
+                          key={skill.name}
+                          className={cn(
+                            "border rounded-xl h-8 w-fit px-3 flex items-center gap-2 transition-colors",
+                            style.badge
+                          )}
+                        >
+                          {skill.icon && (
+                            <skill.icon className="size-4 rounded overflow-hidden object-contain shrink-0" />
+                          )}
+                          <span className={cn("text-sm font-medium", style.text)}>
+                            {skill.name}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              </BlurFade>
-            ))}
+                </BlurFade>
+              );
+            })}
           </div>
         </div>
       </section>
