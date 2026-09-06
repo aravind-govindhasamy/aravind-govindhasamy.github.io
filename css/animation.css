@@ -1,0 +1,320 @@
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    font-family: 'Exo', sans-serif;
+}
+
+body {
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out; /* Smooth transitions */
+}
+
+.context {
+    width: 100%;
+    position: absolute;
+    top:50vh;
+    
+}
+
+/* Circle animation */
+.circles li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: animate 25s linear infinite;
+}
+.card-img-top-ser {
+    width: 100%; /* Makes sure the image takes full width of the card */
+    max-width: 480px; /* Set the maximum width */
+    height: 480px; /* Set the fixed height */
+    object-fit: cover; /* Ensures the image scales and crops to fit the dimensions */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.card-img-top-ser:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+@media (max-width: 768px) {
+    .card-img-top-ser {
+        height: auto;
+        width: 100%;
+        max-height: 480px; /* For smaller screens, reduce height but maintain aspect ratio */
+    }
+}
+
+
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+}
+
+.card:hover {
+    transform: translateY(-10px); /* Lifts the card on hover */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Adds a shadow on hover */
+}
+
+.card-body {
+    text-align: center; /* Centers the text */
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 0.9rem;
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Transition effects for moving content */
+#content {
+    transition: transform 0.5s ease, color 0.5s ease; /* Smooth transition for position and color change */
+}
+
+.move-left {
+    transform: translateX(-100px); /* Move left */
+}
+
+.move-right {
+    transform: translateX(100px); /* Move right */
+}
+
+
+.circles li {
+    /* Add styles for the animated background circles here */
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+.bg-dark {
+    background-color: #343a40 !important;
+}
+
+.theme-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+}
+
+.circles{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.circles li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    opacity: 0.5; /* Set transparency */
+    animation: animate 25s linear infinite;
+    bottom: -150px;
+    
+}
+
+.circles li:nth-child(1){
+    left: 25%;
+    width: 80px;
+    height: 80px;
+    animation-delay: 0s;
+}
+
+
+.circles li:nth-child(2){
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 2s;
+    animation-duration: 12s;
+}
+
+.circles li:nth-child(3){
+    left: 70%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 4s;
+}
+
+.circles li:nth-child(4){
+    left: 40%;
+    width: 60px;
+    height: 60px;
+    animation-delay: 0s;
+    animation-duration: 18s;
+}
+
+.circles li:nth-child(5){
+    left: 65%;
+    width: 20px;
+    height: 20px;
+    animation-delay: 0s;
+}
+
+.circles li:nth-child(6){
+    left: 75%;
+    width: 110px;
+    height: 110px;
+    animation-delay: 3s;
+}
+
+.circles li:nth-child(7){
+    left: 35%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 7s;
+}
+
+.circles li:nth-child(8){
+    left: 50%;
+    width: 25px;
+    height: 25px;
+    animation-delay: 15s;
+    animation-duration: 45s;
+}
+
+.circles li:nth-child(9){
+    left: 20%;
+    width: 15px;
+    height: 15px;
+    animation-delay: 2s;
+    animation-duration: 35s;
+}
+
+.circles li:nth-child(10){
+    left: 85%;
+    width: 150px;
+    height: 150px;
+    animation-delay: 0s;
+    animation-duration: 11s;
+}
+
+/* General styling for dark and light themes */
+.bg-dark {
+    background-color: #121212;
+}
+
+.bg-light {
+    background-color: #ffffff;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+.text-dark {
+    color: #000000;
+}
+
+/* Add smooth transitions to theme changes */
+#home, #content, #greeting, #name, #qr-label, #typed-output {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Move content with animations */
+.move-right {
+    transform: translateX(100%); /* Move to the right */
+    transition: transform 0.5s ease;
+}
+
+.move-left {
+    transform: translateX(0); /* Move to the left */
+    transition: transform 0.5s ease;
+}
+
+/* Media queries for mobile responsiveness */
+@media (max-width: 768px) {
+    /* On smaller screens, ensure text and content adjust properly */
+    .text-left {
+        text-align: center !important; /* Center text on mobile */
+    }
+
+    .text-right {
+        text-align: center !important; /* Center text on mobile */
+    }
+
+    .move-right, .move-left {
+        transform: translateX(0); /* Disable movement on mobile for better UX */
+        transition: none;
+    }
+
+    /* Ensure buttons and fonts are responsive */
+    #theme-button {
+        font-size: 24px; /* Adjust button size for smaller screens */
+    }
+
+    #greeting, #name, #qr-label, #typed-output {
+        font-size: 18px; /* Make sure text is not too large */
+    }
+
+    /* Adjust background size */
+    #home {
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+
+@keyframes animate {
+
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    }
+
+}
+
+.testimonial-container {
+    background-color: #f8f9fa; /* Light background for contrast */
+    border-radius: 8px; /* Rounded corners */
+    padding: 30px; /* Inner spacing */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    text-align: center; /* Centering text */
+    margin: 20px; /* Spacing between testimonials */
+}
+
+.testimonial-text {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #333; /* Dark text for readability */
+}
+
+.carousel-inner {
+    padding: 20px; /* Adjust padding as needed */
+}
+
+/* Additional button styling */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(255, 255, 255, 0.5); /* Light background for icons */
+    border-radius: 50%; /* Circular buttons */
+}

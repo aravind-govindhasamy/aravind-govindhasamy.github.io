@@ -1,0 +1,4 @@
+baseURL = 'https://aravind-govindhasamy.github.io/my-blog/'
+languageCode = 'en-us'
+title = 'My Dev Journey'
+theme = "hugo-theme-stack"
