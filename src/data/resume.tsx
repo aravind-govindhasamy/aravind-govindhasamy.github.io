@@ -323,8 +323,13 @@ export const DATA = {
       ],
       links: [
         {
-          type: "Website",
+          type: "ERP Backend",
           href: "https://erp1.budeglobal.in/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Mobile Suite",
+          href: "https://www.budeglobal.in/products/bude-mobile-suite",
           icon: <Icons.globe className="size-3" />,
         },
       ],
@@ -372,14 +377,14 @@ export const DATA = {
       video: "",
     },
     {
-      title: "BUDE Smart Warehouse & RFID Stock App (Android / Flutter)",
-      href: "https://demo-stock.budeglobal.in/",
+      title: "Bude Inventory - Mobile Warehouse & RFID App",
+      href: "https://www.budeglobal.in/products/bude-inventory-app",
       dates: "2025 - Present",
       active: true,
       featured: true,
       role: "Lead Mobile Architect - Flutter Android / Web, ERPNext v15 Stock APIs, RFID/Barcode",
       description:
-        "Mobile Android and web warehouse inventory application connected to the centralized erp1.budeglobal.in (ERPNext v15) backend. Streamlines high-throughput floor inventory operations with real-time barcode and bulk UHF/HF RFID tag scanning, automated cycle counts, purchase receipt verification, stock ledger reconciliation, and multi-location warehouse material transfers.",
+        "Scanning, transfers, receipts, and counts on the warehouse floor. Every entry lands in ERPNext, and the queue holds when the signal drops. Mobile Android and web application connected directly to the centralized erp1.budeglobal.in (ERPNext v15) backend for real-time barcode and bulk UHF/HF RFID tag scanning, automated cycle counts, purchase receipt verification, and multi-location warehouse material transfers.",
       technologies: [
         "Android",
         "Flutter",
@@ -387,12 +392,17 @@ export const DATA = {
         "ERPNext v15 REST API",
         "UHF/HF RFID",
         "Barcode Scanning",
-        "REST API",
+        "Offline-First Queue",
         "Nginx",
       ],
       links: [
         {
-          type: "App Demo",
+          type: "Product Page",
+          href: "https://www.budeglobal.in/products/bude-inventory-app",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Live Demo",
           href: "https://demo-stock.budeglobal.in/",
           icon: <Icons.globe className="size-3" />,
         },
@@ -411,14 +421,14 @@ export const DATA = {
       video: "",
     },
     {
-      title: "BUDE Workforce & HR Management App (Android / Flutter)",
-      href: "https://demo-hr.budeglobal.in/",
+      title: "Bude HR - Mobile Attendance & Workforce App",
+      href: "https://www.budeglobal.in/products/bude-hr-app",
       dates: "2025 - Present",
       active: true,
       featured: true,
       role: "Lead Mobile Architect - Flutter Android / Web, ERPNext v15 HRMS APIs, Geo-Attendance",
       description:
-        "Enterprise workforce and employee self-service mobile Android application consuming centralized HRMS REST APIs on erp1.budeglobal.in (ERPNext v15). Powers real-time GPS geofenced attendance check-ins and check-outs, dynamic leave balance tracking, employee profile management, digital expense claims with receipt camera uploads, and hierarchical supervisor approval queues.",
+        "Attendance, leave, claims, and payslips in the hands of the people they belong to. Managers approve from the same app. Enterprise workforce and employee self-service mobile Android application consuming centralized HRMS REST APIs on erp1.budeglobal.in (ERPNext v15) for real-time GPS geofenced attendance check-ins and check-outs, dynamic leave balances, expense claim filing, and supervisor approval queues.",
       technologies: [
         "Android",
         "Flutter",
@@ -431,7 +441,12 @@ export const DATA = {
       ],
       links: [
         {
-          type: "App Demo",
+          type: "Product Page",
+          href: "https://www.budeglobal.in/products/bude-hr-app",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Live Demo",
           href: "https://demo-hr.budeglobal.in/",
           icon: <Icons.globe className="size-3" />,
         },
@@ -445,14 +460,14 @@ export const DATA = {
       video: "",
     },
     {
-      title: "BUDE Sales, Field Billing & Collections App (Android / Flutter)",
-      href: "https://demo-sales.budeglobal.in/",
+      title: "Bude Sales - Mobile Field Billing & POS App",
+      href: "https://www.budeglobal.in/products/bude-sales-app",
       dates: "2025 - Present",
       active: true,
       featured: true,
       role: "Lead Mobile Architect - Flutter Android / Web, ERPNext v15 Selling APIs, Offline Sync",
       description:
-        "Commercial field sales and mobile POS Android application built for on-the-road sales agents. Features an offline-first transaction queue powered by local storage (Hive/IndexedDB) with automatic background sync to erp1.budeglobal.in (ERPNext v15). Enables on-field catalog browsing, customer credit limit verification, instantaneous digital tax invoice generation complying with ERPNext pricing rules, and payment collection tracking.",
+        "A representative’s day: customers, visits, quotations, orders, and collections. ERPNext still decides price, stock, and credit. Commercial field sales and mobile POS Android application built for on-the-road sales agents with an offline-first transaction queue (Hive/IndexedDB) and automatic background sync to erp1.budeglobal.in (ERPNext v15).",
       technologies: [
         "Android",
         "Flutter",
@@ -465,7 +480,12 @@ export const DATA = {
       ],
       links: [
         {
-          type: "App Demo",
+          type: "Product Page",
+          href: "https://www.budeglobal.in/products/bude-sales-app",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Live Demo",
           href: "https://demo-sales.budeglobal.in/",
           icon: <Icons.globe className="size-3" />,
         },
@@ -479,14 +499,14 @@ export const DATA = {
       video: "",
     },
     {
-      title: "BUDE Support Desk & Service Ticketing App (Android / Flutter)",
-      href: "https://demo-helpdesk.budeglobal.in/",
+      title: "Bude Helpdesk - Mobile Service Ticketing App",
+      href: "https://www.budeglobal.in/products/bude-helpdesk-app",
       dates: "2025 - Present",
       active: true,
       featured: true,
       role: "Lead Mobile Architect - Flutter Android / Web, Frappe Helpdesk API, WebSockets",
       description:
-        "Dual-perspective customer support and IT service desk Android & web application connecting directly to erp1.budeglobal.in (Frappe Helpdesk core). Supports real-time ticket creation, priority escalation queues, live interactive agent messaging threads over WebSockets, SLA countdown timers, and end-to-end incident resolution tracking.",
+        "Raise a ticket, answer one, or watch the queue. Requesters and agents see the same tickets through different eyes. Dual-perspective customer support and IT service desk Android & web application connecting directly to erp1.budeglobal.in (Frappe Helpdesk core) for real-time WebSocket messaging threads, SLA countdown timers, priority queues, and end-to-end incident resolution tracking.",
       technologies: [
         "Android",
         "Flutter",
@@ -499,7 +519,12 @@ export const DATA = {
       ],
       links: [
         {
-          type: "App Demo",
+          type: "Product Page",
+          href: "https://www.budeglobal.in/products/bude-helpdesk-app",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Live Demo",
           href: "https://demo-helpdesk.budeglobal.in/",
           icon: <Icons.globe className="size-3" />,
         },
