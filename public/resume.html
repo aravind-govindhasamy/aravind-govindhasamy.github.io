@@ -3,13 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aravind Govindhasamy - Senior Full Stack & IoT Platform Engineer Resume</title>
+  <title>Aravind Govindhasamy - Jake's Resume (15 LPA Target)</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Latin+Modern+Roman:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
 
     @page {
-      size: A4;
-      margin: 10mm 12mm;
+      size: letter;
+      margin: 0.5in;
     }
 
     * {
@@ -19,19 +20,19 @@
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      color: #111827;
-      background-color: #f9fafb;
-      line-height: 1.35;
-      font-size: 9.5pt;
+      font-family: 'Latin Modern Roman', 'EB Garamond', 'Times New Roman', Times, serif;
+      color: #000000;
+      background-color: #f3f4f6;
+      line-height: 1.25;
+      font-size: 10.5pt;
       -webkit-font-smoothing: antialiased;
     }
 
     .page {
-      width: 210mm;
-      min-height: 297mm;
-      margin: 10px auto;
-      padding: 12mm 14mm;
+      width: 8.5in;
+      min-height: 11in;
+      margin: 20px auto;
+      padding: 0.5in;
       background: #ffffff;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
@@ -56,28 +57,28 @@
       }
     }
 
-    /* Print action bar on screen */
+    /* Print toolbar */
     .print-bar {
-      max-width: 210mm;
+      max-width: 8.5in;
       margin: 16px auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #1e293b;
+      background: #111827;
       color: #ffffff;
       padding: 12px 20px;
-      border-radius: 8px;
+      border-radius: 6px;
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 13px;
     }
     .print-btn {
       background: #2563eb;
       color: #ffffff;
       border: none;
-      padding: 8px 18px;
+      padding: 7px 16px;
       font-weight: 600;
-      font-size: 14px;
-      border-radius: 6px;
+      border-radius: 5px;
       cursor: pointer;
-      transition: background 0.15s;
     }
     .print-btn:hover {
       background: #1d4ed8;
@@ -85,185 +86,105 @@
 
     /* Header */
     .header {
-      border-bottom: 2px solid #2563eb;
-      padding-bottom: 6px;
-      margin-bottom: 8px;
+      text-align: center;
+      margin-bottom: 12pt;
     }
     .name {
-      font-size: 20pt;
+      font-size: 22pt;
       font-weight: 700;
-      letter-spacing: -0.5px;
-      color: #0f172a;
-      text-transform: uppercase;
+      font-variant: small-caps;
+      letter-spacing: 0.5px;
       line-height: 1.1;
+      margin-bottom: 2pt;
     }
-    .headline {
+    .sub-title {
       font-size: 11pt;
-      font-weight: 600;
-      color: #2563eb;
-      margin-top: 2px;
-      margin-bottom: 4px;
+      font-weight: 700;
+      margin-bottom: 3pt;
     }
     .contact-line {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-size: 8.5pt;
-      color: #4b5563;
-      align-items: center;
-    }
-    .contact-line a {
-      color: #1d4ed8;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .contact-line a:hover {
-      text-decoration: underline;
-    }
-    .contact-sep {
-      color: #cbd5e1;
-    }
-
-    /* Section Headings */
-    .section {
-      margin-bottom: 8px;
-    }
-    .section-title {
-      font-size: 9.5pt;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: #0f172a;
-      border-bottom: 1px solid #e2e8f0;
-      padding-bottom: 2px;
-      margin-bottom: 5px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .section-title::before {
-      content: "";
-      display: inline-block;
-      width: 4px;
-      height: 11px;
-      background: #2563eb;
-      border-radius: 1px;
-    }
-
-    /* Summary */
-    .summary-text {
-      font-size: 8.8pt;
-      color: #334155;
-      text-align: justify;
-      line-height: 1.38;
-    }
-
-    /* Skills Grid */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 3px;
-      font-size: 8.6pt;
-    }
-    .skill-row {
-      display: flex;
+      font-size: 9pt;
+      color: #000000;
       line-height: 1.3;
     }
-    .skill-cat {
-      font-weight: 600;
-      color: #1e293b;
-      min-width: 145px;
-      flex-shrink: 0;
-    }
-    .skill-items {
-      color: #475569;
+    .contact-line a {
+      color: #000000;
+      text-decoration: underline;
     }
 
-    /* Experience & Projects */
-    .job {
-      margin-bottom: 6px;
+    /* Section Styling */
+    .section {
+      margin-top: 8pt;
+      margin-bottom: 4pt;
     }
-    .job-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 1px;
-    }
-    .job-title {
-      font-size: 9.5pt;
+    .section-title {
+      font-size: 11pt;
       font-weight: 700;
-      color: #0f172a;
-    }
-    .job-company {
-      font-weight: 600;
-      color: #2563eb;
-    }
-    .job-dates {
-      font-size: 8.5pt;
-      font-weight: 600;
-      color: #64748b;
-      text-align: right;
-      white-space: nowrap;
-    }
-    .job-location {
-      font-size: 8pt;
-      color: #64748b;
-      font-style: italic;
+      font-variant: small-caps;
+      text-transform: lowercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid #000000;
+      padding-bottom: 1pt;
+      margin-bottom: 4pt;
     }
 
-    ul.bullets {
-      margin-left: 14px;
-      margin-top: 2px;
+    /* Technical Skills */
+    .skills-list {
+      list-style: none;
+      font-size: 9.5pt;
+      margin-left: 0.15in;
+      line-height: 1.35;
     }
-    ul.bullets li {
-      font-size: 8.6pt;
-      color: #334155;
-      margin-bottom: 2px;
-      line-height: 1.32;
+    .skills-list li {
+      margin-bottom: 2pt;
     }
-    ul.bullets li strong {
-      color: #0f172a;
+    .skills-list strong {
+      font-weight: 700;
     }
 
-    /* Education */
-    .edu-item {
+    /* Experience / Projects subheadings */
+    .subheading-list {
+      list-style: none;
+      margin-left: 0.15in;
+    }
+    .subheading {
+      margin-top: 3pt;
+      margin-bottom: 5pt;
+    }
+    .subheading-row {
       display: flex;
       justify-content: space-between;
       align-items: baseline;
-      margin-bottom: 3px;
+      width: 100%;
     }
-    .edu-degree {
+    .subheading-left {
+      font-weight: 700;
+      font-size: 9.8pt;
+    }
+    .subheading-right {
       font-size: 9pt;
-      font-weight: 600;
-      color: #0f172a;
+      font-weight: 400;
+      text-align: right;
     }
-    .edu-school {
-      font-size: 8.5pt;
-      color: #475569;
-    }
-    .edu-grade {
-      font-weight: 600;
-      color: #059669;
-    }
-    .edu-dates {
-      font-size: 8.5pt;
-      color: #64748b;
-      font-weight: 500;
-      white-space: nowrap;
+    .subheading-italic {
+      font-style: italic;
+      font-size: 9pt;
     }
 
-    /* Certifications */
-    .cert-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3px 12px;
-      font-size: 8.5pt;
+    /* Bullets */
+    ul.item-list {
+      margin-left: 0.25in;
+      margin-top: 2pt;
+      margin-bottom: 4pt;
     }
-    .cert-item {
-      color: #334155;
+    ul.item-list li {
+      font-size: 9pt;
+      margin-bottom: 2pt;
+      line-height: 1.3;
+      text-align: justify;
     }
-    .cert-item strong {
-      color: #0f172a;
+    ul.item-list li strong {
+      font-weight: 700;
     }
   </style>
 </head>
@@ -271,226 +192,215 @@
 
   <div class="print-bar no-print">
     <div>
-      <strong>Aravind Govindhasamy — 15 LPA Target 2-Page Resume</strong>
-      <span style="opacity: 0.75; font-size: 12px; margin-left: 10px;">Exact 2-page print layout (A4)</span>
+      <strong>Jake's Resume Template (Overleaf Format)</strong> — 
+      <span style="opacity: 0.85;">2-Page Target for 15 LPA Roles</span>
     </div>
-    <button class="print-btn" onclick="window.print()">🖨️ Print / Save to PDF</button>
+    <div style="display: flex; gap: 10px;">
+      <a href="jakes_resume.tex" download="jakes_resume.tex" style="color: #60a5fa; text-decoration: underline; line-height: 28px;">Download .tex for Overleaf</a>
+      <button class="print-btn" onclick="window.print()">🖨️ Print / Save to PDF</button>
+    </div>
   </div>
 
   <!-- PAGE 1 -->
   <div class="page page-break">
     <header class="header">
-      <h1 class="name">Aravind Govindhasamy</h1>
-      <div class="headline">Senior Full Stack & IoT Platform Engineer</div>
+      <div class="name">Aravind Govindhasamy</div>
+      <div class="sub-title">Senior Full Stack & IoT Platform Engineer</div>
       <div class="contact-line">
-        <span>📍 Coimbatore, Tamil Nadu, India</span>
-        <span class="contact-sep">•</span>
-        <span>📞 <a href="tel:+919361621891">+91 9361621891</a></span>
-        <span class="contact-sep">•</span>
-        <span>✉️ <a href="mailto:aravindapg06@gmail.com">aravindapg06@gmail.com</a></span>
-        <span class="contact-sep">•</span>
-        <span>🌐 <a href="https://aravind-govindhasamy.github.io" target="_blank">Portfolio</a></span>
-        <span class="contact-sep">•</span>
-        <span>🔗 <a href="https://www.linkedin.com/in/aravind-govindhasamy" target="_blank">LinkedIn</a></span>
-        <span class="contact-sep">•</span>
-        <span>💻 <a href="https://github.com/aravind-govindhasamy" target="_blank">GitHub</a></span>
+        +91 9361621891 $|$ 
+        <a href="mailto:aravindapg06@gmail.com">aravindapg06@gmail.com</a> $|$ 
+        <a href="https://aravind-govindhasamy.github.io" target="_blank">aravind-govindhasamy.github.io</a> $|$ 
+        <a href="https://linkedin.com/in/aravind-govindhasamy" target="_blank">linkedin.com/in/aravind-govindhasamy</a> $|$ 
+        <a href="https://github.com/aravind-govindhasamy" target="_blank">github.com/aravind-govindhasamy</a> <br>
+        Coimbatore, Tamil Nadu, India
       </div>
     </header>
 
-    <section class="section">
-      <h2 class="section-title">Executive Summary</h2>
-      <p class="summary-text">
-        Pragmatic, product-driven Software Engineer with ~4 years of hands-on experience architecting, building, and operating production software end-to-end. Specialized in high-throughput IoT platforms, asynchronous backend APIs (FastAPI, Python, Node.js), modern web frontends (React, Next.js, TypeScript), and hardware device integrations (MQTT, RFID, ESP32, GPS). Proven track record of owning full product lifecycles—from hardware telemetry and database schema design to cloud deployment (DigitalOcean, Supabase) and production monitoring (Sentry). Known as a rapid builder, troubleshooter, and systems integrator who bridges real-world hardware with reliable cloud scale.
-      </p>
-    </section>
+    <div class="section">
+      <div class="section-title">Technical Skills</div>
+      <ul class="skills-list">
+        <li><strong>Languages:</strong> Python, JavaScript (ES6+), TypeScript, C#, SQL (PostgreSQL, MySQL, T-SQL), HTML5, CSS3</li>
+        <li><strong>Frameworks & Libraries:</strong> FastAPI, React, Next.js (App Router), Node.js, Express.js, .NET / .NET Core, Tailwind CSS, Radix UI</li>
+        <li><strong>IoT & Hardware:</strong> MQTT Protocol, ESP32, ESP8266, RFID Readers (HF/UHF Integration), GPS Telemetry & Geofencing, Raspberry Pi</li>
+        <li><strong>Cloud, DevOps & Databases:</strong> PostgreSQL, Supabase, MySQL, MariaDB, MS SQL Server, DigitalOcean, Linux (Ubuntu), Sentry, GitHub Actions</li>
+        <li><strong>Integrations & Architecture:</strong> RESTful APIs, WebSockets, WebRTC, Razorpay, Airtel M2M SIM API, Google Home OAuth 2.0, WhatsApp Business API</li>
+        <li><strong>AI & Enterprise:</strong> ERPNext / Frappe, GLPI Asset Management, OJS Systems, Gemini 1.5 Multimodal API, Computer Vision (YOLO/OpenCV)</li>
+      </ul>
+    </div>
 
-    <section class="section">
-      <h2 class="section-title">Core Competencies & Technical Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-row">
-          <span class="skill-cat">Backend & APIs:</span>
-          <span class="skill-items">Python, FastAPI, Node.js, Express.js, C#, .NET / .NET Core, RESTful APIs, WebSockets, WebRTC, Async Architecture</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-cat">Frontend & UI:</span>
-          <span class="skill-items">React, Next.js (App Router), TypeScript, JavaScript (ES6+), Tailwind CSS, Radix UI / shadcn, State Management, Responsive UI</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-cat">IoT & Telemetry:</span>
-          <span class="skill-items">MQTT Protocol, ESP32 / ESP8266, RFID Readers (HF/UHF Integration), GPS Telemetry & Geofencing, Raspberry Pi</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-cat">Databases & Cloud:</span>
-          <span class="skill-items">PostgreSQL, Supabase, MySQL / MariaDB, MS SQL Server, DigitalOcean, Linux / Ubuntu Server, Sentry, GitHub Actions CI/CD</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-cat">Integrations & Protocols:</span>
-          <span class="skill-items">Razorpay Payments, Airtel M2M SIM Automation, Google Home Smart Home API (OAuth 2.0), WhatsApp Business API, Twilio SMS</span>
-        </div>
-        <div class="skill-row">
-          <span class="skill-cat">Enterprise & AI:</span>
-          <span class="skill-items">ERPNext / Frappe, GLPI Asset Management, OJS Journal Systems, Gemini AI Multimodal APIs, Computer Vision (YOLO/OpenCV)</span>
-        </div>
-      </div>
-    </section>
+    <div class="section">
+      <div class="section-title">Professional Experience</div>
+      <div class="subheading-list">
 
-    <section class="section">
-      <h2 class="section-title">Professional Experience</h2>
-
-      <div class="job">
-        <div class="job-header">
-          <div>
-            <span class="job-title">Full Stack & IoT Platform Developer</span> — 
-            <span class="job-company">Semicon Media Pvt Ltd</span>
-            <span class="job-location">(Coimbatore, India)</span>
+        <!-- Job 1 -->
+        <div class="subheading">
+          <div class="subheading-row">
+            <span class="subheading-left">Full Stack & IoT Platform Developer</span>
+            <span class="subheading-right">Dec 2025 -- Present</span>
           </div>
-          <span class="job-dates">Dec 2025 – Present</span>
-        </div>
-        <ul class="bullets">
-          <li>Architected and shipped <strong>Circuit Digest Cloud</strong>, an end-to-end IoT platform managing asynchronous device telemetry, real-time trigger rules, and dynamic widget dashboards.</li>
-          <li>Engineered high-concurrency backend microservices using <strong>FastAPI, PostgreSQL (Supabase), and MQTT</strong>, achieving sub-100ms response times for real-time telemetry processing.</li>
-          <li>Designed and deployed <strong>GeoLinker</strong>, a live fleet GPS tracking module featuring polygon geofencing, route replay history, and interactive React mapping.</li>
-          <li>Built automated subscription billing integrating <strong>Razorpay payment webhooks</strong> and automated <strong>Airtel M2M SIM</strong> lifecycle activation and data pool management.</li>
-          <li>Implemented third-party smart home integration with <strong>Google Home</strong> via OAuth 2.0 and fulfillment webhooks for voice-controlled IoT automations.</li>
-          <li>Deployed edge-assisted <strong>Computer Vision pipelines</strong> for license plate recognition (ANPR), helmet violation detection, and object tracking.</li>
-          <li>Automated CI/CD deployment pipelines on <strong>GitHub Actions</strong>, managing zero-downtime releases on <strong>DigitalOcean</strong> with proactive <strong>Sentry</strong> error monitoring.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="job-header">
-          <div>
-            <span class="job-title">ERP Assistant Programmer & Systems Engineer</span> — 
-            <span class="job-company">PSGR Krishnammal College for Women</span>
-            <span class="job-location">(Coimbatore, India)</span>
+          <div class="subheading-row">
+            <span class="subheading-italic">Semicon Media Pvt Ltd</span>
+            <span class="subheading-italic">Coimbatore, India</span>
           </div>
-          <span class="job-dates">Oct 2024 – Nov 2025</span>
+          <ul class="item-list">
+            <li>Architected and shipped <strong>Circuit Digest Cloud</strong>, an enterprise IoT platform managing device provisioning, real-time telemetry dashboards, and automated alert rule triggers.</li>
+            <li>Engineered asynchronous microservices using <strong>FastAPI, PostgreSQL (Supabase), and MQTT</strong>, achieving sub-100ms response times for high-throughput sensor telemetry ingestion.</li>
+            <li>Designed and deployed <strong>GeoLinker</strong>, an interactive GPS fleet telemetry module featuring polygon geofencing, route replay history, and live React mapping.</li>
+            <li>Built automated subscription billing pipelines integrating <strong>Razorpay webhooks</strong> and automated <strong>Airtel M2M SIM</strong> lifecycle provisioning and pooled data management.</li>
+            <li>Developed third-party smart home integration with <strong>Google Home</strong> using OAuth 2.0 authentication and fulfillment handlers for voice-controlled automations.</li>
+            <li>Integrated edge-assisted <strong>Computer Vision pipelines</strong> for automated license plate recognition (ANPR), helmet violation detection, and object tracking.</li>
+            <li>Automated CI/CD release workflows on <strong>GitHub Actions</strong>, managing zero-downtime releases on <strong>DigitalOcean</strong> with proactive <strong>Sentry</strong> error monitoring.</li>
+          </ul>
         </div>
-        <ul class="bullets">
-          <li>Engineered an <strong>RFID-based Smart Campus Gate Ecosystem</strong> integrated with surveillance cameras, serving <strong>5,000+ daily active users</strong> and eliminating gate congestion.</li>
-          <li>Developed an enterprise <strong>ID Card Tagging Module</strong> supporting HF, UHF, and QR cards with automated duplicate prevention and audit logging.</li>
-          <li>Configured and scaled <strong>GLPI (IT Asset Management System)</strong> across <strong>1,800+ hardware endpoints</strong> with automated inventory tracking and status analytics.</li>
-          <li>Deployed and maintained an <strong>Open Journal Systems (OJS)</strong> digital publishing platform, streamlining peer review workflows and research publication.</li>
-          <li>Designed automated SQL reporting procedures for movement analysis and delivered daily analytical digests to executive leadership.</li>
-        </ul>
+
+        <!-- Job 2 -->
+        <div class="subheading">
+          <div class="subheading-row">
+            <span class="subheading-left">ERP Assistant Programmer & Systems Engineer</span>
+            <span class="subheading-right">Oct 2024 -- Nov 2025</span>
+          </div>
+          <div class="subheading-row">
+            <span class="subheading-italic">PSGR Krishnammal College for Women</span>
+            <span class="subheading-italic">Coimbatore, India</span>
+          </div>
+          <ul class="item-list">
+            <li>Spearheaded engineering of an <strong>RFID-based Smart Campus Gate Ecosystem</strong> with synchronized surveillance capture, serving <strong>5,000+ daily active users</strong> and eliminating gate congestion.</li>
+            <li>Engineered a centralized <strong>ID Card Tagging Module</strong> supporting HF, UHF, and QR cards with automated duplicate detection and audit trails.</li>
+            <li>Configured and scaled <strong>GLPI (IT Asset Management System)</strong> across <strong>1,800+ physical hardware endpoints</strong>, providing real-time hardware/software inventory tracking.</li>
+            <li>Deployed and maintained an <strong>Open Journal Systems (OJS)</strong> digital publishing platform, streamlining peer review workflows and research publication.</li>
+            <li>Authored complex SQL analytics and automated daily digest reports delivering key operational metrics to institutional leadership.</li>
+          </ul>
+        </div>
+
       </div>
-    </section>
+    </div>
   </div>
 
   <!-- PAGE 2 -->
   <div class="page">
-    <section class="section">
-      <h2 class="section-title">Professional Experience (Continued)</h2>
+    <div class="section">
+      <div class="section-title">Professional Experience (Continued)</div>
+      <div class="subheading-list">
 
-      <div class="job">
-        <div class="job-header">
-          <div>
-            <span class="job-title">Junior Software Developer</span> — 
-            <span class="job-company">2CQR Automation Private Limited</span>
-            <span class="job-location">(Coimbatore, India)</span>
+        <!-- Job 3 -->
+        <div class="subheading">
+          <div class="subheading-row">
+            <span class="subheading-left">Junior Software Developer</span>
+            <span class="subheading-right">May 2024 -- Oct 2024</span>
           </div>
-          <span class="job-dates">May 2024 – Oct 2024</span>
-        </div>
-        <ul class="bullets">
-          <li>Engineered RFID-integrated <strong>Jewellery & Library ERP Systems</strong> in C#, Node.js, and MSSQL, enabling high-speed scanning of 100+ items per second for stock audits.</li>
-          <li>Developed client-facing CRM modules and self-service touch kiosk interfaces with direct serial hardware communication.</li>
-          <li>Delivered 4 mission-critical client deployments under 3-month schedules with zero post-release production blockers.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="job-header">
-          <div>
-            <span class="job-title">.NET Developer Intern</span> — 
-            <span class="job-company">2CQR Automation Private Limited</span>
-            <span class="job-location">(Coimbatore, India)</span>
+          <div class="subheading-row">
+            <span class="subheading-italic">2CQR Automation Private Limited</span>
+            <span class="subheading-italic">Coimbatore, India</span>
           </div>
-          <span class="job-dates">Jan 2024 – May 2024</span>
+          <ul class="item-list">
+            <li>Engineered RFID-integrated <strong>Jewellery & Library ERP Systems</strong> in C#, Node.js, and MSSQL, enabling high-speed scanning of 100+ items/sec for stock audits.</li>
+            <li>Developed client-facing CRM modules and self-service touch kiosk applications with direct serial hardware controller communication.</li>
+            <li>Successfully delivered 4 high-priority client deployments under strict 3-month schedules with zero post-release production blockers.</li>
+          </ul>
         </div>
-        <ul class="bullets">
-          <li>Built C# / .NET desktop applications integrating RFID serial readers, SQL database schemas, and REST APIs.</li>
-          <li>Introduced GitHub workflow automation across the engineering team, establishing automated code reviews and version tracking.</li>
-        </ul>
-      </div>
-    </section>
 
-    <section class="section">
-      <h2 class="section-title">Selected High-Impact Production Projects</h2>
+        <!-- Job 4 -->
+        <div class="subheading">
+          <div class="subheading-row">
+            <span class="subheading-left">.NET Developer Intern</span>
+            <span class="subheading-right">Jan 2024 -- May 2024</span>
+          </div>
+          <div class="subheading-row">
+            <span class="subheading-italic">2CQR Automation Private Limited</span>
+            <span class="subheading-italic">Coimbatore, India</span>
+          </div>
+          <ul class="item-list">
+            <li>Built C# / .NET desktop applications integrating RFID serial readers, SQL database schemas, and backend REST APIs.</li>
+            <li>Introduced GitHub workflow automation across the engineering team, establishing automated code reviews and standardized version tracking.</li>
+          </ul>
+        </div>
 
-      <div class="job">
-        <div class="job-header">
-          <span class="job-title">Circuit Digest Cloud IoT Platform</span>
-          <span class="job-location">FastAPI · React · MQTT · Supabase · DigitalOcean</span>
-        </div>
-        <ul class="bullets">
-          <li>Architected an enterprise-grade IoT platform supporting multi-tenant device provisioning, visual telemetry dashboards, automated alert triggers (WhatsApp/SMS/Email), and M2M SIM billing automation.</li>
-        </ul>
       </div>
+    </div>
 
-      <div class="job">
-        <div class="job-header">
-          <span class="job-title">RFID Campus Gate & Security Turnstile Suite</span>
-          <span class="job-location">C# · Node.js · RFID Hardware · MSSQL</span>
-        </div>
-        <ul class="bullets">
-          <li>Deployed an automated multi-lane turnstile access system with facial snapshot correlation, anti-passback logic, and sub-second attendance logging for 5,000+ personnel.</li>
-        </ul>
-      </div>
+    <div class="section">
+      <div class="section-title">Selected High-Impact Projects</div>
+      <div class="subheading-list">
 
-      <div class="job">
-        <div class="job-header">
-          <span class="job-title">GeoLinker Fleet Telemetry & Geofencing System</span>
-          <span class="job-location">Python · WebSockets · Leaflet · MapLibre</span>
+        <div class="subheading">
+          <div class="subheading-row">
+            <span class="subheading-left">Circuit Digest Cloud IoT Platform <span style="font-weight: 400; font-style: italic;">$|$ FastAPI, React, MQTT, Supabase, DigitalOcean</span></span>
+            <span class="subheading-right">Dec 2025 -- Present</span>
+          </div>
+          <ul class="item-list">
+            <li>Architected an end-to-end IoT platform supporting multi-tenant device provisioning, visual telemetry dashboards, automated alert triggers (WhatsApp/SMS/Email), and M2M SIM billing automation.</li>
+          </ul>
         </div>
-        <ul class="bullets">
-          <li>Built real-time GPS telemetry listener receiving hardware socket feeds, computing polygon geofence breaches, route replay simulations, and speed anomaly alerts.</li>
-        </ul>
-      </div>
 
-      <div class="job">
-        <div class="job-header">
-          <span class="job-title">AI Document & Invoice Extraction Pipeline</span>
-          <span class="job-location">Python · Gemini 1.5 AI · PyMuPDF · Streamlit</span>
+        <div class="subheading">
+          <div class="subheading-row">
+            <span class="subheading-left">RFID Campus Gate & Security Turnstile Suite <span style="font-weight: 400; font-style: italic;">$|$ C#, Node.js, RFID Hardware, MSSQL</span></span>
+            <span class="subheading-right">Oct 2024 -- Nov 2025</span>
+          </div>
+          <ul class="item-list">
+            <li>Deployed an automated multi-lane turnstile access system with facial snapshot correlation, anti-passback logic, and sub-second attendance logging for 5,000+ personnel.</li>
+          </ul>
         </div>
-        <ul class="bullets">
-          <li>Engineered multimodal AI extraction tool parsing unstructured invoices, receipts, and PO documents into validated structured JSON schemas with 95%+ field accuracy.</li>
-        </ul>
-      </div>
-    </section>
 
-    <section class="section">
-      <h2 class="section-title">Education</h2>
-      <div class="edu-item">
-        <div>
-          <span class="edu-degree">Master of Computer Applications (MCA)</span> — 
-          <span class="edu-school">Sri Ramakrishna Mission Vidyalaya College of Arts and Science, Coimbatore</span>
+        <div class="subheading">
+          <div class="subheading-row">
+            <span class="subheading-left">GeoLinker Fleet Telemetry & Geofencing System <span style="font-weight: 400; font-style: italic;">$|$ Python, WebSockets, Leaflet, MapLibre</span></span>
+            <span class="subheading-right">Jan 2026 -- Feb 2026</span>
+          </div>
+          <ul class="item-list">
+            <li>Built real-time GPS telemetry listener receiving hardware socket feeds, computing polygon geofence breaches, route replay simulations, and speed anomaly alerts.</li>
+          </ul>
         </div>
-        <div>
-          <span class="edu-grade">First Class with Distinction (CGPA: 8.0 / 10)</span> · 
-          <span class="edu-dates">2022 – 2024</span>
-        </div>
-      </div>
-      <div class="edu-item">
-        <div>
-          <span class="edu-degree">Bachelor of Science in Computer Science (B.Sc CS)</span> — 
-          <span class="edu-school">Sri Ramakrishna Mission Vidyalaya College of Arts and Science, Coimbatore</span>
-        </div>
-        <div>
-          <span class="edu-grade">First Class (CGPA: 7.46 / 10)</span> · 
-          <span class="edu-dates">2019 – 2022</span>
-        </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <h2 class="section-title">Certifications & Honors</h2>
-      <div class="cert-list">
-        <div class="cert-item">🎖️ <strong>NCC 'B' & 'C' Certificates</strong> — National Cadet Corps (Leadership & Discipline)</div>
-        <div class="cert-item">📜 <strong>Python for Data Science & AI</strong> — GUVI / IIT Madras Research Park</div>
-        <div class="cert-item">📜 <strong>Game Architecture & PyGame</strong> — GUVI Geek Networks</div>
-        <div class="cert-item">📜 <strong>ChatGPT & Generative AI Prompting</strong> — GUVI</div>
+        <div class="subheading">
+          <div class="subheading-row">
+            <span class="subheading-left">Multimodal AI Document & Invoice Intelligence <span style="font-weight: 400; font-style: italic;">$|$ Python, Gemini 1.5 AI, PyMuPDF, Streamlit</span></span>
+            <span class="subheading-right">Oct 2024 -- Dec 2024</span>
+          </div>
+          <ul class="item-list">
+            <li>Engineered multimodal AI extraction tool parsing unstructured invoices, receipts, and PO documents into validated structured JSON schemas with 95%+ field accuracy.</li>
+          </ul>
+        </div>
+
       </div>
-    </section>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Education</div>
+      <div class="subheading-list">
+        <div class="subheading">
+          <div class="subheading-row">
+            <span class="subheading-left">Sri Ramakrishna Mission Vidyalaya College of Arts and Science</span>
+            <span class="subheading-right">Coimbatore, India</span>
+          </div>
+          <div class="subheading-row">
+            <span class="subheading-italic">Master of Computer Applications (MCA) -- First Class with Distinction (CGPA: 8.0 / 10)</span>
+            <span class="subheading-italic">2022 -- 2024</span>
+          </div>
+        </div>
+
+        <div class="subheading">
+          <div class="subheading-row">
+            <span class="subheading-left">Sri Ramakrishna Mission Vidyalaya College of Arts and Science</span>
+            <span class="subheading-right">Coimbatore, India</span>
+          </div>
+          <div class="subheading-row">
+            <span class="subheading-italic">Bachelor of Science in Computer Science (B.Sc CS) -- First Class (CGPA: 7.46 / 10)</span>
+            <span class="subheading-italic">2019 -- 2022</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">Certifications & Honors</div>
+      <ul class="skills-list">
+        <li><strong>National Cadet Corps (NCC) 'B' & 'C' Certificates</strong> (Demonstrated discipline, team leadership, and tactical operations)</li>
+        <li><strong>Python for Data Science & AI</strong> (GUVI / IIT Madras Research Park)</li>
+        <li><strong>Game Architecture & PyGame Development</strong> (GUVI Geek Networks)</li>
+        <li><strong>ChatGPT & Generative AI Prompt Engineering</strong> (GUVI)</li>
+      </ul>
+    </div>
   </div>
 
 </body>
