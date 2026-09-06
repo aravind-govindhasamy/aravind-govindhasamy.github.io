@@ -38,7 +38,7 @@ export default function ProjectsSection() {
                         </p>
                     </div>
                 </div>
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-[800px] mx-auto items-start">
+                <div className="flex flex-col gap-6 max-w-[800px] mx-auto w-full">
                     {featured.map((project, id) => (
                         <BlurFade
                             key={project.title}
@@ -63,7 +63,7 @@ export default function ProjectsSection() {
                         <BlurFade delay={BLUR_FADE_DELAY * 13}>
                             <h3 className="text-xl font-bold text-center">More Projects</h3>
                         </BlurFade>
-                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 max-w-[800px] mx-auto items-start">
+                        <div className="flex flex-col gap-6 max-w-[800px] mx-auto w-full">
                             {more.map((project, id) => (
                                 <BlurFade
                                     key={project.title}
