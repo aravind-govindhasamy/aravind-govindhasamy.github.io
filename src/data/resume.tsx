@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { ReactLight } from "@/components/ui/svgs/reactLight";
-import { NextjsIconDark } from "@/components/ui/svgs/nextjsIconDark";
 import { Typescript } from "@/components/ui/svgs/typescript";
 import { Nodejs } from "@/components/ui/svgs/nodejs";
 import { Python } from "@/components/ui/svgs/python";
@@ -21,92 +20,57 @@ import { Csharp } from "@/components/ui/svgs/csharp";
 
 type HackathonLink = { title: string; icon: ReactNode; href: string };
 
+export const RESUME_URL =
+  "/Aravind%20Govindhasamy%20-%20Full%20Stack%20Developer.pdf";
+
 export const DATA = {
   name: "Aravind Govindhasamy",
   initials: "AG",
   url: "https://aravind-govindhasamy.github.io",
   location: "Coimbatore, Tamil Nadu, India",
   locationLink: "https://www.google.com/maps/place/Coimbatore",
-  role: "Senior Full Stack & IoT Platform Engineer",
+  role: "Full Stack Developer | IoT & RFID Systems",
   tagline:
     "Building reliable web platforms, device integrations, and intelligent automation systems.",
   description:
-    "Senior Full Stack & IoT Platform Developer with 4+ years of hands-on production experience - FastAPI & React platforms, MQTT telemetry, RFID & ILMS enterprise systems (SOUL, KOHA, AutoLib, ERPNext), hardware serial drivers, and AI automation built and operated in production.",
+    "Full Stack Developer with 4 years of hands-on experience building backend services, web applications, and IoT/RFID integrations for production environments.",
   summary:
-    "I'm a full-stack developer and platform engineer with over 4 years of hands-on production experience shipping web platforms, backend microservices, and IoT systems that talk directly to hardware. Right now I'm at [Semicon Media](https://www.circuitdigest.cloud/), architecting the Circuit Digest Cloud IoT platform end to end: FastAPI services over MQTT, React dashboards, GeoLinker GPS fleet tracking with polygon geofencing, Razorpay + Airtel M2M SIM lifecycle automation, WebRTC video, and computer vision APIs on DigitalOcean. Before that, I built campus enterprise systems at PSGR Krishnammal College (RFID smart gate turnstiles serving 5,000+ daily users, GLPI asset tracking across 1,800+ physical endpoints, and an OJS publishing platform) and spent 2.5 years at 2CQR Automation engineering mission-critical RFID library and retail ERP software—connecting hardware readers to INFLIBNET SOUL, KOHA, and AutoLib, developing iSmartShelf and return dropboxes with Razorpay fine payments, and diagnosing 150+ production protocol and hardware issues. I like owning a problem end to end: database schema to device firmware to responsive UI. More: [education](/#education), [certifications](/#certifications), or [download my resume](/resume.pdf).",
+    `I'm a full-stack developer with 4 years of hands-on production experience across backend services, web applications, databases, Linux, and hardware-connected systems. At [Semicon Media](https://www.circuitdigest.cloud/), I build FastAPI and MQTT services, React dashboards, GPS tracking, payment and M2M SIM integrations, WebRTC video, and computer vision APIs for Circuit Digest Cloud. Previously, I developed campus systems at PSGR Krishnammal College and spent 2.5 years at 2CQR Automation connecting RFID readers and kiosks with ILMS platforms including SOUL, KOHA, and AutoLib. I learn by building, testing, debugging, and iterating until the whole system works reliably. More: [education](/#education), [certifications](/#certifications), or [download my resume](${RESUME_URL}).`,
   avatarUrl: "/me.jpg",
   skills: [
     {
-      category: "Backend & APIs",
+      category: "Backend",
       items: [
         { name: "Python", icon: Python },
         { name: "FastAPI", icon: undefined },
         { name: "Node.js", icon: Nodejs },
         { name: "C# / .NET", icon: Csharp },
         { name: "REST APIs", icon: undefined },
-        { name: "WebSockets / WebRTC", icon: undefined },
       ],
     },
     {
       category: "Frontend",
       items: [
         { name: "React", icon: ReactLight },
-        { name: "Next.js", icon: NextjsIconDark },
         { name: "TypeScript", icon: Typescript },
-        { name: "Tailwind CSS", icon: Icons.tailwindcss },
-        { name: "shadcn/ui", icon: undefined },
-        { name: "Flutter", icon: undefined },
       ],
     },
     {
-      category: "Databases",
+      category: "Data & Systems",
       items: [
         { name: "PostgreSQL", icon: Postgresql },
-        { name: "Supabase", icon: undefined },
-        { name: "MySQL / MariaDB", icon: undefined },
-        { name: "MS SQL Server", icon: undefined },
+        { name: "MySQL", icon: undefined },
+        { name: "Linux", icon: undefined },
+        { name: "Git", icon: undefined },
       ],
     },
     {
-      category: "IoT & Hardware Integration",
+      category: "IoT & Integration",
       items: [
         { name: "MQTT", icon: undefined },
-        { name: "ESP32 / ESP8266", icon: undefined },
-        { name: "RFID (HF/UHF, H002/H003, HID)", icon: undefined },
+        { name: "RFID", icon: undefined },
         { name: "SIP2 Protocol", icon: undefined },
-        { name: "GPS / Geofencing", icon: undefined },
-        { name: "Raspberry Pi", icon: undefined },
-        { name: "Serial Protocols (RS232/COM)", icon: undefined },
-      ],
-    },
-    {
-      category: "Cloud, DevOps & Deployment",
-      items: [
-        { name: "Ubuntu Linux", icon: undefined },
-        { name: "DigitalOcean", icon: undefined },
-        { name: "Cloudflare", icon: undefined },
-        { name: "GitHub Actions", icon: undefined },
-        { name: "Sentry", icon: undefined },
-        { name: "IIS WebAPI", icon: undefined },
-      ],
-    },
-    {
-      category: "ERP & Enterprise Systems",
-      items: [
         { name: "ERPNext / Frappe", icon: undefined },
-        { name: "GLPI Asset Management", icon: undefined },
-        { name: "OJS Publishing", icon: undefined },
-        { name: "SOUL / KOHA / AutoLib ILMS", icon: undefined },
-        { name: "WPF Desktop Apps", icon: undefined },
-      ],
-    },
-    {
-      category: "AI & Automation",
-      items: [
-        { name: "Gemini API", icon: undefined },
-        { name: "Computer Vision APIs", icon: undefined },
-        { name: "MCP Servers", icon: undefined },
-        { name: "Local LLMs", icon: undefined },
       ],
     },
   ],
@@ -119,7 +83,7 @@ export const DATA = {
     { href: "/#contact", icon: MailIcon, label: "Contact", hideOnMobile: false },
     { href: "/blog", icon: NotebookIcon, label: "Blog", hideOnMobile: true },
     { href: "/credentials", icon: Award, label: "Credentials", hideOnMobile: false },
-    { href: "/resume.pdf", icon: FileTextIcon, label: "Resume", hideOnMobile: false },
+    { href: RESUME_URL, icon: FileTextIcon, label: "Resume", hideOnMobile: false },
   ],
   contact: {
     email: "aravindapg06@gmail.com",
@@ -169,7 +133,7 @@ export const DATA = {
       start: "Dec 2025",
       end: "Present",
       description:
-        "Building a cloud IoT platform (in the spirit of Blynk / ThingsBoard) end to end. Architected FastAPI services around an MCP-based microservice design to process asynchronous MQTT device data, drive template-based SMS/Email/WhatsApp alerting, and serve REST APIs tuned for low-latency real-time use. Shipped GeoLinker - GPS tracking with geofencing, route history, and a live React map - plus computer-vision APIs (license plate, object, helmet, face detection), WebRTC streaming, Google Home integration over OAuth 2.0, and Razorpay + Airtel M2M SIM lifecycle automation. Own deployment and production operations: Supabase (PostgreSQL), DigitalOcean hosting, Sentry error tracking, and GitHub-based release workflows.",
+        "Build and maintain Circuit Digest Cloud, including FastAPI services, PostgreSQL (Supabase), MQTT telemetry ingestion, device provisioning, and React dashboards. Developed GeoLinker GPS tracking with polygon geofencing, route history, and live maps. Integrated computer vision APIs for ANPR, helmet, object, and face detection alongside WebRTC video. Implemented Razorpay webhooks, Airtel M2M SIM lifecycle workflows, and Google Home OAuth integration. Deploy and monitor the platform on DigitalOcean using GitHub Actions and Sentry.",
     },
     {
       company: "BUDE Global",
@@ -181,19 +145,19 @@ export const DATA = {
       start: "2025",
       end: "Present",
       description:
-        "Founded an independent developer ecosystem building open-source tools and operating 11 production applications self-hosted on an on-premise Dell PowerEdge T40 home server with Cloudflare Zero-Trust edge ingress (cloudflared) and Nginx reverse proxies. Architected the BUDE Global flagship platform (Next.js 16, Payload CMS 3, PostgreSQL, 240+ pre-rendered routes), centralized ERPNext v15 / Frappe core (ERPCore), four Android & Flutter enterprise mobile apps (smart RFID stock management, geo-attendance HRMS, offline-first field sales, and customer service desk), and the BUDE MADE custom multi-vendor marketplace suite (administrative catalog core, merchant onboarding studio, and consumer e-commerce storefront).",
+        "Run an independent open-source initiative for building and self-hosting practical business tools on a Dell PowerEdge T40 with Cloudflare Tunnel and Nginx. Projects include a Next.js and Payload CMS website, an ERPNext/Frappe backend, RFID inventory and field-work mobile apps, and a multi-vendor marketplace suite.",
     },
     {
       company: "PSGR Krishnammal College for Women",
       href: "https://www.psgrkcw.ac.in/",
       badges: [],
       location: "Coimbatore, India",
-      title: "ERP Assistant Programmer",
+      title: "ERP Assistant Programmer & Systems Engineer",
       logoUrl: "/logos/psgrkcw.png",
       start: "Oct 2024",
       end: "Nov 2025",
       description:
-        "Worked in the Systems Department designing, developing, customizing, and maintaining enterprise software across the full SDLC. Developed an RFID-based Gate Software Ecosystem with real-time monitoring and camera integration serving 5000+ users, an ID Card Tagging module supporting HF, UHF, and QR cards with duplicate detection, and SQL-driven reporting for user movement analysis. Customized GLPI for IT asset tracking across 1800+ systems with real-time inventory, implemented a Journal Management System with full editorial workflow and peer review, conducted R&D for a Blood Bank Management System, and built analytics dashboards with automated daily email reports.",
+        "Built and deployed an RFID smart campus gate system with synchronized camera snapshots and developed a shared ID-card tagging module for HF, UHF, and QR credentials. Expanded GLPI inventory coverage across 1,800+ physical endpoints with FusionInventory, administered the college's Open Journal Systems publishing portal, and built SQL reports for daily movement and asset data.",
     },
     {
       company: "2CQR Automation Private Limited",
@@ -205,7 +169,7 @@ export const DATA = {
       start: "May 2022",
       end: "Oct 2024",
       description:
-        "Engineered, integrated, and maintained mission-critical RFID library and enterprise automation software across 20+ premier client institutions (SRM, VIT Chennai, PSG Tech, Crescent University, GTU, Bishop Heber, SRMC, DY-Patel). Developed ILMS database integration bridges connecting RFID turnstiles and gates with INFLIBNET SOUL, KOHA, AutoLib, and eGrantalaya—enabling live patron photo extraction, Tamil title support for Lib_Gate, reverse security, and attendance logging. Architected iSmartShelf and Automated Return DropBox systems integrating H002/H003 readers, SIP2 protocol, DDanish data models, sensor-triggered mechanical book pushers, and Razorpay payment gateway for fine collection with fine-renewal blocking. Built patron self-checkout touch software (ICS / SelfService) with receipt printing, card-cloning protection, and automated email dispatches with dynamic HTML templates. Developed Retail Management and Attendance (TTM) web platforms using Node.js/Express REST APIs with JWT refresh tokens, SMS OTP verification, and CSV bulk processing on IIS WebAPI servers. Diagnosed and resolved 150+ critical production blockers including byte-level UID-to-CSN conversions, serial port communication timing errors, and off-site transaction data recovery from serial logs.",
+        "Built, deployed, and supported RFID library and enterprise software across 20+ university client sites. Connected RFID gates and kiosks with INFLIBNET SOUL, KOHA, AutoLib, and eGranthalaya through database and SIP2 integrations. Developed iSmartShelf and Smart Return DropBox systems using H002/H003 readers, ISO 28560 data models, optical sensors, and Razorpay. Also worked on Node.js/Express retail ERP and attendance systems and diagnosed 150+ production issues involving UID/CSN conversion, RS-232 timeouts, SQL deadlocks, and offline synchronization.",
     },
   ],
   education: [
@@ -224,22 +188,6 @@ export const DATA = {
       logoUrl: "/logos/srmvcas.png",
       start: "2019",
       end: "2022",
-    },
-    {
-      school: "Govt Hr Sec School, Periyampatti",
-      href: "#",
-      degree: "Higher Secondary Certificate (State Board) - 74.9%",
-      logoUrl: "/logos/tnschools.png",
-      start: "2016",
-      end: "2017",
-    },
-    {
-      school: "Govt Hr Sec School, Periyampatti",
-      href: "#",
-      degree: "Secondary School Certificate (State Board) - 86%",
-      logoUrl: "/logos/tnschools.png",
-      start: "2014",
-      end: "2015",
     },
   ],
   projects: [
@@ -281,9 +229,9 @@ export const DATA = {
       dates: "2025 - Present",
       active: true,
       featured: true,
-      role: "Founder & Full-Stack Architect - Next.js 16, Payload CMS 3, PostgreSQL",
+      role: "Founder & Full-Stack Developer - Next.js 16, Payload CMS 3, PostgreSQL",
       description:
-        "Flagship digital platform for BUDE Global. Engineered with Next.js 16 (App Router, Turbopack) and tightly co-located Payload CMS 3, prerendering 240+ multi-locale routes with sub-second page loads, Lexical rich-text editing, Better-Auth security, and automated deployment pipelines on an on-premise Dell PowerEdge T40 server.",
+        "Flagship website for BUDE Global, built with Next.js 16 and Payload CMS 3. It includes multi-locale pre-rendered routes, Lexical rich-text editing, Better-Auth security, and automated deployment to an on-premise Dell PowerEdge T40 server.",
       technologies: [
         "Next.js 16",
         "React 19",
@@ -309,7 +257,7 @@ export const DATA = {
       dates: "2025 - Present",
       active: true,
       featured: true,
-      role: "System Administrator & Architect - ERPNext v15, Frappe, MariaDB, Redis",
+      role: "System Administrator & Developer - ERPNext v15, Frappe, MariaDB, Redis",
       description:
         "Centralized enterprise transaction and business logic engine running on on-premise Dell PowerEdge T40 infrastructure. Manages accounting ledgers, procurement, asset tracking, and role-based access control (RBAC), exposing secure REST APIs consumed as the centralized backend for BUDE MADE and all four downstream BUDE Android & Flutter mobile applications.",
       technologies: [
@@ -342,9 +290,9 @@ export const DATA = {
       dates: "2025 - Present",
       active: true,
       featured: true,
-      role: "Lead Systems Architect - Custom Marketplace Core, Vendor Studio, Next.js Storefront",
+      role: "Full-Stack Developer - Marketplace Core, Vendor Studio, Next.js Storefront",
       description:
-        "A fully custom, end-to-end multi-vendor e-commerce platform federating three interconnected production systems on on-premise Dell PowerEdge T40 hardware: an administrative marketplace engine managing multi-seller catalog taxonomies, vendor commissions, and split-order dispatch (demo.budeglobal.in); a dedicated merchant onboarding and vendor studio portal (vendor.budeglobal.in); and a high-conversion consumer shopping storefront (shop.budeglobal.in). Engineered with multi-tenant Nginx virtual host rewrites (X-Frappe-Site-Name) and Cloudflare Zero-Trust tunnels.",
+        "A custom multi-vendor e-commerce project connecting three systems on a Dell PowerEdge T40: an administrative marketplace for catalogs, commissions, and split orders; a merchant onboarding portal; and a Next.js consumer storefront. Uses multi-tenant Nginx routing and Cloudflare Tunnel for access.",
       technologies: [
         "Frappe Framework",
         "ERPNext Marketplace",
@@ -382,7 +330,7 @@ export const DATA = {
       dates: "2025 - Present",
       active: true,
       featured: true,
-      role: "Lead Mobile Architect - Flutter Android / Web, ERPNext v15 Stock APIs, RFID/Barcode",
+      role: "Mobile Developer - Flutter Android / Web, ERPNext v15 Stock APIs, RFID/Barcode",
       description:
         "Scanning, transfers, receipts, and counts on the warehouse floor. Every entry lands in ERPNext, and the queue holds when the signal drops. Mobile Android and web application connected directly to the centralized erp1.budeglobal.in (ERPNext v15) backend for real-time barcode and bulk UHF/HF RFID tag scanning, automated cycle counts, purchase receipt verification, and multi-location warehouse material transfers.",
       technologies: [
@@ -426,7 +374,7 @@ export const DATA = {
       dates: "2025 - Present",
       active: true,
       featured: true,
-      role: "Lead Mobile Architect - Flutter Android / Web, ERPNext v15 HRMS APIs, Geo-Attendance",
+      role: "Mobile Developer - Flutter Android / Web, ERPNext v15 HRMS APIs, Geo-Attendance",
       description:
         "Attendance, leave, claims, and payslips in the hands of the people they belong to. Managers approve from the same app. Enterprise workforce and employee self-service mobile Android application consuming centralized HRMS REST APIs on erp1.budeglobal.in (ERPNext v15) for real-time GPS geofenced attendance check-ins and check-outs, dynamic leave balances, expense claim filing, and supervisor approval queues.",
       technologies: [
@@ -465,7 +413,7 @@ export const DATA = {
       dates: "2025 - Present",
       active: true,
       featured: true,
-      role: "Lead Mobile Architect - Flutter Android / Web, ERPNext v15 Selling APIs, Offline Sync",
+      role: "Mobile Developer - Flutter Android / Web, ERPNext v15 Selling APIs, Offline Sync",
       description:
         "A representative’s day: customers, visits, quotations, orders, and collections. ERPNext still decides price, stock, and credit. Commercial field sales and mobile POS Android application built for on-the-road sales agents with an offline-first transaction queue (Hive/IndexedDB) and automatic background sync to erp1.budeglobal.in (ERPNext v15).",
       technologies: [
@@ -504,7 +452,7 @@ export const DATA = {
       dates: "2025 - Present",
       active: true,
       featured: true,
-      role: "Lead Mobile Architect - Flutter Android / Web, Frappe Helpdesk API, WebSockets",
+      role: "Mobile Developer - Flutter Android / Web, Frappe Helpdesk API, WebSockets",
       description:
         "Raise a ticket, answer one, or watch the queue. Requesters and agents see the same tickets through different eyes. Dual-perspective customer support and IT service desk Android & web application connecting directly to erp1.budeglobal.in (Frappe Helpdesk core) for real-time WebSocket messaging threads, SLA countdown timers, priority queues, and end-to-end incident resolution tracking.",
       technologies: [

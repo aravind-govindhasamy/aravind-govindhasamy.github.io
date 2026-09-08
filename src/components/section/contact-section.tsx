@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FlickeringGrid } from "@/components/magicui/flickering-grid";
-import { DATA } from "@/data/resume";
+import { DATA, RESUME_URL } from "@/data/resume";
 
 export default function ContactSection() {
   return (
@@ -52,7 +52,7 @@ export default function ContactSection() {
           </Link>
           , or grab my{" "}
           <Link
-            href="/resume.pdf"
+            href={RESUME_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary hover:underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-sm"

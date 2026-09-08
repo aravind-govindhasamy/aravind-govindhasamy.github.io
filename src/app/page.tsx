@@ -4,7 +4,7 @@ import BlurFadeText from "@/components/magicui/blur-fade-text";
 import { Icons } from "@/components/icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { buttonVariants } from "@/components/ui/button";
-import { DATA } from "@/data/resume";
+import { DATA, RESUME_URL } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Markdown from "react-markdown";
@@ -127,7 +127,7 @@ export default function Page() {
                     View Projects
                   </Link>
                   <Link
-                    href="/resume.pdf"
+                    href={RESUME_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={cn(buttonVariants({ variant: "outline", size: "sm" }))}
@@ -195,7 +195,7 @@ export default function Page() {
           </BlurFade>
           <div className="flex flex-col gap-8">
             {DATA.education.map((education, index) => {
-              const hasLink = Boolean(education.href && education.href !== "#");
+              const hasLink = Boolean(education.href);
               const content = (
                 <>
                   <div className="flex items-center gap-x-3 flex-1 min-w-0">

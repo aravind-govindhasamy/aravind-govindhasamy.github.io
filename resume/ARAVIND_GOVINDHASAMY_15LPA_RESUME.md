@@ -1,65 +1,58 @@
 # ARAVIND GOVINDHASAMY
-**Senior Full Stack & IoT Platform Engineer**
+**Full Stack Developer | IoT & RFID Systems**
 Coimbatore, Tamil Nadu, India | [+91 9361621891](tel:+919361621891) | [aravindapg06@gmail.com](mailto:aravindapg06@gmail.com)
 [Portfolio](https://aravind-govindhasamy.github.io) · [LinkedIn](https://www.linkedin.com/in/aravind-govindhasamy) · [GitHub](https://github.com/aravind-govindhasamy)
 
 ---
 
-### EXECUTIVE SUMMARY
-Pragmatic, product-driven Software Engineer with ~4 years of hands-on experience architecting, building, and operating production software end-to-end. Specialized in high-throughput IoT platforms, asynchronous backend APIs (FastAPI, Python, Node.js), modern web frontends (React, Next.js, TypeScript), and hardware device integrations (MQTT, RFID, ESP32, GPS). Proven track record of owning full product lifecycles—from hardware telemetry and database schema design to cloud deployment (DigitalOcean, Supabase) and production monitoring (Sentry). Known as a rapid builder, troubleshooter, and systems integrator who bridges real-world hardware with reliable cloud scale.
+### PROFESSIONAL SUMMARY
+Full Stack Developer with 4 years of hands-on production experience building backend services, web applications, and systems that connect software with hardware. Strongest in Python, FastAPI, Node.js, C#/.NET, React, SQL, Linux, MQTT, RFID, and Frappe/ERPNext. Currently building cloud IoT features at **Semicon Media**; previously developed campus systems at **PSGR Krishnammal College** and spent 2.5 years integrating RFID readers and kiosks with ILMS platforms at **2CQR Automation**. Learns through building, testing, debugging, and iterating until the complete system works reliably.
 
 ---
 
-### CORE COMPETENCIES & TECHNICAL SKILLS
+### TECHNICAL SKILLS
 
-* **Backend & API Architecture:** Python, FastAPI, Node.js, Express.js, C#, .NET / .NET Core, RESTful APIs, WebSockets, WebRTC, Asynchronous Processing, Microservices Design.
-* **Frontend & Web Development:** React, Next.js (App Router), TypeScript, JavaScript (ES6+), Tailwind CSS, Radix UI / shadcn, State Management, Responsive Design.
-* **IoT, Hardware & Telemetry:** MQTT Protocol, ESP32 / ESP8266, RFID Readers (HF/UHF Integration), GPS Telemetry & Geofencing, Raspberry Pi, Hardware Interfacing.
-* **Databases & Cloud Infrastructure:** PostgreSQL, Supabase, MySQL / MariaDB, MS SQL Server, DigitalOcean (Droplets, Networking), Linux / Ubuntu Server Administration, Sentry, GitHub Actions CI/CD.
-* **Integrations & Protocols:** Razorpay Payment Gateway, Airtel M2M SIM Lifecycle Automation, Google Home Smart Home API (OAuth 2.0), Multi-Channel Alerting (WhatsApp Business API, Twilio SMS, Email).
-* **Enterprise Systems & AI:** ERPNext / Frappe Customization, GLPI IT Asset Management, OJS Journal Systems, Gemini AI Multimodal APIs, Computer Vision (YOLO/OpenCV Object & Helmet Detection).
+* **Backend:** Python, FastAPI, Node.js, C#/.NET, REST APIs
+* **Frontend:** React, TypeScript
+* **Data & Systems:** PostgreSQL, MySQL, Linux, Git
+* **IoT & Integration:** MQTT, RFID, SIP2, Frappe/ERPNext
 
 ---
 
 ### PROFESSIONAL EXPERIENCE
 
-#### **Full Stack & IoT Platform Developer** | Semicon Media Pvt Ltd
+#### **Full Stack Developer** | Semicon Media Pvt Ltd
 *Coimbatore, India* | **Dec 2025 – Present**
-* Architected and developed **Circuit Digest Cloud**, an end-to-end IoT platform (similar to ThingsBoard/Blynk) serving thousands of telemetry transactions.
-* Engineered asynchronous backend microservices using **FastAPI**, **PostgreSQL (Supabase)**, and **MQTT** to ingest and process real-time sensor streams with sub-100ms response times.
-* Designed and deployed **GeoLinker**, a real-time fleet GPS tracking module featuring dynamic polygon geofencing, route replay history, and live interactive React map visualizations.
-* Implemented end-to-end subscription & billing pipelines integrating **Razorpay** payment webhooks and automated **Airtel M2M SIM** lifecycle activation and data pooling.
-* Built third-party smart home integration with **Google Home** using OAuth 2.0 authentication and fulfillment handlers, enabling voice-controlled device automation.
-* Integrated Computer Vision pipelines for edge-assisted license plate recognition (ANPR), helmet violation detection, and object tracking.
-* Owned cloud deployment and SRE: automated builds on **GitHub Actions**, zero-downtime releases on **DigitalOcean**, and configured proactive alert thresholds via **Sentry**.
+* Build and maintain **Circuit Digest Cloud**, covering device provisioning, MQTT telemetry, dashboard APIs, and event-based alerts.
+* Develop asynchronous services with **FastAPI, PostgreSQL (Supabase), and MQTT** for sensor ingestion and device-facing APIs.
+* Built **GeoLinker** GPS tracking features including polygon geofencing, route history, and live React maps.
+* Integrated **computer vision APIs** for ANPR, helmet, object, and face detection alongside WebRTC video streaming.
+* Implemented **Razorpay webhooks**, **Airtel M2M SIM** lifecycle workflows, and Google Home OAuth integration.
+* Deploy and maintain the platform on **DigitalOcean** with GitHub Actions CI/CD and Sentry monitoring.
 
 #### **ERP Assistant Programmer & Systems Engineer** | PSGR Krishnammal College for Women
 *Coimbatore, India* | **Oct 2024 – Nov 2025**
-* Spearheaded development of an **RFID-based Smart Campus Gate Ecosystem** with synchronized camera captures, serving **5,000+ daily active users** and eliminating entry bottlenecks.
-* Engineered a centralized **ID Card Tagging Module** supporting HF, UHF, and QR cards with automated duplicate prevention and audit trails.
-* Customized and scaled **GLPI (IT Asset Management System)** across **1,800+ physical endpoints and network systems**, providing automated real-time hardware/software inventory tracking.
-* Deployed and administered an **Open Journal Systems (OJS)** digital publishing platform, streamlining peer review, editorial workflows, and research paper publication.
-* Designed complex SQL analytics and automated cron-based daily reports delivered directly to institutional leadership.
+* Built and deployed an **RFID smart campus gate system** with synchronized camera snapshots for day-to-day student and staff access.
+* Developed a shared **ID Card Tagging Module** supporting HF, UHF, and QR credentials with duplicate detection and audit history.
+* Expanded **GLPI IT Asset Management** coverage across **1,800+ physical endpoints** using FusionInventory auto-discovery.
+* Administered the college's **Open Journal Systems (OJS)** portal and supported its submission, peer-review, and publishing workflows.
+* Built SQL reports and scheduled daily summaries for movement and asset data used by college leadership.
 
-#### **Junior Software Developer** | 2CQR Automation Private Limited
-*Coimbatore, India* | **May 2024 – Oct 2024**
-* Engineered RFID-integrated **Jewellery & Library ERP Systems** in C#, Node.js, and MSSQL, enabling bulk scanning of 100+ items per second for stock reconciliation.
-* Developed client-facing CRM modules and POS touch-kiosk interfaces with seamless hardware controller integration.
-* Delivered 4 high-stakes client deployments under aggressive 3-month schedules with zero post-release production blockers.
-
-#### **.NET Developer Intern** | 2CQR Automation Private Limited
-*Coimbatore, India* | **Jan 2024 – May 2024**
-* Built C# / .NET desktop applications integrating RFID serial readers, SQL database schemas, and REST APIs.
-* Introduced GitHub workflow standards across the engineering unit, establishing automated code reviews and version tracking.
+#### **Software Developer -- IoT, RFID & Enterprise Systems (2.5 Years)** | 2CQR Automation Private Limited
+*Coimbatore, India* | **May 2022 – Oct 2024**
+* Built, deployed, and supported RFID library and enterprise software across **20+ university client sites**.
+* Connected RFID gates and kiosks with **INFLIBNET SOUL, KOHA, AutoLib, and eGranthalaya** through database and SIP2 integrations.
+* Developed **iSmartShelf and Smart Return DropBox** systems using H002/H003 readers, ISO 28560 data models, optical sensors, and Razorpay payments.
+* Improved self-service borrow/return kiosks with anti-cloning checks, thermal printing, email notifications, and more reliable offline transaction handling.
+* Built and maintained retail ERP and attendance features using **Node.js/Express, IIS WebAPI, and SQL**, including bulk imports and query tuning.
+* Diagnosed and resolved **150+ production issues** involving byte-level UID/CSN conversion, RS-232 timeouts, SQL deadlocks, and offline synchronization.
 
 ---
 
-### SELECTED HIGH-IMPACT PROJECTS
+### SELECTED PROJECTS
 
-* **Circuit Digest Cloud IoT Platform:** Scalable IoT backend & dashboard suite handling MQTT messaging, customizable dashboard widgets, real-time trigger rules, and SIM card management. *(FastAPI, React, MQTT, Supabase, DigitalOcean)*
-* **RFID Campus Gate & Security Suite:** Real-time multi-lane turnstile access system with facial snapshot correlation, anti-passback logic, and attendance logging for 5,000+ personnel. *(C#, Node.js, RFID, SQL)*
-* **GeoLinker Fleet Telemetry:** Hardware GPS tracker communicator with real-time socket communication, geofence breach notifications, and speed profiling. *(Python, WebSockets, Leaflet/MapLibre)*
-* **AI Multimodal Document & Invoice Intelligence:** Automated extraction pipeline utilizing Gemini 1.5 AI and PyMuPDF to parse unstructured receipts, bills, and purchase orders into structured JSON. *(Python, Streamlit, Gemini API)*
+* **BUDE RFID Inventory Platform:** Warehouse inventory application connecting ERPNext/Frappe with Flutter-based handheld RFID and barcode scanning, stock counts, transfers, and offline queueing. *(ERPNext, Frappe, Flutter, RFID)*
+* **Daily Tech News Buddy:** Self-hosted web application that fetches and summarizes daily technology news using the Gemini API. *(Next.js, TypeScript, Gemini API)*
 
 ---
 
@@ -74,7 +67,6 @@ Pragmatic, product-driven Software Engineer with ~4 years of hands-on experience
 
 ### CERTIFICATIONS & HONORS
 
-* **NCC 'B' & 'C' Certificates** — National Cadet Corps (Demonstrated discipline, team leadership, and tactical operations).
-* **Python for Data Science & AI** — GUVI / IIT Madras Research Park.
-* **Game Architecture & PyGame Development** — GUVI.
-* **ChatGPT & Generative AI Prompt Engineering** — GUVI.
+* **NCC 'B' & 'C' Certificates** — National Cadet Corps
+* **Azure IoT Hub: Telemetry & Stream Analytics** — Coursera, 2025
+* **Programming Using Python** — HCL GUVI, 2022

@@ -3,10 +3,10 @@
 % Author : Jake Gutierrez
 % Based off of: https://github.com/sb2nov/resume
 % License : MIT
-% Customized for: Aravind Govindhasamy (15 LPA Target - Complete Experience & Fixes)
+% Customized for: Aravind Govindhasamy
 %------------------------
 
-\documentclass[letterpaper,11pt]{article}
+\documentclass[letterpaper,10pt]{article}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -22,11 +22,11 @@
 \input{glyphtounicode}
 
 % Adjust margins
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
+\addtolength{\oddsidemargin}{-0.65in}
+\addtolength{\evensidemargin}{-0.65in}
+\addtolength{\textwidth}{1.3in}
+\addtolength{\topmargin}{-.7in}
+\addtolength{\textheight}{1.4in}
 
 \urlstyle{same}
 
@@ -36,8 +36,8 @@
 
 % Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+  \vspace{-6pt}\scshape\raggedright\normalsize
+}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
 
 % Ensure generated PDF is machine readable/ATS parsable
 \pdfgentounicode=1
@@ -46,40 +46,40 @@
 % Custom commands
 \newcommand{\resumeItem}[1]{
   \item\small{
-    {#1 \vspace{-2pt}}
+    {#1 \vspace{-3pt}}
   }
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
+  \vspace{-3pt}\item
     \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabular*}\vspace{-8pt}
 }
 
 \newcommand{\resumeSubSubheading}[2]{
     \item
     \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
       \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabular*}\vspace{-8pt}
 }
 
 \newcommand{\resumeProjectHeading}[2]{
     \item
     \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
       \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
+    \end{tabular*}\vspace{-8pt}
 }
 
 \newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
 
 \renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt, topsep=1pt]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in, itemsep=0pt, topsep=1pt]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-6pt}}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -88,14 +88,23 @@
 
 %----------HEADING----------
 \begin{center}
-    \textbf{\Huge \scshape Aravind Govindhasamy} \\ \vspace{2pt}
-    \textbf{\large Senior Full Stack \& IoT Platform Engineer} \\ \vspace{2pt}
+    \textbf{\LARGE \scshape Aravind Govindhasamy} \\ \vspace{1pt}
+    \textbf{\large Full Stack Developer $\vert$ IoT \& RFID Systems} \\ \vspace{2pt}
     \small +91 9361621891 | \href{mailto:aravindapg06@gmail.com}{\underline{aravindapg06@gmail.com}} | 
     \href{https://aravind-govindhasamy.github.io}{\underline{aravind-govindhasamy.github.io}} |
     \href{https://linkedin.com/in/aravind-govindhasamy}{\underline{linkedin.com/in/aravind-govindhasamy}} |
     \href{https://github.com/aravind-govindhasamy}{\underline{github.com/aravind-govindhasamy}} \\
     \small Coimbatore, Tamil Nadu, India
 \end{center}
+
+
+%-----------PROFESSIONAL SUMMARY-----------
+\section{Professional Summary}
+ \begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt, topsep=1pt]
+    \small{\item{
+     Full Stack Developer with 4 years of hands-on production experience building backend services, web applications, and systems that connect software with hardware. Strongest in Python, FastAPI, Node.js, C\#/.NET, React, SQL, Linux, MQTT, RFID, and Frappe/ERPNext. Currently building cloud IoT features at \textbf{Semicon Media}; previously developed campus systems at \textbf{PSGR Krishnammal College} and spent 2.5 years integrating RFID readers and kiosks with ILMS platforms at \textbf{2CQR Automation}. Learns through building, testing, debugging, and iterating until the complete system works reliably.
+    }}
+ \end{itemize}
 
 
 %-----------EDUCATION-----------
@@ -107,23 +116,17 @@
     \resumeSubheading
       {Sri Ramakrishna Mission Vidyalaya College of Arts and Science}{Coimbatore, India}
       {Bachelor of Science in Computer Science (B.Sc CS) -- First Class (CGPA: 7.46 / 10)}{2019 -- 2022}
-    \resumeSubheading
-      {Government Higher Secondary School}{Periyampatti, India}
-      {Higher Secondary Certificate (HSC) -- State Board (74.9\%) | Secondary School Certificate (SSLC) (86.0\%)}{2014 -- 2017}
   \resumeSubHeadingListEnd
 
 
 %-----------TECHNICAL SKILLS-----------
 \section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
+ \begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt, topsep=1pt]
     \small{\item{
-     \textbf{Languages}{: Python, JavaScript (ES6+), TypeScript, C\#, Dart, PHP, SQL (PostgreSQL, MySQL, T-SQL), C/C++, HTML5, CSS3} \\
-     \textbf{Frontend \& Mobile}{: React, Next.js (App Router), Flutter, TypeScript, Tailwind CSS, shadcn/ui, WPF, Material Design in XAML} \\
-     \textbf{Backend \& APIs}{: FastAPI, Node.js, Express.js, ASP.NET / .NET Core, MCP (Model Context Protocol), RESTful APIs, WebSockets, WebRTC} \\
-     \textbf{IoT \& Hardware}{: MQTT Protocol, ESP32 / ESP8266, RFID (HF/UHF, Serial SDK, H002/H003), SIP2, GPS \& Geofencing, Raspberry Pi} \\
-     \textbf{Cloud, DevOps \& DB}{: PostgreSQL (Supabase), MySQL, MariaDB, MS SQL Server, DigitalOcean, Ubuntu Linux, GitHub Actions, Sentry, Cloudflare} \\
-     \textbf{Enterprise \& Protocols}{: ERPNext / Frappe, GLPI Asset Management, OJS Systems, Razorpay, Airtel M2M SIM APIs, Google Home OAuth 2.0} \\
-     \textbf{AI, Computer Vision \& Tools}{: Gemini APIs, OpenCV, YOLO Object Detection, ANPR, Jira Automation, IIS WebAPI, HubSpot, ClickUp}
+     \textbf{Backend}{: Python, FastAPI, Node.js, C\#/.NET, REST APIs} \\
+     \textbf{Frontend}{: React, TypeScript} \\
+     \textbf{Data \& Systems}{: PostgreSQL, MySQL, Linux, Git} \\
+     \textbf{IoT \& Integration}{: MQTT, RFID, SIP2, Frappe/ERPNext}
     }}
  \end{itemize}
 
@@ -136,79 +139,59 @@
       {Full Stack Developer}{Dec 2025 -- Present}
       {Semicon Media Pvt Ltd (circuitdigest.cloud)}{Coimbatore, India}
       \resumeItemListStart
-        \resumeItem{Architected and shipped \textbf{Circuit Digest Cloud}, an end-to-end cloud IoT platform managing device provisioning, live telemetry streams, and automated multi-channel alert rule triggers (WhatsApp/SMS/Email).}
-        \resumeItem{Engineered asynchronous microservices using \textbf{FastAPI, PostgreSQL (Supabase), and MQTT}, achieving sub-100ms response times for high-throughput sensor telemetry ingestion.}
-        \resumeItem{Shipped \textbf{GeoLinker}, an interactive GPS fleet telemetry service featuring polygon geofencing, historical route replay simulations, and live interactive React mapping.}
-        \resumeItem{Integrated edge-assisted \textbf{Computer Vision APIs} for automatic number plate recognition (ANPR), helmet violation detection, face recognition, and real-time WebRTC video streaming.}
-        \resumeItem{Built enterprise monetization pipelines integrating \textbf{Razorpay webhooks} and automated \textbf{Airtel M2M SIM} lifecycle management, data pooling, and SIM activation.}
-        \resumeItem{Owned end-to-end production infrastructure and DevOps: CI/CD release pipelines on \textbf{GitHub Actions}, containerized deployment on \textbf{DigitalOcean}, and \textbf{Sentry} observability.}
+        \resumeItem{Build and maintain \textbf{Circuit Digest Cloud}, covering device provisioning, MQTT telemetry, dashboard APIs, and event-based alerts.}
+        \resumeItem{Develop asynchronous services with \textbf{FastAPI, PostgreSQL (Supabase), and MQTT} for sensor ingestion and device-facing APIs.}
+        \resumeItem{Built \textbf{GeoLinker} GPS tracking features including polygon geofencing, route history, and live React maps.}
+        \resumeItem{Integrated \textbf{computer vision APIs} for ANPR, helmet, object, and face detection alongside WebRTC video streaming.}
+        \resumeItem{Implemented \textbf{Razorpay webhooks}, \textbf{Airtel M2M SIM} lifecycle workflows, and Google Home OAuth integration.}
+        \resumeItem{Deploy and maintain the platform on \textbf{DigitalOcean} with GitHub Actions CI/CD and Sentry monitoring.}
       \resumeItemListEnd
 
     \resumeSubheading
       {ERP Assistant Programmer \& Systems Engineer}{Oct 2024 -- Nov 2025}
       {PSGR Krishnammal College for Women}{Coimbatore, India}
       \resumeItemListStart
-        \resumeItem{Spearheaded development and deployment of an \textbf{RFID-based Smart Campus Gate Ecosystem} integrated with synchronized camera capture, serving \textbf{5,000+ daily active users}.}
-        \resumeItem{Engineered a centralized \textbf{ID Card Tagging Module} supporting HF, UHF, and QR cards with automated duplicate prevention, cryptographic validation, and audit tracking.}
-        \resumeItem{Customized and scaled \textbf{GLPI (IT Asset Management System)} with FusionInventory auto-discovery across \textbf{1,800+ physical hardware endpoints} and integrated helpdesk ticketing.}
-        \resumeItem{Deployed and administered an \textbf{Open Journal Systems (OJS)} digital academic publishing platform on secure Linux servers, managing peer-review workflows and editorial roles.}
-        \resumeItem{Authored analytical SQL queries and automated daily digest reports delivering student movement patterns and asset utilization metrics directly to institutional leadership.}
+        \resumeItem{Built and deployed an \textbf{RFID smart campus gate system} with synchronized camera snapshots for day-to-day student and staff access.}
+        \resumeItem{Developed a shared \textbf{ID Card Tagging Module} supporting HF, UHF, and QR credentials with duplicate detection and audit history.}
+        \resumeItem{Expanded \textbf{GLPI IT Asset Management} coverage across \textbf{1,800+ physical endpoints} using FusionInventory auto-discovery.}
+        \resumeItem{Administered the college's \textbf{Open Journal Systems (OJS)} portal and supported its submission, peer-review, and publishing workflows.}
+        \resumeItem{Built SQL reports and scheduled daily summaries for movement and asset data used by college leadership.}
       \resumeItemListEnd
 
     \resumeSubheading
       {Software Developer -- IoT, RFID \& Enterprise Systems (2.5 Years)}{May 2022 -- Oct 2024}
       {2CQR Automation Private Limited}{Coimbatore, India}
       \resumeItemListStart
-        \resumeItem{Engineered and maintained mission-critical RFID library and enterprise automation platforms across 20+ university client sites (SRM, VIT Chennai, PSG Tech, Crescent, GTU, Bishop Heber).}
-        \resumeItem{Developed ILMS database integration bridges connecting RFID turnstiles and gates with \textbf{INFLIBNET SOUL, KOHA, AutoLib, and eGrantalaya}, supporting live patron photo retrieval and Tamil language titles.}
-        \resumeItem{Architected \textbf{iSmartShelf and Automated Return DropBox} systems integrating H002/H003 readers, SIP2 protocol, DDanish data models, sensor-triggered book pushers, and \textbf{Razorpay} fine collection.}
-        \resumeItem{Built and resolved production issues for \textbf{Self-Service Borrow/Return Kiosks (ICS)}, implementing receipt printing, card-cloning protection, and automated email dispatches with dynamic HTML templates.}
-        \resumeItem{Developed \textbf{Retail Management and Attendance (TTM)} systems: Node.js/Express REST APIs with JWT refresh tokens, SMS OTP authentication, CSV bulk data processing, and IIS WebAPI production tuning.}
-        \resumeItem{Diagnosed and resolved 150+ critical production bugs: byte-level UID-to-CSN conversions, serial communication timeouts, stored procedure concurrency bottlenecks, and off-site transaction data recovery.}
+        \resumeItem{Built, deployed, and supported RFID library and enterprise software across \textbf{20+ university client sites}.}
+        \resumeItem{Connected RFID gates and kiosks with \textbf{INFLIBNET SOUL, KOHA, AutoLib, and eGranthalaya} through database and SIP2 integrations.}
+        \resumeItem{Developed \textbf{iSmartShelf and Smart Return DropBox} systems using H002/H003 readers, ISO 28560 data models, optical sensors, and Razorpay payments.}
+        \resumeItem{Improved self-service borrow/return kiosks with anti-cloning checks, thermal printing, email notifications, and more reliable offline transaction handling.}
+        \resumeItem{Built and maintained retail ERP and attendance features using \textbf{Node.js/Express, IIS WebAPI, and SQL}, including bulk imports and query tuning.}
+        \resumeItem{Diagnosed and resolved \textbf{150+ production issues} involving byte-level UID/CSN conversion, RS-232 timeouts, SQL deadlocks, and offline synchronization.}
       \resumeItemListEnd
 
   \resumeSubHeadingListEnd
 
 
 %-----------PROJECTS-----------
-\section{Selected High-Impact Projects}
+\section{Selected Projects}
     \resumeSubHeadingListStart
-      \resumeProjectHeading
-          {\textbf{Circuit Digest Cloud - IoT Platform} | \emph{FastAPI, React, MQTT, Supabase, DigitalOcean, Sentry}}{Dec 2025 -- Present}
-          \resumeItemListStart
-            \resumeItem{Architected an enterprise IoT platform supporting multi-tenant device provisioning, interactive telemetry dashboards, multi-channel alert engines (WhatsApp/SMS/Email), WebRTC streaming, and M2M SIM billing automation.}
-          \resumeItemListEnd
       \resumeProjectHeading
           {\textbf{BUDE RFID Inventory Platform} | \emph{ERPNext, Frappe, Flutter, Dart, Python, RFID, Barcode}}{Jun 2026 -- Present}
           \resumeItemListStart
-            \resumeItem{Building enterprise inventory automation combining ERPNext/Frappe workflows with a cross-platform Flutter application for handheld RFID and barcode scanning, providing real-time warehouse visibility.}
+            \resumeItem{Building warehouse inventory software that connects ERPNext/Frappe with a Flutter application for handheld RFID and barcode scanning, stock counts, transfers, and offline queueing.}
           \resumeItemListEnd
       \resumeProjectHeading
-          {\textbf{iSmartShelf \& Automated DropBox RFID Suite} | \emph{C\#, .NET, RFID SDK (H002/H003), SIP2, Razorpay, MSSQL}}{2023 -- 2024}
+          {\textbf{Daily Tech News Buddy} | \emph{Next.js, TypeScript, Gemini API}}{Apr 2026 -- Present}
           \resumeItemListStart
-            \resumeItem{Engineered automated circulation hardware systems integrating UHF/HF readers, SIP2 protocols, patron card sensing, mechanical pusher returns, and real-time fine calculation with Razorpay payments.}
-          \resumeItemListEnd
-      \resumeProjectHeading
-          {\textbf{GLPI - Institutional IT Asset Tracking} | \emph{GLPI, FusionInventory Agent, PHP, MySQL, Linux}}{Oct 2024 -- Nov 2025}
-          \resumeItemListStart
-            \resumeItem{Implemented centralized asset tracking across 1,800+ physical computing endpoints with automated hardware network discovery, software license tracking, and integrated support ticket lifecycles.}
-          \resumeItemListEnd
-      \resumeProjectHeading
-          {\textbf{Jewellery \& Retail RFID Automation Suite} | \emph{C\#, WPF, Node.js, .NET Framework 4.7.2, RFID SDK, MSSQL}}{May 2022 -- Oct 2024}
-          \resumeItemListStart
-            \resumeItem{Developed high-speed desktop ERP and retail applications scanning hundreds of tags simultaneously at 100+ tags/sec, featuring real-time stock valuation, transfer auditing, and anti-theft security triggers.}
-          \resumeItemListEnd
-      \resumeProjectHeading
-          {\textbf{Journal Management System (OJS)} | \emph{Open Journal Systems, PHP, MySQL, Linux Security}}{Oct 2024 -- Nov 2025}
-          \resumeItemListStart
-            \resumeItem{Deployed institutional digital journal platform (AAR PSGRKCW) handling end-to-end editorial processes: submission, double-blind peer review, copyediting, and online publication.}
+            \resumeItem{Built and self-hosted a web application that fetches and summarizes daily technology news using the Gemini API.}
           \resumeItemListEnd
     \resumeSubHeadingListEnd
 
 
 %-----------HACKATHONS & HONORS-----------
 \section{Hackathons \& Competitions}
- \begin{itemize}[leftmargin=0.15in, label={}]
+ \begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt, topsep=1pt]
     \small{\item{
      \textbf{Inter-College Coding Hackathon (2nd Place / Runner-Up)}{: Built rapid full-stack prototype under tight deadlines at Sri Ramakrishna Mission Vidyalaya College of Arts and Science (2023).} \\
      \textbf{Inter-College PyGame Development Hackathon}{: Designed and implemented interactive real-time game architecture using Python and PyGame, competing against regional engineering colleges (2021, 2022).}
@@ -218,18 +201,11 @@
 
 %-----------CERTIFICATIONS-----------
 \section{Certifications}
- \begin{itemize}[leftmargin=0.15in, label={}]
+ \begin{itemize}[leftmargin=0.15in, label={}, itemsep=0pt, topsep=1pt]
     \small{\item{
      \textbf{National Cadet Corps (NCC) 'B' \& 'C' Certificates} -- NCC India (2019 -- 2022) \\
      \textbf{Azure IoT Hub: Telemetry \& Stream Analytics} -- Coursera (2025) \\
-     \textbf{Business Analysis: Process Modeling \& Requirements Gathering} -- Coursera (2025) \\
-     \textbf{Automate Tasks and Processes with Jira} -- Coursera (2025) \\
-     \textbf{Introduction to CRM with HubSpot} -- Coursera (2025) \\
-     \textbf{Business Analysis \& Process Management} -- Coursera (2025) \\
-     \textbf{Project Management with ClickUp} -- Coursera (2025) \\
-     \textbf{ChatGPT for Everyone \& Generative AI Prompting} -- HCL GUVI (2023) \\
-     \textbf{Programming Using Python} -- HCL GUVI (2022) \\
-     \textbf{Game Development using PyGame} -- HCL GUVI (2020)
+     \textbf{Programming Using Python} -- HCL GUVI (2022)
     }}
  \end{itemize}
 
