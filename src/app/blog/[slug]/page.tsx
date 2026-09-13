@@ -147,6 +147,13 @@ export default async function Blog({
         <p className="text-sm text-muted-foreground">
           {formatDate(post.publishedAt)}
         </p>
+        {post.image && (
+          <img
+            src={post.image}
+            alt={post.title}
+            className="w-full rounded-lg border border-border object-cover"
+          />
+        )}
       </div>
       <div className="my-6 flex w-full items-center">
         <div
