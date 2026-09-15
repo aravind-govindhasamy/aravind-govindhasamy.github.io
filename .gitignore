@@ -38,3 +38,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .content-collections
+
+# job email automation (keep contacts and logs private)
+send_jobs.py
+send_iotready.py
+companies*.csv
+sent_emails.log
+career_portals.md
+email_template*.html
