@@ -1,25 +1,21 @@
 ---
 title: "Back at the Podium: A Guest Lecture, Two Years Later"
 publishedAt: "2026-09-18"
-summary: "On day two as a research scholar, the HOD asked me to give a guest lecture. Ten days later I was the resource person on the poster — Circuit Digest, AI-assisted development, a few technical issues, and a room that had just finished lunch."
-image: "/blog/back-at-the-podium/event-poster.jpg"
+summary: "The HOD invited me on day two as a research scholar. Ten days later I was the resource person in Sathyam Hall — sixty slides on Circuit Digest and AI-assisted development, ten logo quizzes to survive the post-lunch hour, and my first talk in two years."
+image: "/blog/back-at-the-podium/welcome-display.png"
 ---
 
 On [day two as a research scholar](/blog/second-day-phd-scholar), the HOD asked me if I would give a guest lecture. I said yes before I had properly thought about it.
 
 Ten days later, my face was on the poster.
 
-![Event poster for Circuit Digest and the Age of AI-Assisted Development for Innovations, 18/09/26, Sathyam Hall, 1 to 3 PM](/blog/back-at-the-podium/event-poster.jpg)
-
 ---
 
 ## The Invitation
 
-The session was conducted by the PG & Research Department of Computer Science (Aided), in association with the Institution's Innovation Council.
+The session was conducted by the PG & Research Department of Computer Science (Aided), in association with the Institution's Innovation Council. The invitation came from the HOD, Dr. K. Manikandan.
 
-The invitation came from the HOD, Dr. K. Manikandan.
-
-I want to say this part plainly, without dressing it up. I [joined this department](/blog/first-day-phd-scholar) as a research scholar on 25 August. The lecture was on 18 September. Three and a half weeks in, the department asked me to stand in front of its students as the resource person.
+I want to say this part plainly, without dressing it up. I [joined the department](/blog/first-day-phd-scholar) as a research scholar on 25 August. The lecture was on 18 September. Three and a half weeks in, and the department asked me to stand in front of its students as the resource person.
 
 That is an honour, and I know it. Thank you, sir.
 
@@ -49,58 +45,73 @@ It got sorted out, and we started.
 
 ---
 
-## What I Talked About
+## Sixty Slides, Six Sections
 
-The title was **Circuit Digest & The Age of AI-Assisted Development for Innovations**.
+The title was **Circuit Digest & The Age of AI-Assisted Development for Innovations**. Sixty slides in six sections:
 
-The slides are public: [ppt.budeglobal.in/p/ai-powered-development-2026-humanized](https://ppt.budeglobal.in/p/ai-powered-development-2026-humanized/)
+- Welcome
+- Me, and a website about circuits
+- From autocomplete to whatever this is
+- Using it without making a mess
+- The actual tools
+- Wrap-up
 
-I did not want to give the usual talk. Twenty-five AI tools on a slide, developers are finished, thank you and good afternoon. I wanted to talk about what I actually deal with at work.
-
-The shift is not that AI can write code. We have known that for a while.
-
-The shift is that AI has started to take part in the work. Reading a repository. Changing files. Running commands. Running the tests. Reading the errors and trying again.
-
-Autocomplete, then chat, then assistants inside the IDE, and now agents. The word that changed is agency. It is not only answering anymore. It acts.
+The deck is public: [ppt.budeglobal.in/p/ai-powered-development-2026-humanized](https://ppt.budeglobal.in/p/ai-powered-development-2026-humanized/)
 
 ---
 
-## Real Systems, Not Demos
+## The Part About Me
 
-Then I moved to the part I know best. At Semicon Media, the systems I work on look like this:
+The longest section was about my own road, and that was deliberate. A room full of students does not need another polished career summary.
 
-**Hardware → MQTT → backend → database → dashboard → alerts.**
+It started with a habit. B.Sc. Computer Science, then MCA, both at Sri Ramakrishna Mission Vidyalaya. From first year, every morning, straight to the library — collecting the week's tech news, writing it up, and handing it to my class in-charge, Dr. S. Kumaravel. The list went up on the class noticeboard next to a Thirukkural couplet. Tech news and two-thousand-year-old Tamil poetry, same board, same pin. There was NCC as well, because one commitment before 9 AM was apparently not enough.
 
-Real devices sending real data. And when something breaks, you do not get a polite message saying the system has stopped working. You get "why is this device offline?" at the worst possible hour.
+Then the UG project: could a Raspberry Pi mine Bitcoin without bankrupting a student? No ASIC, no budget for one, power against payout tuned by hand. The verdict was that it technically works and is economically hilarious. The electricity bill won. But that was the first real lesson in low-cost hardware experimentation, and the instinct behind everything after it.
 
-![Presenting the Circuit Digest Cloud MCP slide](/blog/back-at-the-podium/presenting-mcp-slide.jpg)
+Then two and a half years at 2CQR, on RFID library systems across more than twenty campuses. The CV line says "integrated RFID systems". The reality was 150+ production fires at hours that should not exist, two readers from two vendors never agreeing on endianness, and RS-232 timeouts that worked perfectly in the lab and only failed on site, only on Fridays, only when I had plans.
 
-This is where I showed the MCP server for Circuit Digest Cloud. Instead of opening a dashboard and hunting through device lists, you can ask in plain English:
+Then campus systems: RFID smart gates with a camera snapshot on every tap, one ID-card module covering HF, UHF and QR credentials, and asset tracking stretched across 1,800+ endpoints.
+
+And now Circuit Digest Cloud at Semicon Media — device provisioning, MQTT telemetry, live dashboards, and alerts over email, SMS and WhatsApp. FastAPI, PostgreSQL and MQTT underneath. GeoLinker for GPS tracking with polygon geofencing. Even a 45-gram Wi-Fi drone, because at some point an ordinary IoT device stopped being enough of a challenge.
+
+I gave them the unglamorous version on purpose. The version that goes on a LinkedIn banner teaches nobody anything.
+
+---
+
+## What Changed in Two Years
+
+![Presenting the slide about the Circuit Digest Cloud MCP server](/blog/back-at-the-podium/presenting-mcp-slide.jpg)
+
+Then the AI part, starting with something we actually ship. Circuit Digest Cloud has an MCP server and a WhatsApp bot, so you can ask in plain English:
 
 > Which devices are offline?
 
-The interesting part is not that the model understands the question. It is that the model does not get the keys to everything. You expose a controlled set of tools, and it works out which ones it needs. That boundary is the whole design.
+The interesting part is not that the model understands the question. It is that the model never touches a table. It calls a tool. The reasoning layer decides what to check, MCP tools stand in for database access, and MQTT into Postgres keeps the answers honest — you get a reading from seconds ago, not a stale cache.
+
+Then the short history: autocomplete in 2021, chat in 2022, copilots inside the editor in 2023, and agents from 2024 onwards. The wrap-up slide put it in one line:
+
+> AI moved from answering questions to doing things. That is the entire story of the last two years.
+
+That line is also why this talk felt different from my last one. The last time I stood in front of a room, these tools answered questions. This time I was describing tools that read a repository, change files, run the tests, read the errors and try again. Two years is not a long time.
 
 ---
 
-## Four Documents Before You Let an Agent Build
+## Using It Without Making a Mess
 
-The practical section, and the one I care about most.
+The practical section, and the one I care about most. Four documents before you let an agent build anything, with real examples from GeoLinker:
 
-1. **PRD** — what are we building?
-2. **User flow** — how does someone actually use it?
-3. **Technical specification** — how are we building it?
-4. **AI coding rules** — what should the agent not do?
+1. **PRD** — what to build, in one unambiguous sentence. Ours: alert the owner within 30 seconds of a tracker leaving its saved polygon.
+2. **User flow** — open dashboard, draw polygon, save, get a WhatsApp alert on exit. If you cannot draw it in five boxes, you do not understand the feature yet.
+3. **Tech spec** — the boring part that saves you later. Geofence checks run server-side on every MQTT ping, not on the ESP32, because battery life mattered more than milliseconds.
+4. **AI coding rules** — the boundaries. Never touch the alerts pipeline without a human review. Never invent a new table without asking.
 
-"Build me an IoT tracking application" is not a specification. That is telling someone to go somewhere and come back with something.
-
-The line I kept returning to:
+And the line I kept returning to:
 
 > AI moves the typing. It does not move the responsibility.
 
-Someone still has to decide whether the output is correct, and that someone is not the model. A wrong answer arrives with perfect grammar and full confidence.
+It is never unsure, and that is the dangerous part. It will be wrong with perfect grammar. So the rule is a human checkpoint before and after the agent acts, every time.
 
-I also admitted that the deck itself was built with AI assistance. If a slide looked well made, that helped. If a slide looked strange, that was still me.
+I also admitted that the deck itself was built with a coding agent. If a slide looked well made, that helped. If a slide looked strange, that was still me.
 
 ---
 
@@ -112,7 +123,7 @@ The session started at 1 PM. Right after lunch.
 
 I have sat in that chair. At 1 PM the eyes are open and the operating system has already shut down. Somewhere in that hall, someone was weighing agentic engineering against sleep, and sleep was ahead on points.
 
-So I kept it moving. Examples, real projects, screenshots, the demo, a joke when the room went too quiet. Anything to hold the room until 3.
+Which is why ten of those sixty slides are a logo quiz — FastAPI, Git, Kubernetes, NVIDIA, Anthropic, DeepSeek, Docker, Linux, PostgreSQL, and the Open Source Initiative. That was not filler. That was crowd control. A room that has just eaten will not sit through a history of coding agents, but it will absolutely shout out a logo.
 
 ---
 
@@ -126,6 +137,8 @@ At the end, the department gave me a memento. Then the group photo, which has it
 
 Thanks to Mr. M. Aravindraj, the IIC in-charge, and to everyone in the department who put the session together. And thanks to the students who stayed awake.
 
+Near the end I gave them the unglamorous advice: contribute to one open-source project you actually use, find a community rather than just a repository, build a portfolio site, and put the link everywhere. Mine is a static site, nothing fancy. Then I put it on the screen. If you are reading this because of that slide, welcome.
+
 ---
 
 ## Two Years Since the Last One
@@ -137,9 +150,7 @@ This was my fourth session, and the first in about two years. In order:
 3. **Way2me.** Online classes.
 4. **PSG CAS, 18 September 2026.** This one.
 
-The gap between the third and the fourth is about two years. The distance between the first and the fourth is longer than the dates suggest. In that GitHub session, I was teaching people how to save their work properly. This time I was talking about tools that write part of the work for you.
-
-Two years is not a long time. It was enough.
+In that first GitHub session, I was teaching people how to save their work properly. This time I was talking about tools that write part of the work for you and still need someone to check it. Same room shape, same projector trouble, completely different subject.
 
 ---
 
@@ -156,4 +167,4 @@ Back to the research now.
 
 ---
 
-*Written on 20 September 2026.*
+_Written on 20 September 2026._
