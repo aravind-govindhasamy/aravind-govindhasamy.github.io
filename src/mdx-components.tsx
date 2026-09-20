@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+
 import { CodeBlock } from "@/components/mdx/code-block";
 import { MediaContainer } from "@/components/mdx/media-container";
 import type { ComponentProps } from "react";
@@ -9,6 +11,15 @@ type CodeProps = ComponentProps<"code"> & {
 export const mdxComponents = {
   MediaContainer,
   pre: (props: ComponentProps<"pre">) => <CodeBlock {...props} />,
+  img: ({ alt = "", ...props }: ComponentProps<"img">) => (
+    <img
+      {...props}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      className="mx-auto my-8 max-h-[28rem] w-auto rounded-lg border border-border object-contain"
+    />
+  ),
   hr: (props: ComponentProps<"hr">) => (
     <div className="my-10 flex w-full items-center" {...props}>
       <div
@@ -46,4 +57,3 @@ export const mdxComponents = {
     );
   },
 } as const;
-
