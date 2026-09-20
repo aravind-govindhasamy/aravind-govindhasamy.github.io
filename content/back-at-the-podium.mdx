@@ -62,19 +62,51 @@ The deck is public: [ppt.budeglobal.in/p/ai-powered-development-2026-humanized](
 
 ## The Part About Me
 
-The longest section was about my own road, and that was deliberate. A room full of students does not need another polished career summary.
+The longest section was about my own road, and that was deliberate.
 
-It started with a habit. B.Sc. Computer Science, then MCA, both at Sri Ramakrishna Mission Vidyalaya. From first year, every morning, straight to the library — collecting the week's tech news, writing it up, and handing it to my class in-charge, Dr. S. Kumaravel. The list went up on the class noticeboard next to a Thirukkural couplet. Tech news and two-thousand-year-old Tamil poetry, same board, same pin. There was NCC as well, because one commitment before 9 AM was apparently not enough.
+A room full of students does not need another polished career summary.
 
-Then the UG project: could a Raspberry Pi mine Bitcoin without bankrupting a student? No ASIC, no budget for one, power against payout tuned by hand. The verdict was that it technically works and is economically hilarious. The electricity bill won. But that was the first real lesson in low-cost hardware experimentation, and the instinct behind everything after it.
+It started with a habit:
 
-Then two and a half years at 2CQR, on RFID library systems across more than twenty campuses. The CV line says "integrated RFID systems". The reality was 150+ production fires at hours that should not exist, two readers from two vendors never agreeing on endianness, and RS-232 timeouts that worked perfectly in the lab and only failed on site, only on Fridays, only when I had plans.
+- B.Sc. Computer Science, then MCA, both at Sri Ramakrishna Mission Vidyalaya.
+- From first year, every morning, straight to the library.
+- Collecting the week's tech news, writing it up, and handing it to my class in-charge, Dr. S. Kumaravel.
+- The list went up on the class noticeboard, next to a Thirukkural couplet.
+- Tech news and two-thousand-year-old Tamil poetry. Same board, same pin.
+- NCC as well, because one commitment before 9 AM was apparently not enough.
 
-Then campus systems: RFID smart gates with a camera snapshot on every tap, one ID-card module covering HF, UHF and QR credentials, and asset tracking stretched across 1,800+ endpoints.
+Then the UG project: could a Raspberry Pi mine Bitcoin without bankrupting a student?
 
-And now Circuit Digest Cloud at Semicon Media — device provisioning, MQTT telemetry, live dashboards, and alerts over email, SMS and WhatsApp. FastAPI, PostgreSQL and MQTT underneath. GeoLinker for GPS tracking with polygon geofencing. Even a 45-gram Wi-Fi drone, because at some point an ordinary IoT device stopped being enough of a challenge.
+- No ASIC, and no budget for one.
+- Power against payout, tuned by hand.
+- The verdict: it technically works, and it is economically hilarious.
+- The electricity bill won.
+- But it was the first real lesson in low-cost hardware experimentation, and the instinct behind everything after it.
 
-I gave them the unglamorous version on purpose. The version that goes on a LinkedIn banner teaches nobody anything.
+Then two and a half years at 2CQR, on RFID library systems across more than twenty campuses.
+
+- The CV line says "integrated RFID systems".
+- The reality was 150+ production fires, mostly at hours that should not exist.
+- Two readers from two vendors never agreeing on endianness.
+- RS-232 timeouts that worked perfectly in the lab and only failed on site, only on Fridays, only when I had plans.
+
+Then campus systems:
+
+- RFID smart gates, with a camera snapshot on every tap.
+- One ID-card module covering HF, UHF and QR credentials.
+- Asset tracking stretched across 1,800+ endpoints.
+
+And now Circuit Digest Cloud at Semicon Media:
+
+- Device provisioning, MQTT telemetry and live dashboards.
+- Alerts over email, SMS and WhatsApp.
+- FastAPI, PostgreSQL and MQTT underneath.
+- GeoLinker for GPS tracking with polygon geofencing.
+- Even a 45-gram Wi-Fi drone, because at some point an ordinary IoT device stopped being enough of a challenge.
+
+I gave them the unglamorous version on purpose.
+
+The version that goes on a LinkedIn banner teaches nobody anything.
 
 ---
 
@@ -82,23 +114,46 @@ I gave them the unglamorous version on purpose. The version that goes on a Linke
 
 ![Presenting the slide about the Circuit Digest Cloud MCP server](/blog/back-at-the-podium/presenting-mcp-slide.jpg)
 
-Then the AI part, starting with something we actually ship. Circuit Digest Cloud has an MCP server and a WhatsApp bot, so you can ask in plain English:
+Then the AI part, starting with something we actually ship.
+
+Circuit Digest Cloud has an MCP server and a WhatsApp bot, so you can ask in plain English:
 
 > Which devices are offline?
 
-The interesting part is not that the model understands the question. It is that the model never touches a table. It calls a tool. The reasoning layer decides what to check, MCP tools stand in for database access, and MQTT into Postgres keeps the answers honest — you get a reading from seconds ago, not a stale cache.
+The interesting part is not that the model understands the question.
 
-Then the short history: autocomplete in 2021, chat in 2022, copilots inside the editor in 2023, and agents from 2024 onwards. The wrap-up slide put it in one line:
+It is that the model never touches a table. It calls a tool.
+
+- The reasoning layer decides what to check.
+- MCP tools stand in for database access.
+- MQTT into Postgres keeps the answers honest — a reading from seconds ago, not a stale cache.
+
+Then the short history:
+
+- Autocomplete in 2021.
+- Chat in 2022.
+- Copilots inside the editor in 2023.
+- Agents from 2024 onwards.
+
+The wrap-up slide put it in one line:
 
 > AI moved from answering questions to doing things. That is the entire story of the last two years.
 
-That line is also why this talk felt different from my last one. The last time I stood in front of a room, these tools answered questions. This time I was describing tools that read a repository, change files, run the tests, read the errors and try again. Two years is not a long time.
+That line is also why this talk felt different from my last one.
+
+The last time I stood in front of a room, these tools answered questions.
+
+This time I was describing tools that read a repository, change files, run the tests, read the errors and try again.
+
+Two years is not a long time.
 
 ---
 
 ## Using It Without Making a Mess
 
-The practical section, and the one I care about most. Four documents before you let an agent build anything, with real examples from GeoLinker:
+The practical section, and the one I care about most.
+
+Four documents before you let an agent build anything, with real examples from GeoLinker:
 
 1. **PRD** — what to build, in one unambiguous sentence. Ours: alert the owner within 30 seconds of a tracker leaving its saved polygon.
 2. **User flow** — open dashboard, draw polygon, save, get a WhatsApp alert on exit. If you cannot draw it in five boxes, you do not understand the feature yet.
@@ -109,9 +164,17 @@ And the line I kept returning to:
 
 > AI moves the typing. It does not move the responsibility.
 
-It is never unsure, and that is the dangerous part. It will be wrong with perfect grammar. So the rule is a human checkpoint before and after the agent acts, every time.
+It is never unsure, and that is the dangerous part.
 
-I also admitted that the deck itself was built with a coding agent. If a slide looked well made, that helped. If a slide looked strange, that was still me.
+It will be wrong with perfect grammar.
+
+So the rule is a human checkpoint before and after the agent acts. Every time.
+
+I also admitted that the deck itself was built with a coding agent.
+
+If a slide looked well made, that helped.
+
+If a slide looked strange, that was still me.
 
 ---
 
@@ -121,9 +184,24 @@ Now the honest part.
 
 The session started at 1 PM. Right after lunch.
 
-I have sat in that chair. At 1 PM the eyes are open and the operating system has already shut down. Somewhere in that hall, someone was weighing agentic engineering against sleep, and sleep was ahead on points.
+More than a hundred students in the hall.
 
-Which is why ten of those sixty slides are a logo quiz — FastAPI, Git, Kubernetes, NVIDIA, Anthropic, DeepSeek, Docker, Linux, PostgreSQL, and the Open Source Initiative. That was not filler. That was crowd control. A room that has just eaten will not sit through a history of coding agents, but it will absolutely shout out a logo.
+I have sat in that chair.
+
+At 1 PM the eyes are open and the operating system has already shut down.
+
+Somewhere in that hall, someone was weighing agentic engineering against sleep, and sleep was ahead on points.
+
+Which is why ten of those sixty slides are a logo quiz:
+
+- FastAPI, Git, Kubernetes, NVIDIA, Anthropic
+- DeepSeek, Docker, Linux, PostgreSQL, the Open Source Initiative
+
+That was not filler. That was crowd control.
+
+A room that has just eaten will not sit through a history of coding agents.
+
+But it will absolutely shout out a logo.
 
 ---
 
@@ -131,13 +209,30 @@ Which is why ten of those sixty slides are a logo quiz — FastAPI, Git, Kuberne
 
 ![Seated with the memento at the end of the session](/blog/back-at-the-podium/memento-sathyam-hall.jpg)
 
-At the end, the department gave me a memento. Then the group photo, which has its own ritual — everybody smile, then a few more attempts because somebody blinked.
+At the end, the department gave me a memento.
+
+Then the group photo, which has its own ritual — everybody smile, then a few more attempts because somebody blinked.
 
 ![Group photo after the session](/blog/back-at-the-podium/group-photo.jpg)
 
-Thanks to Mr. M. Aravindraj, the IIC in-charge, and to everyone in the department who put the session together. And thanks to the students who stayed awake.
+Thanks to Mr. M. Aravindraj, the IIC in-charge, and to everyone in the department who put the session together.
 
-Near the end I gave them the unglamorous advice: contribute to one open-source project you actually use, find a community rather than just a repository, build a portfolio site, and put the link everywhere. Mine is a static site, nothing fancy. Then I put it on the screen. If you are reading this because of that slide, welcome.
+Thanks also to the students who coordinated it — the hall, the system, the arrangements, and keeping the class moving. I believe they were from the second-year PG Computer Science class. The session ran as smoothly as it did because of them.
+
+And thanks to the students who stayed awake.
+
+Near the end I gave them the unglamorous advice:
+
+- Contribute to one open-source project you actually use.
+- Find a community, not just a repository.
+- Build a portfolio site.
+- Put the link everywhere.
+
+Mine is a static site, nothing fancy.
+
+Then I put it on the screen.
+
+If you are reading this because of that slide, welcome.
 
 ---
 
@@ -150,18 +245,24 @@ This was my fourth session, and the first in about two years. In order:
 3. **Way2me.** Online classes.
 4. **PSG CAS, 18 September 2026.** This one.
 
-In that first GitHub session, I was teaching people how to save their work properly. This time I was talking about tools that write part of the work for you and still need someone to check it. Same room shape, same projector trouble, completely different subject.
+In that first GitHub session, I was teaching people how to save their work properly.
+
+This time I was talking about tools that write part of the work for you and still need someone to check it.
+
+Same room shape, same projector trouble, completely different subject.
 
 ---
 
 ## Where Things Stand
 
 - Guest lecture: done, 1 PM to 3 PM, Sathyam Hall
+- Audience: 100+ students — fed, sleepy, and mostly still with me at 3 PM
 - Slides: [public](https://ppt.budeglobal.in/p/ai-powered-development-2026-humanized/)
 - Technical issues: survived
-- Audience: fed, sleepy, and mostly still with me at 3 PM
 
-The HOD asked me on day two. I said yes without thinking it through, which is usually how the good things start.
+The HOD asked me on day two.
+
+I said yes without thinking it through, which is usually how the good things start.
 
 Back to the research now.
 
