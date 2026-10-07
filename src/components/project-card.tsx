@@ -148,8 +148,9 @@ export function ProjectCard({
               <Link
                 href={link.href}
                 key={idx}
-                target="_blank"
-                rel="noopener noreferrer"
+                // Internal links (e.g. a case study) stay in the same tab.
+                target={link.href.startsWith("http") ? "_blank" : undefined}
+                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
               >
                 <Badge
                   className="flex items-center gap-1.5 text-xs"

@@ -1,0 +1,80 @@
+---
+title: "Jewellery RFID Suite: A Business Built on a Reader Vendor's Tool"
+summary: "A Windows app for counting, tagging and moving jewellery with UHF RFID. I kept the reader vendor's 61-file tool and built the business around it: branch sign-in, licensing, anti-theft, audits, and transfers checked tag by tag."
+publishedAt: "2026-10-06"
+period: "Oct 2024 – Jan 2025"
+role: "Freelance developer: desktop client and back-office integration"
+stack: ["C#", "WPF", ".NET Framework 4.7.2", "Material Design in XAML", "UHF RFID Reader SDK", "REST APIs"]
+image: "/projects/jewellery-rfid.png"
+order: 6
+---
+
+Jewellery is small, valuable and counted often. With a UHF RFID tag on each piece, a reader can count a whole tray at once. This project was the desktop software around that reader.
+
+It was my first freelance project, taken on after I left my first job.
+
+---
+
+## The problem
+
+The reader's vendor ships a capable Windows tool. It connects to the reader, sets antenna power, reads tags and updates firmware.
+
+It knows nothing about a jewellery business. Branches. Staff who sign in. Stock that has to match the back office. Pieces moving between branches. An alarm when a tagged piece leaves the floor.
+
+The client needed all of that on the same Windows PCs, talking to their existing back-office web services.
+
+---
+
+## What I built
+
+I kept the vendor's tool, 61 source files, as the base and added 57 files around it.
+
+```text
+UHF reader (vendor SDK)
+   │ tag reads
+   ▼
+reader interface ─► tag format: hex · ASCII · defined format
+   │
+   ├─► output: type into the focused window, or a grid
+   └─► business screens
+        sign-in · branch · licence · PIN
+        inventory · find · single-tag details
+        tag write · secured tag write
+        anti-theft · audit filters · real-time transfer
+             │
+             ▼
+   back-office web services
+   (login, branches, audits, transfers, anti-theft)
+```
+
+---
+
+## Decisions that mattered
+
+**Extend, don't rewrite.** The vendor's tool already handled the hardware: connection, antennas, power, firmware. A rewrite would have meant relearning every edge case of the reader SDK. The business code sits beside it and touches the reader through one interface.
+
+**Interfaces at the seams.** The reader, the tag data format and the output target each sit behind a small interface. A tag can be read as hex, as ASCII or as a defined format. Results can go to a grid, or be typed into whichever window has focus, the way a barcode scanner would. Adding a format or an output meant adding a class, not editing the screens.
+
+**Settings behind a PIN.** Reader power, API endpoints and tag passwords live on separate configuration screens behind a password, away from the counter staff's daily screens. Stored settings are encrypted.
+
+**A licence per installation.** A licence screen and service gate the app on each machine.
+
+**Transfers checked tag by tag.** When stock moves between branches, the tags read at the counter are compared with what the back office says should be there. Unmatched tags are listed on screen, not lost in a total.
+
+---
+
+## What was hard
+
+The commit history has five commits called "Final". The client kept using the app, and every round of use produced a list of changes: the anti-theft screen grew multi-tag support, the audit filter needed multi-select, the typed output and tag-write behaviour were reworked on request.
+
+That was the real work: turning a reader demo into something counter staff could run all day without seeing a firmware setting.
+
+---
+
+## Where it stands
+
+The last commit landed on 1 January 2025, after 34 commits over eleven weeks.
+
+The source is private client work. This write-up stays at the architecture level and leaves out the client's name, documents and code.
+
+{/* Sources: repo README (WPF, Material Design in XAML, RFID Reader SDK, .NET Framework 4.7.2); commit log (34 commits, 2024-10-17 → 2025-01-01; "Initial Start with original Backup", "Datamodel, Cursor out, Licence", "Load Branch and Sign In", "Separated the config screens and added the API screen Password, and Power option added", "Anti thief new changes and multi tag", "lic and audit multi select", "RealtimeTransferResponseData and Unmatched tags", five commits titled "Final"/"Final Commit"); file-name diff of the vendor baseline (61 .cs/.xaml) vs current tree (118) = 57 added: web-service client + models, encrypted AppSettings, DataModel (hex/ASCII/defined format behind an interface), Datapost (cursor/grid behind an interface), Reader interface, login/PIN/licence/settings/anti-theft/audit/real-time-transfer/tag-write views. Client documents under Reference/ were not opened; the client is not named. */}

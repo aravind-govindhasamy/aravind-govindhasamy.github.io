@@ -1,0 +1,101 @@
+---
+title: "Bude Suite: Four Offline-First Apps on Standard ERPNext"
+summary: "Inventory, HR, Sales and Helpdesk apps in Flutter, one Frappe API layer behind them, and a rule that every write lands on a standard ERPNext record. Operations queue on the phone and sync when the signal returns."
+publishedAt: "2026-10-06"
+period: "Oct 2025 – Present"
+role: "Sole developer: four Flutter apps, the Frappe API layer, the pilot server"
+stack: ["Flutter", "Dart", "Riverpod", "Hive", "Frappe / ERPNext 16", "Python", "Kotlin"]
+image: "/projects/bude-rfid-inventory.png"
+order: 2
+links:
+  - label: "Inventory demo"
+    href: "https://demo-stock.budeglobal.in/"
+  - label: "Backend source"
+    href: "https://github.com/BUDEGlobalEnterprise/bude-suite"
+  - label: "Release v2026.9.1"
+    href: "https://github.com/BUDEGlobalEnterprise/bude-suite/releases/tag/v2026.9.1"
+---
+
+ERPNext does warehouse work well. It does not do it well on a handheld scanner, in a corner of the warehouse with one bar of signal.
+
+---
+
+## The problem
+
+ERPNext keeps stock, HR and sales records well. Its web interface assumes a desk, a keyboard and a steady connection.
+
+The people who need those records on the spot, warehouse operators, field sales reps and service agents, work on handhelds and phones, often where the signal drops.
+
+I wanted them on a phone, without forking ERPNext and without inventing a second database that would drift from the first.
+
+---
+
+## What I built
+
+It took three tries to get here. In September 2025 I wrote a proposal for Chainway C72 UHF handhelds feeding ERPNext for plant inventory, and built a .NET MAUI Blazor template to build it on: an ASP.NET Core API, Keycloak sign-in, MudBlazor screens and stored-procedure data access. In October came the BUDE RFID Tagging Manager, first planned as a Frappe app, then built in .NET MAUI Blazor with screens for tagging, readers, products, an offline queue and reports. The Flutter rewrite started in June 2026, with ERPNext itself as the backend.
+
+One repository now holds four Flutter apps, a shared access-control package and a Frappe app called `bude_api`:
+
+- **Inventory**: transfers, receipts against purchase orders, stock counts, bin locations, pick-pack-dispatch for sales orders, batch and serial numbers, labels as PDF or ZPL.
+- **HR**: check-in and check-out, leave, expenses, payslips, approvals.
+- **Sales**: customers, visits, quotations, orders, collections, and a CRM that runs on either ERPNext or Frappe CRM.
+- **Helpdesk**: tickets for requesters and agents.
+
+```text
+phone
+ ├─ screen → operation saved to the Hive queue first
+ └─ SyncEngine: drain on start, on reconnect, every 30 s
+      pending → inflight → succeeded
+                        └→ retry with backoff (max 5) → failed
+        │
+        ▼
+ bude_api (Frappe app, whitelisted methods)
+        │
+        ▼
+ standard ERPNext documents: Stock Entry, Purchase Receipt,
+ Stock Reconciliation, Delivery Note, …
+```
+
+---
+
+## Decisions that mattered
+
+**Standard documents only.** Every stock movement becomes a normal Stock Entry, Purchase Receipt, Stock Reconciliation or Delivery Note. Nothing to migrate if a customer stops using the apps, and ERPNext's own reports keep working. The backend adds only four small DocTypes that decide which screens a role can see, plus optional RFID tag fields on items.
+
+**Queue first, network second.** Every operation is written to a local Hive queue before any request is made. The sync engine drains the queue when the app starts, when the connection comes back, and every 30 seconds. A temporary failure retries with jittered exponential backoff, capped at five minutes between tries and five attempts in total. A permanent failure stops at once. Operators see the queue on its own screen and can retry or discard each item.
+
+**Make replays harmless.** The Sales API accepts a stable `client_request_id` on any mutation that might be sent twice, so a retry does not create a second order. Updates carry the record's `base_modified` time. If someone changed the record in the office meanwhile, the server answers `CONFLICT` instead of overwriting.
+
+**One interface for every scanner.** Chainway, Zebra, Urovo, Honeywell and generic UHF readers sit behind one hardware layer. At launch, a native Kotlin probe identifies the device and picks the adapters. Business code never imports a vendor SDK.
+
+**A second pair of eyes on big changes.** A count with a large variance, or a transfer above a set quantity, waits in the queue until a stock manager approves it with their own credentials. The audit trail records who approved, when and why.
+
+**Sales hardening.** Leads from websites and other systems come in through a webhook signed with HMAC-SHA256. Quotation accept and decline links are signed and expire. Attachments are private and capped at 8 MB. A field visit records GPS accuracy and distance from the customer's address, and a visit made offline stays marked unverified until it syncs. A `setup_doctor` endpoint checks a site's configuration without exposing secrets.
+
+**English and Arabic.** Both ship in core, with right-to-left layouts. Every new screen adds both languages before merge.
+
+---
+
+## What was hard
+
+**The public demo.** I wanted anyone to log in and click around real data without being able to change it. The demo account needs real roles, because the apps show menus by role name. Real roles can write.
+
+My first attempt was a Frappe `has_permission` hook. It looked right and did nothing. Frappe only consults that hook when it already has a specific document in hand. It is never called for the list and create checks that make up most API traffic. A live test got as far as ERPNext's field validation instead of being refused.
+
+The fix sits one level lower. Every way into the site, whether the apps, the Desk UI or a bare `curl`, goes through `/api/resource/*` or `/api/method/*`. The guard checks the path before Frappe's permission system runs. It is deny-by-default: an endpoint not on the allowlist is blocked, including any endpoint added later. The allowlist is hardcoded on purpose, so changing it means a code review rather than a settings screen.
+
+**Hardware I don't have.** The scanner layer is designed and tested against a demo reader, but the vendor adapters are still stubs. Validating real readers is waiting on real hardware.
+
+---
+
+## Where it stands
+
+Release v2026.9.1 (14 September 2026) ships the backend source plus Android APKs and web builds for all four apps. The backend is public under GPL-3.0. The Flutter code is private.
+
+Web builds run at demo-stock, demo-hr, demo-sales and demo-helpdesk on budeglobal.in, against a pilot server that reports ERPNext 16.31.1. The repository has 354 commits from June to September 2026 and 237 test files.
+
+Not done yet: validation on real RFID readers, a Play Store release, and real screenshots. The images in the backend README are design mockups, and the README says so.
+
+The work runs with AI coding agents. The repo carries agent instructions, and an hourly scheduled task works through the roadmap; I set the architecture, and the tests are the check.
+
+{/* Sources: bude-suite README (zero custom DocTypes, demo read-only, Sales CRM: client_request_id, base_modified/CONFLICT, HMAC-SHA256 intake, signed expiring quote links, 8 MB attachments, 15-min reminder worker, GPS accuracy/geofence, setup_doctor); release v2026.9.1 (2026-09-14, 8 assets: APK + web per app); bude-rfid-inventory README (four apps, Hive queue, EN/AR RTL, 80+ keys, vendor table all "Stub", "real vendor validation remains blocked until reader hardware is available", approval V1, labels PDF/ZPL); lib/core/sync/sync_engine.dart (_maxAttempts 5, _pollInterval 30 s, backoff min(300, 2^n + jitter), SubmitFatal vs SubmitRetryable); pending_operation.dart (pendingApproval/pending/inflight/succeeded/failed); backend doctype folders (4: mobile_application, mobile_app_screen, mobile_screen_role_permission, mobile_screen_user_override); services/common/demo_readonly.py docstring (has_permission attempt, request-level guard, deny-by-default, hardcoded set); tree (237 *_test.dart / test_*.py files); commits (354, 2026-06-02 → 2026-09-14); AGENTS.md, CLAUDE.md, scripts/run-hourly-roadmap-agent.ps1; .NET MAUI predecessor repo dates 2025-10-04 → 2025-11-28 (org scan); local clones: Chainway-C72-UHF-RFID-Integration-with-ERPNext (proposal, 2025-09-27/28), MauiBlazor-FullStack-Template-with-Keycloak README (ASP.NET Core API, Keycloak OIDC, MudBlazor, stored-procedure-only data access; 2025-09-25 → 10-01), BUDE-RFID-Tagging-Manager (Frappe app plan, 2025-10-03), BUDE-RFID-Tagging-Manager-v2 design spec (dashboard, tagging, readers, products, queue, reports, settings); live health ping 2026-10-06 (bude_api 0.1.0, ERPNext 16.31.1). */}

@@ -6,7 +6,7 @@ Built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, [shadcn/ui](https:
 
 ## Editing content
 
-All site content lives in a single config file: [`src/data/resume.tsx`](./src/data/resume.tsx) — profile, socials, work, education, skills, projects, hackathons, and certifications. Blog posts are MDX files in [`content/`](./content/) (frontmatter requires `title`, `publishedAt`, `summary`).
+All site content lives in a single config file: [`src/data/resume.tsx`](./src/data/resume.tsx) — profile, socials, work, education, skills, projects, hackathons, and certifications. Blog posts are MDX files in [`content/`](./content/) (frontmatter requires `title`, `publishedAt`, `summary`). Case studies are MDX files in [`content/case-studies/`](./content/case-studies/) (schema in [`content-collections.ts`](./content-collections.ts)); the three with the lowest `order` also show on the home page.
 
 ## Getting started locally
 

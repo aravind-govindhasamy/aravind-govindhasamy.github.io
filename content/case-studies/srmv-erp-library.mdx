@@ -1,0 +1,68 @@
+---
+title: "SRMV College ERP: The Library Module"
+summary: "A modular PHP and MySQL ERP for a college, one folder per department. My part was the library: masters for books, locations, publishers and vendors, issue and return, and server-side tables that stay fast as the catalogue grows."
+publishedAt: "2026-10-07"
+period: "Jan 2023 – Apr 2023"
+role: "Built the library module in a team ERP"
+stack: ["PHP", "MySQL", "Bootstrap"]
+image: "/projects/smart-library.png"
+order: 12
+---
+
+Every library system has to answer a simple question first: which book is where, and who has it?
+
+---
+
+## The problem
+
+The ERP for Sri Ramakrishna Mission Vidyalaya College of Arts and Science was split into modules: attendance, examinations, fees, hostel, internal marks, students, transport, and the library. Each needed its own screens on a shared base.
+
+It was a mini project for the college, built for the college and its staff.
+
+---
+
+## What I built
+
+The whole ERP follows one pattern. Each module is a folder with its own dashboard and pages, sharing a common header, sidebar, database connection, query helpers and paging code.
+
+```text
+College_ERP/
+ ├─ includes/common  config · connection · db functions · paging
+ ├─ attendance/  examination/  fees_collection/  hostel/
+ ├─ internal_marks/  students/  transport/
+ └─ library/   ← mine
+     ├─ masters: books · locations · publishers · vendors
+     ├─ issue / return
+     └─ datatable/: books, vendors, student lookup (server-side)
+```
+
+The library module:
+
+- **Masters** for books, shelf locations, publishers and vendors, each with an add/edit form and a list.
+- **Issue and return**, with a lookup that fetches the borrower's name from their student number.
+- **Server-side data tables** for books and vendors, so a list pages and searches on the database instead of loading the whole catalogue into the browser.
+- **The database tables** for library transactions.
+
+---
+
+## Decisions that mattered
+
+**Server-side paging from the start.** A book list is the one table in a college system guaranteed to keep growing. Paging and searching in SQL keeps the page fast whether there are a hundred books or fifty thousand.
+
+**Masters before transactions.** Locations, publishers and vendors came first, so every book record points at real rows instead of free text that drifts.
+
+---
+
+## What was hard
+
+Merging into a shared codebase. Several people's modules came together in one repository in February, and the commits after that are database fixes and layout alignment.
+
+---
+
+## Where it stands
+
+Twenty commits between January and April 2023, nearly all of them mine (through two of my accounts).
+
+The repository is private; it includes real student data, which stays out of this write-up.
+
+{/* Sources: apggitsrmv/Srmv_ERP_Lib commit log (20 commits 2023-01-29 → 2023-04-12; aravind-govindhasamy + apggitsrmv = the user, 1 by Naveen773; "Location Master Completed", "Vendor Master Added", "Publisher Added", "database Added", "Vendors Master Issue Fixed", "Updated Code with others and Sql Updated", "Database issue fixed", "Alienment Changes and sql"); PHP file names (module folders attendance/examination/fees_collection/hostel/internal_marks/students/transport/library; includes/common config/connection/dbfunctions/paging; library/Books, Location, publisher, vendors, iss_ret, datatable/BooksList, VendorList, get_student_name); lib_trans.sql at repo root; bower_components (Bootstrap, datepicker, CKEditor). students.csv and SQL dumps were not opened. */}

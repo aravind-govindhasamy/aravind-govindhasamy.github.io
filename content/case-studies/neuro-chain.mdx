@@ -1,0 +1,87 @@
+---
+title: "Neuro-Chain: 715 Inventions on a Canvas You Can Steer by Hand"
+summary: "An explorable map of how inventions depend on each other, from fire to AGI. It started as one HTML file and became a React canvas app with hand-gesture control in a Web Worker and eight outside contributors."
+publishedAt: "2026-10-06"
+period: "Jan 2026 – Jun 2026"
+role: "Creator and maintainer"
+stack: ["React 19", "Canvas 2D", "MediaPipe Hands", "Web Workers", "Vite", "Vitest"]
+image: "/projects/neuro-chain.png"
+order: 8
+links:
+  - label: "Live site"
+    href: "https://invent.budeglobal.in/"
+  - label: "Source"
+    href: "https://github.com/BUDEGlobalEnterprise/bude-global-neuro-chain-react"
+---
+
+Timelines show inventions as a list. They are really a network. Almost everything was built on several older things.
+
+---
+
+## The problem
+
+I wanted a map you could wander through, not a page you scroll. The data set grew to 715 inventions, 1,817 links between them, and 9 clusters such as computing, medicine and energy.
+
+That is too many lines for a naive renderer. It also had to stay open for other people to add to, which meant the data could not be buried in the code.
+
+The idea came from *The Thinking Game*, DeepMind's documentary about how thinking systems evolve.
+
+---
+
+## What I built
+
+The first two versions were single HTML files, 35 KB and 49 KB. They still sit in the repo under `original/`. The current version is a React app that draws the network on a 2D canvas.
+
+![The Neuro-Chain network view: coloured invention nodes linked by thin lines, a statistics panel on the left and a cluster description panel on the right](/case-studies/neuro-chain/network-earlier-build.png)
+
+*An earlier build of the network view, with 107 of today's 715 inventions.*
+
+The unusual part is the hand control. Hold a hand up to the webcam and you can move and zoom the map without touching anything.
+
+```text
+webcam frame
+ └─ Web Worker: MediaPipe Hands
+      landmarks → features scaled by palm size
+      → a confidence score per gesture → smoothing
+ └─ state machine: IDLE → POTENTIAL → ACTIVE → EXIT
+ └─ IntentBus: pan / zoom / select
+ └─ canvas: cull to the viewport, draw by level of detail
+```
+
+---
+
+## Decisions that mattered
+
+**A canvas, not DOM nodes.** 715 nodes and 1,817 edges as SVG elements would make every frame slow. The canvas renderer accounts for the screen's pixel ratio, uses a spatial hash to draw only what is in view, and lowers detail as you zoom out.
+
+**Gestures off the main thread.** Hand tracking and gesture scoring run in a dedicated Web Worker. The main thread only receives results, so the map keeps drawing while the camera works.
+
+**Make a passing hand harmless.** A raw detection does nothing on its own. Features are scaled by the size of the palm, so distance from the camera matters less. Each gesture gets a confidence score with a soft threshold, and the smoothing trusts low-confidence frames less. A gesture must then be held for a set time before it becomes active, and it gets a cooldown after it ends.
+
+**An intent bus between hand and map.** The gesture layer publishes intents. The renderer subscribes to them and never needs to know a hand was involved.
+
+**Less detail while you move.** While a gesture is active, the renderer draws at most 200 edges and thins the lines. Detail comes back when the hand stops.
+
+**Data as plain JSON.** Nodes, edges, clusters and descriptions are separate JSON files. A contributor can add an invention with a pull request and never open the rendering code.
+
+---
+
+## What was hard
+
+Hands are noisy. Landmarks jitter between frames, lighting changes, and people move in and out of view. Most of the gesture code exists to decide what not to act on.
+
+Running it as an open project was its own work. I opened 105 issues labelled "good first issue". Eight outside contributors got pull requests merged: Chinese and Spanish translations of the README, UI fixes, node metadata and a test for the data editor. The README is also available in Tamil and Hindi.
+
+The README has drifted from the code. Its badges still say React 18, D3 and TypeScript. The project is React 19 in plain JavaScript, with no D3.
+
+---
+
+## Where it stands
+
+Live at [invent.budeglobal.in](https://invent.budeglobal.in/), deployed on Cloudflare, licensed GPL-3.0. Vitest covers the intent bus, viewport culling, export helpers and the data editor. It installs as a PWA.
+
+The last commit was in June 2026. More than a hundred issues are still open.
+
+The repo is tagged `vibe-coded`, and that is accurate: much of the code was written with AI assistance.
+
+{/* Sources: README.md (inspiration, stats); src/data/{nodes,edges,clusters}.json (715 / 1,817 / 9, counted 2026-10-06); original/neuro-chain-v1.html 35,460 B, v2 49,011 B; package.json (React 19.2, MediaPipe hands, DOMPurify, vite-plugin-pwa, no d3/typescript); src/gesture/GestureWorker.js (palmScale, confidenceFromThreshold, confidence-scaled alpha), GestureStateMachine.js (IDLE/POTENTIAL/ACTIVE/EXIT_PENDING, holdDuration, cooldowns), IntentBus.js; src/components/CanvasNetwork.jsx (devicePixelRatio, SpatialHash, getLODSettings, maxEdges 200 while gesture active); tests/*; gh contributors + merged PRs (8 outside humans); 105 "good first issue" issues; repo topics; commits 2026-01-08 → 2026-06-23. */}

@@ -8,6 +8,7 @@ import { DATA, RESUME_URL } from "@/data/resume";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Markdown from "react-markdown";
+import CaseStudiesSection from "@/components/section/case-studies-section";
 import CertificationsSection from "@/components/section/certifications-section";
 import ContactSection from "@/components/section/contact-section";
 import HackathonsSection from "@/components/section/hackathons-section";
@@ -288,6 +289,11 @@ export default function Page() {
             ))}
           </div>
         </div>
+      </section>
+      <section id="case-studies">
+        <BlurFade delay={BLUR_FADE_DELAY * 11}>
+          <CaseStudiesSection />
+        </BlurFade>
       </section>
       <section id="projects">
         <BlurFade delay={BLUR_FADE_DELAY * 11}>

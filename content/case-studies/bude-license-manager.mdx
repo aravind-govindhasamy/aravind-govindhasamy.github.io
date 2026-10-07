@@ -1,0 +1,81 @@
+---
+title: "BUDE License Manager: Device-Locked Licences for Android Apps"
+summary: "Licensing for BUDE's proprietary apps: subscription licences bound to devices, signed API calls that can't be replayed, offline tokens, and staff-approved device resets. I wrote the spec, a freelancer built the base app, and I hardened it for Android."
+publishedAt: "2026-10-07"
+period: "Nov 2025 – Jul 2026"
+role: "Owner and architect: spec, freelancer brief, Android hardening"
+stack: ["Frappe", "Python", "HMAC-SHA256", "Kotlin", "Flutter", "GitHub Actions"]
+image: "/projects/aes-cryptography.png"
+order: 9
+---
+
+Selling an app to a business means answering three questions on every launch: is this licence real, is it still paid for, and is it running on a device it is allowed to run on?
+
+---
+
+## The problem
+
+BUDE's mobile apps are meant to be sold per customer, per device, per subscription period. A licence key alone is not enough. Keys get shared, copied onto extra phones, and replayed.
+
+The system needed to issue and revoke licences, cap the number of devices per licence, keep working when a phone is offline for a while, and leave an audit trail when a check fails.
+
+---
+
+## What I built
+
+**The spec (November–December 2025).** I wrote the requirements, the backlog and a production plan, plus an API specification to hand to a freelancer. The first design targeted desktop software: an offline `.lic` file encrypted with AES-256 and checked against a validation hash. I prototyped the crypto in Python with a small demo app.
+
+**The base app (December 2025–January 2026).** A freelance developer built the Frappe app from that brief: licences and devices, APIs to generate, list, renew and revoke licences, workspace dashboards and an active-licence report.
+
+**The Android hardening (July 2026).** I extended it for signed validation from BUDE's Android apps:
+
+```text
+Android app (Kotlin SDK)
+  POST validate_android_license
+  headers: client id · timestamp · nonce · HMAC-SHA256 signature
+     │
+     ▼
+license_manager (Frappe)
+  ├─ signature over method, path, time, nonce, JSON body
+  ├─ nonce already used? → REPLAY_DETECTED
+  ├─ licence active? app enabled? device within max_devices?
+  ├─ rate limit: per client, key, hardware ID, IP
+  └─ log the decision
+     │
+     ▼
+offline token + expiry   or   a fixed reason code
+```
+
+New records hold the parts the first version did not have: each licensed application with its client ID, secret, signing-certificate hash and offline policy; the active device bindings for a licence; device reset requests; used nonces; and a validation log.
+
+---
+
+## Decisions that mattered
+
+**Sign the whole request.** The signature covers the method, the path, a timestamp, a one-time nonce and the canonical JSON body. A captured request can't be replayed, and its body can't be edited.
+
+**Fixed reason codes.** A failed check returns a stable code such as `LICENSE_EXPIRED`, `DEVICE_LIMIT_REACHED`, `APP_DISABLED`, `INVALID_SIGNATURE`, `REPLAY_DETECTED` or `RATE_LIMITED`. The app can show the right message, and support can read the log.
+
+**Devices bind themselves, within limits.** A licence carries `max_devices`. A new phone is bound automatically only while the licence is active, the application allows auto-binding, and the device count is under the limit. Beyond that, the customer files a reset request and staff approve or reject it.
+
+**Offline, but not forever.** A successful check returns an offline token with an expiry, so the app keeps working without a signal and has to check in again later.
+
+**Rotate secrets without breaking installs.** Rotating an application's secret keeps the previous one valid for a grace window, seven days by default, so apps in the field have time to update.
+
+---
+
+## What was hard
+
+Licensing is adversarial by design: every rule is a door someone will try. Replays, shared keys, extra devices and brute-force guessing each needed their own answer: nonces, device bindings, reset approval and rate limits on four separate keys.
+
+Working with a freelancer taught me to write the spec as if I would not be in the room. The API document was the contract.
+
+---
+
+## Where it stands
+
+Working end to end in development, with a Kotlin SDK, a Flutter demo app, customer portal pages, a scripted demo flow and CI for the app and the demo. It is not yet live with paying customers.
+
+The repositories are private. Credit for the base Frappe app goes to the freelance developer who built it.
+
+{/* Sources: bude-licence-management-system README (two-component system, Licensed Application / License Device Binding / License Device Reset Request / License Request Nonce / License Validation Log, validate_android_license, X-LM headers, signature string, reason codes, max_devices auto-bind rules, operational APIs, customer portal, secret rotation grace default 7 days, rate limits per client/key/hardware ID/IP, android-sdk/, demo/flutter_license_demo/, demo flow command); commit log (Vengadesh27: 18 commits 2025-12-03 → 2026-01-06 incl. generate/list/renew/revoke APIs, REST docs, workspace/chart/number-card fixtures, active licence report; "Kovai Senpai Admin": 5 commits 2026-07-13 hardening Android validation, multi-device bindings, operations, demo and portal); BUDE-License-Manager-System-Docs per org scan (requirements spec, backlog, production plan, freelancer API spec, .NET AES-256 .lic + validation hash design, Python crypto prototypes, Streamlit demo; 2025-11-17 → 2025-12-29); CI workflow names per org scan (ci.yml, linter.yml, flutter-demo.yml). */}

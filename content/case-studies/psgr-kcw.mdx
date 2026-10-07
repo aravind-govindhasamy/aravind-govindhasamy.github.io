@@ -1,0 +1,128 @@
+---
+title: "PSGR KCW: An RFID Gate Pilot, 1,800+ Endpoints and a Journal"
+summary: "Three systems from a year at PSGR Krishnammal College for Women: an RFID gate pass piloted with three reader vendors for 10,000 students a day, GLPI inventory across 20+ labs and every institute system, and an OJS journal that put 1,000+ archived papers online."
+publishedAt: "2026-10-07"
+period: "Oct 2024 – Nov 2025"
+role: "ERP Assistant Programmer & Systems Engineer"
+stack: ["C#", "UHF RFID", "SQL Server", "Metabase", "GLPI", "Open Journal Systems", "PHP", "MySQL"]
+image: "/projects/glpi-asset-tracking.png"
+order: 5
+links:
+  - label: "Journal"
+    href: "https://journalpaper.psgrkcw.ac.in/index.php/aar-psgrkcw"
+  - label: "GLPI instance"
+    href: "http://glpi.grgeducation.com/"
+---
+
+For a year I was the ERP assistant programmer and systems engineer at PSGR Krishnammal College for Women (KCW) in Coimbatore. Three of the jobs became systems. Two are live today; the third stayed a pilot.
+
+---
+
+## The RFID gate pass
+
+### The problem
+
+Around 10,000 students pass through the main campus gate every day. The college wanted each entry recorded against the right student, automatically, with a photo of the moment, and without anyone stopping to tap a card.
+
+A UHF reader can see a card from a few metres away, which is the point. It is also the problem: one student walking through produces many reads in a few seconds.
+
+### What I built
+
+I ran it end to end: the proposal, collecting quotations, negotiating with vendors, installing the readers, configuring and testing them, and writing the software.
+
+```text
+UHF reader (antenna, location)
+   │ polled every 500 ms
+   ▼
+reader agent (C#)
+   ├─ drop repeats: per-card interval, longer for staff
+   ├─ one camera frame per batch, attached as JPG
+   ├─ POST batch → college API (reader tracking)
+   └─ failed batch → log file, retried next loop
+        │
+        ▼
+SQL Server: reader tracking table
+   ├─ daily clean-up: one read per card per minute
+   └─ Metabase dashboard on the tracking data
+```
+
+- **Filter at the gate.** The agent remembers when it last saw each card and ignores it until an interval has passed. Staff cards get their own interval, loaded from the server's list of staff tags.
+- **Clean again in the database.** A SQL clean-up ranks the day's reads per card within each minute and deletes all but the first. One student walking through becomes one row.
+- **One frame per batch, never blocking.** The agent grabs one camera frame per batch and attaches it to each read with the reader name, antenna and location. If the camera fails, the reads still go through without a photo.
+- **Never lose a read to the network.** A failed upload is written to a local log and retried on the next loop. A separate check pings the reader every five seconds and reconnects when it drops.
+- **Swappable parts.** The reader, card format, camera, logger and web service each sit behind an interface with a demo version, so the agent runs on a desk with no hardware at all.
+
+### What was hard
+
+The biggest problem was in place before I joined. The ID cards had been issued in aluminium holders instead of plastic ones. Metal and UHF do not get along: the holders blocked most of the reads. I traced the missing entries back to the holders, and fixed the problems the patchy reads had caused in the backend.
+
+Then the readers. I tested three: a Zebra 4-port reader, a Chainway 6-port reader, and a third with 2 ports, which turned out to be both the best performer and the most affordable. Testing meant standing at the gate and counting students one by one against what the system recorded, then fixing whatever didn't match.
+
+### Where it stands
+
+It stayed a pilot, on the main campus only. The initial investment to equip the gate was too high, and the college did not roll it out.
+
+---
+
+## GLPI inventory for 20+ labs
+
+### The problem
+
+The college runs more than 20 computer labs, plus offices across departments. It needed every computer, printer and network device in one inventory that kept itself current, and support tickets that pointed at the actual machine.
+
+### What I built
+
+I first spent three months on iTop, another open-source IT tool, because it promised per-item helpdesk tickets. Then we found that feature was paid. We switched to GLPI, which had what we needed for the implementation.
+
+```text
+lab and office PCs ─► official GLPI inventory agent
+                        configured by script
+                        "report now" right after setup
+network devices ─► CSV import (model, serial, IP, MAC, location)
+        │
+        ▼
+GLPI: 1,800+ endpoints · tickets linked to assets · reports
+```
+
+- **The official GLPI agent on every machine**, installed lab by lab with the lab assistants, then across every other system in the institute.
+- **Configured by script.** A PowerShell script writes the agent's settings into the registry: which server to report to, and whether to scan user profiles and home folders. Machine one and machine 1,800 get the same settings.
+- **Report now, not tonight.** Another script asks the local agent to send an inventory at once, so a newly set-up machine appears in GLPI the same day.
+- **Devices without agents.** Switches, printers and other network devices come in through a CSV import template.
+- **Tickets that know the machine.** Helpdesk tickets are linked to asset records, with SQL reports on top.
+
+### Where it stands
+
+Live at glpi.grgeducation.com, covering more than 1,800 endpoints.
+
+---
+
+## The journal
+
+### The problem
+
+The college publishes the *Annals of Arts Research*. Before this, every submission and review was tracked over email, and publishing went through a separate company. The editors wanted a proper system to manage it, which is where I came in.
+
+### What I built
+
+I searched GitHub for an open-source system, found Open Journal Systems, and shaped it to the editorial board over three months, in 33 small commits:
+
+- Manuscript IDs generated as `AAR-YY-00001`, and uploads limited to `.docx`.
+- Double-blind review: anonymous reviewer and author only, no reviewer-author discussion, reviewer comments hidden from authors.
+- Recommendations and settings restricted to editors; suggested reviewers and one-at-a-time keywords at submission; categories assigned automatically.
+- The board's own words ("Authors", "Status", "Submitted"), the journal's own branding, editorial email templates, and the clutter removed.
+
+Then the archive. With the lab assistants, I uploaded more than 1,000 papers from over ten years of back issues, so the journal's history is online alongside the new issues.
+
+### Where it stands
+
+Live at [journalpaper.psgrkcw.ac.in](https://journalpaper.psgrkcw.ac.in/index.php/aar-psgrkcw), with the editorial staff trained on it.
+
+---
+
+## Looking back
+
+The two systems that went live are open source, configured for the college and rolled out with the lab assistants. The gate pass was stopped by its cost, not its code. I left the college in November 2025.
+
+These systems belong to the college. This write-up stays at the architecture level and leaves out its data and code.
+
+{/* Sources: user answers 2026-10-07 (KCW = PSGR KCW, one employer; gate: main campus only, ~10k students/day, three readers tested — Zebra 4-port, Chainway 6-port, a 2-port reader that was best and budget-friendly — aluminium card holders cut most reads, backend fix, end-to-end proposal/quotation/negotiation/installation/testing, counting entries one by one, not implemented due to high initial investment; GLPI: official GLPI inventory agent, 20+ labs, coordinated with lab assistants, all institute systems, iTop explored 3 months then per-item helpdesk found to be paid; journal: email tracking + separate company before, found OJS on GitHub, 1,000+ papers from 10+ years uploaded with lab assistants). GRG_RFID_AGENTS_DOTNET Main.cs (500 ms loop, 5 s reader ping, per-tag interval + staff interval, staff tag list at load, batch of 2, one frame per batch with reader/antenna/location, InsertReaderTracking POST, failed-tag retry + file log) and interface/demo file names; Gate_Dashboard_Metabase "duplicate clear.md" (per-card per-minute ROW_NUMBER clean-up, log shrink); GLPI-Scripts (registry config, local /now?task=inventory trigger, network device CSV header only); itop-Documents repo name; kcw-journal-management commit messages (33 commits, 2025-07-03 → 2025-09-08); resume.tsx PSGR entry and GLPI/Journal cards (1,800+ endpoints, tickets linked to assets, trained staff); live checks 2026-10-07: journal 200, GLPI 200. */}

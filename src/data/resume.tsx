@@ -6,6 +6,7 @@ import {
   FileTextIcon,
   FolderGit2Icon,
   HomeIcon,
+  LayersIcon,
   MailIcon,
   NotebookIcon,
   UserIcon,
@@ -79,6 +80,8 @@ export const DATA = {
     { href: "/#about", icon: UserIcon, label: "About", hideOnMobile: true },
     { href: "/#work", icon: BriefcaseIcon, label: "Experience", hideOnMobile: true },
     { href: "/#projects", icon: FolderGit2Icon, label: "Projects", hideOnMobile: false },
+    // Desktop only: the mobile dock is already full; the home section links here.
+    { href: "/case-studies", icon: LayersIcon, label: "Case Studies", hideOnMobile: true },
     { href: "/#skills", icon: CpuIcon, label: "Skills", hideOnMobile: true },
     { href: "/#contact", icon: MailIcon, label: "Contact", hideOnMobile: false },
     { href: "/blog", icon: NotebookIcon, label: "Blog", hideOnMobile: true },
@@ -157,7 +160,7 @@ export const DATA = {
       start: "Oct 2024",
       end: "Nov 2025",
       description:
-        "Built and deployed an RFID smart campus gate system with synchronized camera snapshots and developed a shared ID-card tagging module for HF, UHF, and QR credentials. Expanded GLPI inventory coverage across 1,800+ physical endpoints with FusionInventory, administered the college's Open Journal Systems publishing portal, and built SQL reports for daily movement and asset data.",
+        "Built and piloted an RFID smart campus gate system with synchronized camera snapshots and developed a shared ID-card tagging module for HF, UHF, and QR credentials. Expanded GLPI inventory coverage across 1,800+ physical endpoints with FusionInventory, administered the college's Open Journal Systems publishing portal, and built SQL reports for daily movement and asset data.",
     },
     {
       company: "2CQR Automation Private Limited",
@@ -215,6 +218,11 @@ export const DATA = {
       ],
       links: [
         {
+          type: "Case Study",
+          href: "/case-studies/circuit-digest-cloud",
+          icon: <LayersIcon className="size-3" />,
+        },
+        {
           type: "Website",
           href: "https://www.circuitdigest.cloud/",
           icon: <Icons.globe className="size-3" />,
@@ -243,6 +251,11 @@ export const DATA = {
       ],
       links: [
         {
+          type: "Case Study",
+          href: "/case-studies/one-server-platform",
+          icon: <LayersIcon className="size-3" />,
+        },
+        {
           type: "Website",
           href: "https://www.budeglobal.in/",
           icon: <Icons.globe className="size-3" />,
@@ -257,11 +270,11 @@ export const DATA = {
       dates: "2025 - Present",
       active: true,
       featured: true,
-      role: "System Administrator & Developer - ERPNext v15, Frappe, MariaDB, Redis",
+      role: "System Administrator & Developer - ERPNext v16, Frappe, MariaDB, Redis",
       description:
         "Centralized enterprise transaction and business logic engine running on on-premise Dell PowerEdge T40 infrastructure. Manages accounting ledgers, procurement, asset tracking, and role-based access control (RBAC), exposing secure REST APIs consumed as the centralized backend for BUDE MADE and all four downstream BUDE Android & Flutter mobile applications.",
       technologies: [
-        "ERPNext v15",
+        "ERPNext v16",
         "Frappe Framework",
         "Python 3",
         "MariaDB",
@@ -270,6 +283,11 @@ export const DATA = {
         "Linux systemd",
       ],
       links: [
+        {
+          type: "Case Study",
+          href: "/case-studies/one-server-platform",
+          icon: <LayersIcon className="size-3" />,
+        },
         {
           type: "ERP Backend",
           href: "https://erp1.budeglobal.in/",
@@ -306,6 +324,11 @@ export const DATA = {
       ],
       links: [
         {
+          type: "Case Study",
+          href: "/case-studies/bude-made",
+          icon: <LayersIcon className="size-3" />,
+        },
+        {
           type: "Marketplace Core",
           href: "https://demo.budeglobal.in/",
           icon: <Icons.globe className="size-3" />,
@@ -330,20 +353,25 @@ export const DATA = {
       dates: "2025 - Present",
       active: true,
       featured: true,
-      role: "Mobile Developer - Flutter Android / Web, ERPNext v15 Stock APIs, RFID/Barcode",
+      role: "Mobile Developer - Flutter Android / Web, ERPNext v16 Stock APIs, RFID/Barcode",
       description:
-        "Scanning, transfers, receipts, and counts on the warehouse floor. Every entry lands in ERPNext, and the queue holds when the signal drops. Mobile Android and web application connected directly to the centralized erp1.budeglobal.in (ERPNext v15) backend for real-time barcode and bulk UHF/HF RFID tag scanning, automated cycle counts, purchase receipt verification, and multi-location warehouse material transfers.",
+        "Scanning, transfers, receipts, and counts on the warehouse floor. Every entry lands in ERPNext, and the queue holds when the signal drops. Mobile Android and web application connected directly to the centralized erp1.budeglobal.in (ERPNext v16) backend for real-time barcode and bulk UHF/HF RFID tag scanning, automated cycle counts, purchase receipt verification, and multi-location warehouse material transfers.",
       technologies: [
         "Android",
         "Flutter",
         "Dart",
-        "ERPNext v15 REST API",
+        "ERPNext v16 REST API",
         "UHF/HF RFID",
         "Barcode Scanning",
         "Offline-First Queue",
         "Nginx",
       ],
       links: [
+        {
+          type: "Case Study",
+          href: "/case-studies/bude-suite",
+          icon: <LayersIcon className="size-3" />,
+        },
         {
           type: "Product Page",
           href: "https://www.budeglobal.in/products/bude-inventory-app",
@@ -365,11 +393,6 @@ export const DATA = {
           icon: <Icons.download className="size-3" />,
         },
         {
-          type: "Source",
-          href: "https://github.com/BUDEGlobalEnterprise/bude-rfid-inventory",
-          icon: <Icons.github className="size-3" />,
-        },
-        {
           type: "GitHub",
           href: "https://github.com/BUDEGlobalEnterprise/bude-suite",
           icon: <Icons.github className="size-3" />,
@@ -384,20 +407,25 @@ export const DATA = {
       dates: "2025 - Present",
       active: true,
       featured: true,
-      role: "Mobile Developer - Flutter Android / Web, ERPNext v15 HRMS APIs, Geo-Attendance",
+      role: "Mobile Developer - Flutter Android / Web, ERPNext v16 HRMS APIs, Geo-Attendance",
       description:
-        "Attendance, leave, claims, and payslips in the hands of the people they belong to. Managers approve from the same app. Enterprise workforce and employee self-service mobile Android application consuming centralized HRMS REST APIs on erp1.budeglobal.in (ERPNext v15) for real-time GPS geofenced attendance check-ins and check-outs, dynamic leave balances, expense claim filing, and supervisor approval queues.",
+        "Attendance, leave, claims, and payslips in the hands of the people they belong to. Managers approve from the same app. Enterprise workforce and employee self-service mobile Android application consuming centralized HRMS REST APIs on erp1.budeglobal.in (ERPNext v16) for real-time GPS geofenced attendance check-ins and check-outs, dynamic leave balances, expense claim filing, and supervisor approval queues.",
       technologies: [
         "Android",
         "Flutter",
         "Dart",
-        "ERPNext v15 HRMS",
+        "ERPNext v16 HRMS",
         "Geolocation API",
         "Mobile UX",
         "REST API",
         "Nginx",
       ],
       links: [
+        {
+          type: "Case Study",
+          href: "/case-studies/bude-suite",
+          icon: <LayersIcon className="size-3" />,
+        },
         {
           type: "Product Page",
           href: "https://www.budeglobal.in/products/bude-hr-app",
@@ -433,20 +461,25 @@ export const DATA = {
       dates: "2025 - Present",
       active: true,
       featured: true,
-      role: "Mobile Developer - Flutter Android / Web, ERPNext v15 Selling APIs, Offline Sync",
+      role: "Mobile Developer - Flutter Android / Web, ERPNext v16 Selling APIs, Offline Sync",
       description:
-        "A representative’s day: customers, visits, quotations, orders, and collections. ERPNext still decides price, stock, and credit. Commercial field sales and mobile POS Android application built for on-the-road sales agents with an offline-first transaction queue (Hive/IndexedDB) and automatic background sync to erp1.budeglobal.in (ERPNext v15).",
+        "A representative’s day: customers, visits, quotations, orders, and collections. ERPNext still decides price, stock, and credit. Commercial field sales and mobile POS Android application built for on-the-road sales agents with an offline-first transaction queue (Hive/IndexedDB) and automatic background sync to erp1.budeglobal.in (ERPNext v16).",
       technologies: [
         "Android",
         "Flutter",
         "Dart",
-        "ERPNext v15 Selling",
+        "ERPNext v16 Selling",
         "Offline-First Sync",
         "Hive DB",
         "REST API",
         "Nginx",
       ],
       links: [
+        {
+          type: "Case Study",
+          href: "/case-studies/bude-suite",
+          icon: <LayersIcon className="size-3" />,
+        },
         {
           type: "Product Page",
           href: "https://www.budeglobal.in/products/bude-sales-app",
@@ -490,12 +523,17 @@ export const DATA = {
         "Flutter",
         "Dart",
         "Frappe Helpdesk API",
-        "ERPNext v15",
+        "ERPNext v16",
         "WebSockets",
         "Real-Time Triage",
         "Nginx",
       ],
       links: [
+        {
+          type: "Case Study",
+          href: "/case-studies/bude-suite",
+          icon: <LayersIcon className="size-3" />,
+        },
         {
           type: "Product Page",
           href: "https://www.budeglobal.in/products/bude-helpdesk-app",
@@ -532,8 +570,13 @@ export const DATA = {
       active: true,
       description:
         "AI-powered daily tech news companion deployed on BUDE Global infrastructure (news.budeglobal.in) and built with Google AI Studio - fetches and summarizes the day's tech headlines using the Gemini API.",
-      technologies: ["Next.js", "TypeScript", "Gemini API", "Google AI Studio", "Cloudflare Tunnels"],
+      technologies: ["React", "Vite", "Express", "TypeScript", "Firebase", "Gemini API", "Google AI Studio", "Cloudflare Tunnels"],
       links: [
+        {
+          type: "Case Study",
+          href: "/case-studies/daily-tech-news-buddy",
+          icon: <LayersIcon className="size-3" />,
+        },
         {
           type: "Website",
           href: "https://news.budeglobal.in/",
@@ -550,7 +593,7 @@ export const DATA = {
     },
     {
       title: "iSmartShelf & Automated DropBox RFID Suite",
-      href: "https://github.com/aravind-govindhasamy/Library-Fine-Collection-Kiosk",
+      href: "",
       dates: "Aug 2023 - May 2024",
       active: false,
       featured: true,
@@ -568,9 +611,9 @@ export const DATA = {
       ],
       links: [
         {
-          type: "Source",
-          href: "https://github.com/aravind-govindhasamy/Library-Fine-Collection-Kiosk",
-          icon: <Icons.github className="size-3" />,
+          type: "Case Study",
+          href: "/case-studies/library-fine-kiosk",
+          icon: <LayersIcon className="size-3" />,
         },
       ],
       image: "/projects/library-kiosk.png",
@@ -585,6 +628,11 @@ export const DATA = {
         "Interactive visualization of human innovation as a non-linear network, showing how technologies build upon each other from fire to AGI. Built a dynamic node-link graph with a responsive React UI for exploring technology evolution and dependencies. Powered by Bude Global.",
       technologies: ["React", "JavaScript", "HTML5", "CSS3", "Graph Visualization"],
       links: [
+        {
+          type: "Case Study",
+          href: "/case-studies/neuro-chain",
+          icon: <LayersIcon className="size-3" />,
+        },
         {
           type: "Website",
           href: "https://invent.budeglobal.in/",
@@ -608,6 +656,11 @@ export const DATA = {
         "An interactive, web-based technical presentation and slide delivery platform hosted at ppt.budeglobal.in. A curated, version-controlled collection of slide decks and architecture walkthroughs covering enterprise tech topics and engineering patterns for the BUDE Global Enterprise team.",
       technologies: ["Slidev", "Markdown", "Next.js", "Linux systemd", "Cloudflare Tunnels"],
       links: [
+        {
+          type: "Case Study",
+          href: "/case-studies/tech-presentations",
+          icon: <LayersIcon className="size-3" />,
+        },
         {
           type: "Website",
           href: "https://ppt.budeglobal.in/",
@@ -634,6 +687,11 @@ export const DATA = {
       technologies: ["OJS (Open Journal Systems)", "PHP", "MySQL", "Linux"],
       links: [
         {
+          type: "Case Study",
+          href: "/case-studies/psgr-kcw",
+          icon: <LayersIcon className="size-3" />,
+        },
+        {
           type: "Website",
           href: "https://journalpaper.psgrkcw.ac.in/index.php/aar-psgrkcw",
           icon: <Icons.globe className="size-3" />,
@@ -654,6 +712,11 @@ export const DATA = {
       technologies: ["GLPI", "PHP", "MySQL", "Linux", "FusionInventory Agent"],
       links: [
         {
+          type: "Case Study",
+          href: "/case-studies/psgr-kcw",
+          icon: <LayersIcon className="size-3" />,
+        },
+        {
           type: "Website",
           href: "http://glpi.grgeducation.com/",
           icon: <Icons.globe className="size-3" />,
@@ -664,29 +727,23 @@ export const DATA = {
     },
     {
       title: "BulkDBBackup NodeJS MySQL",
-      href: "https://github.com/aravind-govindhasamy/BulkDBBackup_NodeJS_MySQL",
+      href: "",
       dates: "Jun 2024 - Sep 2024",
       active: false,
       description:
         "MySQL backup script that backs up all user databases from a MySQL server with scheduling, error handling for backup integrity, and detailed logging of backup activities.",
       technologies: ["Node.js", "MySQL"],
-      links: [
-        {
-          type: "Source",
-          href: "https://github.com/aravind-govindhasamy/BulkDBBackup_NodeJS_MySQL",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
+      links: [],
       image: "/projects/bulk-db-backup.png",
       video: "",
     },
     {
       title: "AWS-SW01-PROJ-0001 - Jewellery RFID Management Suite",
       href: "",
-      dates: "May 2022 - Oct 2024",
+      dates: "Oct 2024 - Jan 2025",
       active: false,
       featured: true,
-      // Proprietary employer work - anonymized description, no public source
+      // First freelance project - anonymized description, no public source
       role: "Lead Developer - WPF desktop client, RFID Reader SDK, high-speed scanning",
       description:
         "High-throughput desktop ERP system for end-to-end jewellery management using RFID—capable of bulk scanning 100+ tags/second simultaneously. Features real-time stock valuation, inter-branch transfers, anti-theft security triggers, and direct serial communication with RFID reader hardware via SDK.",
@@ -698,31 +755,31 @@ export const DATA = {
         "RFID Reader SDK",
         "MSSQL",
       ],
-      links: [],
+      links: [
+        {
+          type: "Case Study",
+          href: "/case-studies/jewellery-rfid-suite",
+          icon: <LayersIcon className="size-3" />,
+        },
+      ],
       image: "/projects/jewellery-rfid.png",
       video: "",
     },
     {
       title: "Stock Control & Handheld RFID Inventory API",
-      href: "https://github.com/aravind-govindhasamy/Stock-Control-Inventory-Management",
+      href: "",
       dates: "Jan 2024 - May 2024",
       active: false,
       description:
         "Real-time RFID stock audit system supporting Android handheld scanners. Built high-performance REST APIs and complex MySQL/MSSQL stored procedures with duplicate tag filtering, discrepancy reconciliation, and instant reporting under high scan volumes.",
       technologies: ["C#", "ASP.NET", "RFID", "MSSQL", "MySQL", "REST API"],
-      links: [
-        {
-          type: "Source",
-          href: "https://github.com/aravind-govindhasamy/Stock-Control-Inventory-Management",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
+      links: [],
       image: "/projects/stock-control.png",
       video: "",
     },
     {
       title: "AES Encryption and Decryption Using CryptoJS",
-      href: "https://github.com/aravind-govindhasamy/AES-Encryption-Decryption",
+      href: "https://github.com/aravind-govindhasamy/simple-aes-encrypt-decrypt-cryptojs",
       dates: "Mar 2024 - Apr 2024",
       active: false,
       description:
@@ -731,8 +788,13 @@ export const DATA = {
       links: [
         {
           type: "Source",
-          href: "https://github.com/aravind-govindhasamy/AES-Encryption-Decryption",
+          href: "https://github.com/aravind-govindhasamy/simple-aes-encrypt-decrypt-cryptojs",
           icon: <Icons.github className="size-3" />,
+        },
+        {
+          type: "Live Demo",
+          href: "https://aravind-govindhasamy.github.io/simple-aes-encrypt-decrypt-cryptojs/",
+          icon: <Icons.globe className="size-3" />,
         },
       ],
       image: "/projects/aes-cryptography.png",
@@ -740,7 +802,7 @@ export const DATA = {
     },
     {
       title: "Library Fine Collection Kiosk",
-      href: "https://github.com/aravind-govindhasamy/Library-Fine-Collection-Kiosk",
+      href: "",
       dates: "Aug 2023 - Dec 2023",
       active: false,
       description:
@@ -748,9 +810,9 @@ export const DATA = {
       technologies: ["C#", ".NET", "RFID", "Razor Payment Gateway", "MSSQL"],
       links: [
         {
-          type: "Source",
-          href: "https://github.com/aravind-govindhasamy/Library-Fine-Collection-Kiosk",
-          icon: <Icons.github className="size-3" />,
+          type: "Case Study",
+          href: "/case-studies/library-fine-kiosk",
+          icon: <LayersIcon className="size-3" />,
         },
       ],
       image: "/projects/library-kiosk.png",
@@ -758,19 +820,13 @@ export const DATA = {
     },
     {
       title: "IoT-Based Smart Library System using RFID",
-      href: "https://github.com/aravind-govindhasamy/IoT-Based-Smart-Library-System-using-RFID",
+      href: "",
       dates: "Jan 2023 - May 2023",
       active: false,
       description:
         "Smart library system using RFID and IoT to automate book check-in and check-out with real-time monitoring of book inventory and patron transactions, backed by SQL Server.",
       technologies: ["C#", "ASP.NET", "SQL Server", "RFID", "IoT"],
-      links: [
-        {
-          type: "Source",
-          href: "https://github.com/aravind-govindhasamy/IoT-Based-Smart-Library-System-using-RFID",
-          icon: <Icons.github className="size-3" />,
-        },
-      ],
+      links: [],
       image: "/projects/smart-library.png",
       video: "",
     },
@@ -785,6 +841,44 @@ export const DATA = {
       links: [],
       image: "/projects/bitcoin-mining.png",
       video: "",
+    },
+  ],
+  // Smaller research, notes and tools, listed under the case studies. href "" = private repo.
+  studies: [
+    {
+      title: "Dynamic SQL reports and exports",
+      dates: "Nov 2024 – May 2025",
+      description:
+        "A study in metadata-driven reporting: a filter model that describes each report filter (control type, validation, dependent filters, server-side or client-side), stored-procedure notes, and export from SQL to PDF, Excel and Word.",
+      href: "",
+    },
+    {
+      title: "Multi-server database backups for Windows",
+      dates: "Jul 2025 – Aug 2025",
+      description:
+        "Batch utilities that back up many MySQL or SQL Server databases across servers: settings in a .env file, timestamped dumps, optional 7-Zip compression, clean-up of old backups, activity and error logs, scheduled with Task Scheduler.",
+      href: "https://github.com/BUDEGlobalEnterprise/MySQL-Auto-Backup-Script",
+    },
+    {
+      title: "ERPNext and RFID for plant nurseries",
+      dates: "Sep 2025 – Oct 2025",
+      description:
+        "An 8,000-word guide to running a plant nursery on ERPNext with RFID: the operational problems, the modules that fit, implementation steps and return on investment. Written alongside the Chainway C72 proposal that led to Bude Suite.",
+      href: "",
+    },
+    {
+      title: "ESP32-S3-BOX-3 project ideas",
+      dates: "Nov 2025",
+      description:
+        "Researched smart-home and wearable projects for Espressif's ESP32-S3-BOX-3, each with its core features, integrations and the analytics it would produce.",
+      href: "https://github.com/BUDEGlobalEnterprise/BUDE-ESP32-S3-BOX-3-Projects",
+    },
+    {
+      title: "3D vault: CAD and printing experiments",
+      dates: "Sep 2026 – Present",
+      description:
+        "A personal CAD lab: Fusion 360 and OpenSCAD parametric designs, printable collections and Three.js print-bed experiments, versioned with Git LFS.",
+      href: "",
     },
   ],
   hackathons: [

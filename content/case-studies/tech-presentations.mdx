@@ -1,0 +1,77 @@
+---
+title: "Tech Presentations: Slide Decks as Validated Data"
+summary: "A presentations site where every deck is a JSON file checked against a schema before it ships. It started as a Reveal.js page and became a Next.js static site that exports any deck to PowerPoint, PDF or Word, deployed by CI to Cloudflare."
+publishedAt: "2026-10-07"
+period: "Nov 2025 – Present"
+role: "Creator and maintainer"
+stack: ["Next.js 15", "React 19", "Zod", "pptxgenjs", "jsPDF", "docx", "Vitest", "Cloudflare Pages"]
+image: "/projects/tech-presentations.png"
+order: 10
+links:
+  - label: "Live site"
+    href: "https://ppt.budeglobal.in/"
+  - label: "Source"
+    href: "https://github.com/BUDEGlobalEnterprise/bude-global-tech-presentations"
+---
+
+Slides usually live in a file on someone's laptop. Then the laptop isn't there, the projector wants a PDF, and the organiser wants a PowerPoint.
+
+---
+
+## The problem
+
+BUDE Global runs talks for students and newcomers: open source, Git, Python, AI-assisted development. The decks needed to be in one place, viewable on any screen, easy for others to add to, and exportable to whatever format a venue asks for.
+
+---
+
+## What I built
+
+**Version one** was a static site on Reveal.js. Each deck is a JSON file, and the site discovers the files, validates them, and shows only the ones that pass. It added search, keyboard navigation and speaker notes. That version holds 82 JSON decks.
+
+**Version two** is a Next.js 15 app built as a static export, now with 115 content files:
+
+```text
+content/*.json  ──► Zod schema (lib/schema.ts)
+                      │ validate-content (CI step)
+                      ▼
+               Next.js static export
+                ├─ catalog · search · categories
+                ├─ slide view
+                └─ export: PPTX · PDF · DOCX
+                      │
+GitHub Actions ──► Cloudflare Pages ──► ppt.budeglobal.in
+```
+
+A deck is data, not a document. The schema describes sections, slides and content types; a parser turns the JSON into slides, and Vitest covers the parser. Export runs in the browser: pptxgenjs builds the PowerPoint file, jsPDF the PDF, and docx the Word handout.
+
+---
+
+## Decisions that mattered
+
+**Fail the build, not the talk.** CI runs the content validator before building. A deck with a broken field never reaches the live site, so nobody discovers it in front of an audience.
+
+**Static all the way.** The site is a static export on Cloudflare Pages: nothing to keep running, and nothing to break between one talk and the next.
+
+**Export on the client.** Generating PowerPoint, PDF and Word in the browser means no conversion server, and the deck that is exported is exactly the deck on screen.
+
+**A local copy.** Small scripts can start a local server at boot on a Windows machine, so one PC can serve the decks without the internet.
+
+**Run it like an open project.** GitHub workflows assign issues, apply labels and greet first-time contributors. Writing a deck means writing JSON, so non-developers can contribute too.
+
+---
+
+## What was hard
+
+Two versions share one repo: the Reveal.js original under `legacy/` and the Next.js rewrite beside it. Until every old deck is carried over, both have to keep working.
+
+---
+
+## Where it stands
+
+Live at [ppt.budeglobal.in](https://ppt.budeglobal.in/). I presented my September 2026 guest lecture from it; the deck is linked from the [blog post about that day](/blog/back-at-the-podium).
+
+The repository has 206 commits since November 2025, nearly all mine.
+
+Still to tidy: the README's demo link still points to the old GitHub Pages address instead of ppt.budeglobal.in.
+
+{/* Sources: local clone C:\Github\bude-global-tech-presentations: git log (206 commits, 2025-11-04 → 2026-09-18; authors are the user's aliases plus 1 commit by an outside contributor); README (JSON-based, smart discovery + strict validation, real-time search, keyboard navigation, speaker notes, Reveal.js; demo link to GitHub Pages); legacy/ (82 JSON decks); bude-presentations-next/package.json (next 15.1, react 19, zod, pptxgenjs, jspdf, docx, vitest), lib/schema.ts, parse-presentation(.test).ts, lib/export/to-{pptx,pdf,docx}.ts, scripts/validate-content.ts and Windows autostart scripts, content/ (115 files); .github/workflows/deploy.yml (validate-content → build static export → wrangler Cloudflare Pages) plus auto-assign, assign-on-comment, labels, greetings, welcome; content/back-at-the-podium.mdx deck link; live check 2026-10-07: 200. */}

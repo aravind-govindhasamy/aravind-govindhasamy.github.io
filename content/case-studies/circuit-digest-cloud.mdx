@@ -1,0 +1,101 @@
+---
+title: "Circuit Digest Cloud: An IoT Platform From MQTT Ping to WhatsApp Alert"
+summary: "A free IoT cloud for makers and embedded developers: device provisioning, MQTT telemetry, live dashboards, GPS geofencing, alerts over email, SMS and WhatsApp, and computer-vision APIs. Built and run at Semicon Media."
+publishedAt: "2026-10-06"
+period: "Dec 2025 – Present"
+role: "Main developer: backend, dashboards, AI assistant, integrations, deployment"
+stack: ["FastAPI", "PostgreSQL (Supabase)", "MQTT", "Anedya", "React", "Gemini + MCP", "WebRTC", "GitHub Actions"]
+image: "/projects/circuit-digest-cloud.png"
+order: 1
+links:
+  - label: "Website"
+    href: "https://www.circuitdigest.cloud/"
+  - label: "GeoLinker board"
+    href: "https://circuitdigest.com/wiki/geolinker-esp32-sim868-cellular-iot-gps-tracking-development-board/"
+---
+
+Circuit Digest publishes electronics projects for makers. Circuit Digest Cloud is where those projects send their data.
+
+---
+
+## The problem
+
+Someone with an ESP32 on their desk wants what a company would build for itself: a dashboard, a map of where the device has been, and a message on their phone when a reading crosses a line. They don't want to run a server to get it.
+
+So the platform takes small, intermittent messages from many devices over Wi-Fi and cellular, stores them, and acts on them quickly enough that an alert still means something.
+
+---
+
+## What I built
+
+I'm the platform's main developer. Nearly every commit since the first one in December 2025 is mine; the rest come from the deployment bots.
+
+It started from the FastAPI full-stack template: a FastAPI backend with SQLModel and PostgreSQL, a React and TypeScript frontend, Docker Compose, Pytest and Playwright, with GitHub Actions deploying to staging and production. Everything specific to IoT came after:
+
+- **Devices and data:** provisioning, MQTT, live state and telemetry through Anedya, an IoT data platform, and React dashboards.
+- **GeoLinker:** GPS tracking with polygon geofencing, route history, live maps and shared tracking links, for an ESP32-S3 and SIM868 cellular board.
+- **Computer vision:** detection APIs for licence plates, helmets, faces, objects, parking spaces, waste and currency, plus image-to-text and WebRTC video.
+- **An AI assistant:** a Gemini assistant in the dashboard and on WhatsApp, and an MCP server so ChatGPT or Claude Desktop can query a user's own devices.
+- **Google Home:** account linking over OAuth, so devices show up and respond in the Home app.
+- **Money and connectivity:** Razorpay payments and invoices, Airtel M2M SIM lifecycle, billing reminders and KYC, and per-user usage limits.
+
+```text
+device (ESP32 · SIM868 · Wi-Fi or cellular)
+   │ MQTT
+   ▼
+Anedya: telemetry, live state ◄──► FastAPI services ──► PostgreSQL
+                                     ├─ geofence check per GPS ping
+                                     ├─ alerts: email · SMS · WhatsApp
+                                     ├─ vision APIs · WebRTC
+                                     └─ payments · SIM lifecycle
+              one tool registry
+   Gemini assistant (web, WhatsApp) · MCP server (ChatGPT, Claude)
+   Google Home ◄── OAuth account linking
+```
+
+---
+
+## Decisions that mattered
+
+**Geofencing on the server, not the device.** The GeoLinker requirement was one sentence: alert the owner within 30 seconds of a tracker leaving its saved polygon. The check runs server-side on every MQTT ping, not on the ESP32, because battery life mattered more than milliseconds. The device only reports where it is; the server decides what that means.
+
+**Live data, not a cache.** A dashboard, an alert or a question to the bot reads the device's current state, a reading from seconds ago. Telemetry history first lived in our own PostgreSQL tables and has since moved to Anedya. What remains in Postgres is capped per user and cleaned on a schedule, and data from long-inactive accounts is purged.
+
+The reason was cost. We run on Supabase's free tier, and telemetry egress and logs would have pushed us past it. Anedya can serve GeoLinker as well, which takes most of the load off Supabase and could keep it entirely free.
+
+**AI through tools, not tables.** A user can ask "Which devices are offline?" in plain English, in the dashboard, on WhatsApp or from an MCP client. The model never touches a table. It calls tools, and one tool registry feeds both the built-in assistant and the MCP server, so the two can't drift apart.
+
+**The model never chooses whose data it sees.** The user's identity comes from their validated token and is bound to the request. Any identity arguments the model tries to pass are stripped before a tool runs. Every device lookup goes through one ownership check: the owner, or someone with an active GPS share. Internal IDs are scrubbed from answers, and every tool call is logged.
+
+**A fixed vocabulary for Google, free-form for makers.** Makers define their own device variables in firmware. Google Home only understands a fixed set of device traits. One mapping layer translates between the two, so the rest of the platform never has to know about Google.
+
+**Specs before agents.** We use AI coding agents, with four documents written first: the requirement, the user flow, the technical spec and the rules for the agent. Two of those rules: never touch the alerts pipeline without a human review, and never invent a new table without asking.
+
+---
+
+## What was hard
+
+**Devices that wouldn't appear in Google Home.** A user would expose a device to Google, open the Home app, and find nothing until they unlinked and relinked their account. The platform pushed state updates to Google but never told Google to re-read the device list. The fix was to request a sync whenever a device is exposed, classified or changed.
+
+**Multi-device commands, one at a time.** "Turn off everything" ran its database and device calls one device after another. Batching them and running them concurrently cut the wait from roughly N calls to about one.
+
+Both came out of an architecture audit in June 2026. The same pass made the assistant stream its answers instead of making people wait for the full reply.
+
+**Smaller fires, each with its own fix:**
+
+- SIM activations that stalled partway through the M2M lifecycle.
+- Billing dates that went stale.
+- Usage counted wrongly for the licence-plate API.
+- Daily usage limits that needed real enforcement.
+- WhatsApp replies that were too slow.
+- Error logging and API analytics, added to see the next problem sooner.
+
+---
+
+## Where it stands
+
+Live at [circuitdigest.cloud](https://www.circuitdigest.cloud/), offered free to makers.
+
+This is Semicon Media's platform and its code is private. This write-up stays at the architecture level.
+
+{/* Sources: resume.tsx work entry (Semicon Media, Dec 2025 – Present: FastAPI, PostgreSQL/Supabase, MQTT ingestion, provisioning, React dashboards, GeoLinker polygon geofencing + route history + live maps, CV APIs ANPR/helmet/object/face, WebRTC, Razorpay webhooks, Airtel M2M SIM lifecycle, Google Home OAuth, DigitalOcean + GitHub Actions + Sentry) and project card; content/back-at-the-podium.mdx (ESP32-S3 + SIM868 GeoLinker; email/SMS/WhatsApp alerts; MCP server + WhatsApp bot, "Which devices are offline?", model calls tools and never touches a table; MQTT into Postgres "a reading from seconds ago"; GeoLinker PRD "within 30 seconds", server-side geofence "battery life mattered more than milliseconds"; AI coding rules); circuitdigest.cloud <title>/meta description ("Free IoT cloud platform …"), fetched 2026-10-06. Local platform repo, read with the user's permission and, at their request (2026-10-07), limited to: git author counts (871 of 907 commits by the user, 2025-12-11 to 2026-09-28; the rest deploy bots), folder and file names (services list), the README (FastAPI full-stack template), sections of PLATFORM_AUDIT_2026-06.md (one registry and two transports, request-bound identity, stripped identity args, single ownership check incl. GPS share, internal-ID scrubbing, tool-call audit, Gemini 2.5, MCP over SSE, missing Google requestSync fixed, batched QUERY/EXECUTE, streamed answers, variable-to-trait mapping layer), and one comment in the telemetry service (telemetry now stored by Anedya; per-user row-limit and inactive-account clean-ups by function name). No .env, FIXES notes or scripts were opened; no code is quoted. */}

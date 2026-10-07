@@ -1,0 +1,92 @@
+---
+title: "One Dell T40: Self-Hosting a Company Platform Behind a Tunnel"
+summary: "The BUDE Global website, the ERP, the marketplace demo and four app demos run on one tower server, reached through a Cloudflare Tunnel with no open inbound ports. What that took, and what is still missing."
+publishedAt: "2026-10-06"
+period: "2025 – Present"
+role: "Founder: build, deployment, operations"
+stack: ["Ubuntu", "Cloudflare Tunnel", "Nginx", "systemd", "Payload CMS 3", "Next.js 16", "PostgreSQL", "ERPNext 16"]
+image: "/case-studies/one-server-platform/budeglobal-home.png"
+order: 4
+links:
+  - label: "Website"
+    href: "https://www.budeglobal.in/"
+  - label: "Maintenance page source"
+    href: "https://github.com/BUDEGlobalEnterprise/bude-maintenance-mode"
+  - label: "ERP implementation notes"
+    href: "https://github.com/BUDEGlobalEnterprise/bude-global-implementation"
+---
+
+Everything BUDE Global serves in public runs on one tower server, a Dell PowerEdge T40: the company site, the ERP, the marketplace demo and the app demos.
+
+Two reasons: budget, and wanting an install I could experiment on freely. The T40 is actually the second server. The first was the laptop the Tamil Nadu government gave me as a school student, upgraded with more RAM and an SSD and turned into a server.
+
+---
+
+## The problem
+
+The apps share almost nothing. The website is Node and PostgreSQL. The ERP and the marketplace are Frappe benches on Python, MariaDB and Redis. The app demos are static Flutter web builds.
+
+They all had to live on one machine, each on its own HTTPS subdomain, without opening the server to the internet. A deploy of one app should not take the others down, and when the whole box is down, visitors should see a proper page instead of a browser error.
+
+---
+
+## What I built
+
+```text
+visitor ─► Cloudflare (TLS for *.budeglobal.in)
+              │  outbound-only tunnel (cloudflared)
+              ▼
+Dell PowerEdge T40 · Ubuntu · no containers
+  ├─ www      Next.js 16 + Payload 3, one process
+  ├─ erp1     ERPNext 16 + bude_api (Frappe bench)
+  ├─ demo     marketplace (same bench as erp1)
+  └─ demo-*   four Flutter web builds, static via nginx
+
+origin unreachable ─► Cloudflare serves the maintenance page
+```
+
+**The tunnel.** `cloudflared` runs as a service and holds an outbound connection to Cloudflare. No inbound port is open on the server. Adding a site means one ingress rule pointing a hostname at a local port, plus a DNS route.
+
+**The website.** budeglobal.in used to be a Vite and React single-page app with its content written into the pages. In July 2026 I moved it to Payload CMS 3 and Next.js 16, starting from Payload's agency template. A migration script carried the old pages' content across.
+
+Payload and Next.js run in the same Node process. Pages read content through Payload's Local API, with no HTTP hop to the CMS. Lists and globals are cached with cache tags. When an editor publishes, updates or deletes something, a hook revalidates the matching tags, so pages change without a rebuild.
+
+The content model has 19 collections and 29 layout blocks, admin, editor and author roles, drafts, live preview and scheduled publishing. English is served without a prefix, a second locale under `/bg`. Contact form submissions are never public.
+
+**The ERP and the demos.** `erp1` is ERPNext 16 on a Frappe bench that also hosts the marketplace demo site. The four Flutter apps are static builds served by nginx, each on its own subdomain, and the ERP site allows exactly those origins for cross-site API calls.
+
+**Deploys.** Each app has its own systemd service. For the website, one script installs dependencies, runs the Payload migrations, builds, restarts the service and checks that it came back. The rule written next to it: take a backup before deploying anything with a migration.
+
+---
+
+## Decisions that mattered
+
+**No containers.** Each app runs under systemd directly on Ubuntu. Fewer layers to debug on a single machine, at the cost of the isolation containers would give.
+
+**One subdomain level.** Cloudflare's free certificate covers `*.budeglobal.in`, one wildcard level deep. A name like `demo.stock.budeglobal.in` fails with an SSL handshake error. Every app gets a flat name instead: `demo-stock`, `demo-hr`, `demo-sales`, `demo-helpdesk`.
+
+**No fake content.** The website's README forbids seeding fake customers, testimonials or generated case studies into production. AI-written blog posts are allowed only as unpublished drafts that a person reviews. The production seed route was removed on purpose.
+
+**A page for when everything is down.** A small static maintenance page is uploaded to Cloudflare as the custom error page for server errors. When the T40 or the tunnel is unreachable, visitors on any subdomain get a branded message instead of a Cloudflare error screen.
+
+---
+
+## What was hard
+
+**Backups that are real.** The website's backup notes open with: "A backup that exists only on the T40's own disk is not a backup." The plan is daily PostgreSQL dumps, an encrypted off-site copy, and a retention of 7 daily, 4 weekly and 6 monthly backups.
+
+The marketplace went further and ran a timed restore drill (see the [BUDE MADE case study](/case-studies/bude-made)). The drill found that the scheduled Frappe backup was not capturing uploaded files at all, something a backup that is never restored would not reveal.
+
+Today the encrypted off-site copy runs once a week, with an automatic Google Drive backup on top.
+
+**Shared benches.** The ERP and the marketplace demo share one Frappe bench, so they share one Frappe version. Upgrading one means testing both.
+
+---
+
+## Where it stands
+
+Live. The website, the ERP and the demos all answer today.
+
+One server is also one point of failure. There is no second machine and no failover. If the T40 or its connection goes down, everything goes down together, and the maintenance page is the whole plan.
+
+{/* Sources: budeglobal README (Payload 3 + Next 16, PostgreSQL, systemd, deploy.sh steps, backup.sh, content policy, seed route removed); docs/architecture.md (one process, Local API, 'use cache' + cacheTag, revalidateTag hooks, /bg locale via src/proxy.ts, roles); docs/deployment-t40.md (Ubuntu, no containers, nginx, Cloudflare in front, port 3005); docs/backups-and-restore.md (quote, daily cron + encrypted off-site + 7/4/6 retention); user confirmed 2026-10-07: weekly encrypted off-site copy + Google Drive auto backup, budget + experimentation as the reason to self-host, TN government school laptop as the first server; tree (19 collection files, 29 block config files under src/blocks); commits 2026-07-14 "Initial commit of Bude Global Agency Template", "Add Vite content migration script"; bude-connect-all-in-one dates 2025-09-10 → 2026-02-20 (old Vite/React site); bude-rfid-inventory documentation/deployment/README.md (tunnel, no inbound ports, ingress rule, single-level subdomain SSL limit, demo-* via nginx, CORS allowlist); bude-made-marketplace docs/DEPLOYMENT.md (demo on same bench as erp1) + RESTORE_DRILL.md; bude-maintenance-mode README (Cloudflare 5xx custom page). The README's "always HTTP 200" claim is deliberately not repeated: a response-header transform rule cannot change a status code. Live check 2026-10-06: www 200, erp1 health ok. */}

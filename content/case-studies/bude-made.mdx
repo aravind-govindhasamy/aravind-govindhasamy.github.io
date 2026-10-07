@@ -1,0 +1,103 @@
+---
+title: "BUDE MADE: A Two-Sided Maker Marketplace on One Frappe App"
+summary: "Buy what a local maker already made, or post a request and compare private quotes. Both paths end in one auditable order engine, with the concurrency races proven against a real database. Pre-launch."
+publishedAt: "2026-10-06"
+period: "Dec 2025 – Present"
+role: "Sole developer: marketplace backend, seller studio, storefront"
+stack: ["Frappe 16", "Python", "MariaDB", "Redis", "Vue 3", "Next.js 16", "Three.js"]
+image: "/projects/bude-made-marketplace.png"
+order: 3
+links:
+  - label: "Shop"
+    href: "https://shop.budeglobal.in/"
+  - label: "Seller studio"
+    href: "https://vendor.budeglobal.in/"
+---
+
+Coimbatore has people who crochet, keep bees and run 3D printers from home. BUDE MADE, first called Kovai Senpai, is meant to be the place to buy from them, or to ask one of them to make something.
+
+---
+
+## The problem
+
+A maker marketplace has two kinds of buyer. One wants something that already exists. The other wants something made: "this keychain, but in our logo", "fifty of these by Friday".
+
+Custom work needs things a product listing doesn't have: a request, private quotes from several makers, and a record of who promised what.
+
+So the system needed two front doors, one set of rules about money, stock and state behind them, and an audit trail a dispute could rely on.
+
+---
+
+## What I built
+
+Three pieces on one self-hosted server:
+
+- **A marketplace backend**: one Frappe 16 app that is the system of record.
+- **A seller studio** in Vue 3 for products, quotes, orders, verification, and 3D-printing price cards with a local STL viewer.
+- **A shop** in Next.js 16, rendered on the server for search engines.
+
+```text
+ shop (Next.js, SSR)        seller studio (Vue 3)
+          └──── JSON API v1, one envelope ────┘
+                         │
+          bude_made_marketplace (Frappe app)
+   Shop ──────┐
+              ├─► BM Order ──► immutable BM Order Event
+ Get It Made ─┘   (changed only by named actions)
+   adapters: ERPNext · payments · WhatsApp · AI providers
+```
+
+![The BUDE MADE shop home page: a "Bought from the person who made it" headline over category cards for personalised gifts, 3D printing, crochet and honey](/case-studies/bude-made/shop-home.png)
+
+*The shop on 6 October 2026. Every listing is demo data; the marketplace is still in development.*
+
+"Shop" is the usual flow: find a product, buy it, the seller fulfils it. "Get It Made" lets a customer publish a request, receive private quotes from sellers, and accept one. Both end in the same order engine.
+
+---
+
+## Decisions that mattered
+
+Each of these is written down as a decision record in the repo.
+
+**One app, not services.** The marketplace is a single Frappe app. Its core depends on Frappe alone. ERPNext, payments, shipping, messaging and search come in through adapters. No distributed transactions, and one order engine for both flows.
+
+**No Webshop, after checking.** Frappe's Webshop app looked like a shortcut, so I inspected it on the bench before deciding. ERPNext 16 ships no e-commerce DocTypes. Webshop's `Website Item` has no field for which seller owns a listing, and its cart is hard-wired to one company. The decision record puts it in one line: single-vendor "by construction, not by configuration".
+
+**The frontends own nothing important.** Identity, prices, totals, order state and permission checks all live in the backend. The shop and the studio display and ask; the server decides.
+
+**Orders move only through named actions.** There is no generic "set status". Nine actions (confirm, start, ready, ship, deliver, and so on) each check who is calling and from which state. Every successful transition writes exactly one immutable `BM Order Event` in the same transaction, or the transition fails.
+
+**A seller's home stays private.** Many makers work from home. Exact workplace coordinates are visible only to the seller and staff. The audit trail keeps a one-way fingerprint of the location, not the coordinates. No third-party map tiles load around a home address, because that alone would hand the location to another company.
+
+**Version two leaves ERPNext alone.** The first attempt, BUDE Connect (December 2025 to April 2026), added custom fields to ERPNext's own DocTypes and grew scripts to repair the fallout. This version edits no Frappe or ERPNext source and no standard fields. Marketplace data lives in thin records the app owns.
+
+---
+
+## What was hard
+
+**Races.** Two customers clicking "buy" on the last unit. A customer accepting two quotes at once. Unit tests inside one transaction cannot show these, so separate test harnesses start independent Frappe processes and release them at the same instant against MariaDB. Last stock gets exactly one winner. Two simultaneous quote acceptances produce one accepted, one rejected and one order.
+
+One harness found a real defect. Under a concurrent duplicate insert, a function that promised never to raise failed with `SAVEPOINT does not exist`, and its retry read a stale snapshot and inserted again. Both are fixed: the rollback now tolerates a missing savepoint, and the retry uses a locking read.
+
+**Restoring, not just backing up.** I ran a timed restore drill into an empty site. It passed, with two findings. A restored site could not run any app code until a stale `installed_apps` config value was repaired, an error that looks like a missing module. And the scheduled backup captured no uploaded files at all. The measured recovery time was 359 seconds, on a 2.5 MiB dataset. The drill record says plainly that this number does not transfer to production.
+
+**Caching was a correctness problem.** The shop renders on the server, so every anonymous visitor shares the server's single IP for the backend's rate limit. Caching is what keeps that bucket from emptying. Once, a random per-request header changed every cache key and silently disabled the cache. The pages kept rendering perfectly. A stable request ID and its tests exist because of that bug.
+
+---
+
+## Where it stands
+
+Pre-launch. The demo is seeded with fictional sellers and says so. Real sellers and a customer pilot are blocked on policy and compliance sign-offs that are still open in the risk register, and no online payment provider is switched on.
+
+The engineering is further along than the business:
+
+- 947 of 947 integration tests pass against MariaDB, plus 58 provider and domain tests.
+- The seller studio passes 123 Vitest tests and 6 deployment smoke checks; the shop passes 34 tests.
+- Permissions are pinned for every role across all 55 marketplace DocTypes, with raw delete denied everywhere.
+- The API reference, audited from source, lists 401 v1 methods, 38 reachable without a session.
+
+The backend, studio and shop repositories are private; the shop and studio are live at shop.budeglobal.in and vendor.budeglobal.in.
+
+Development runs with AI coding agents under written agent instructions; the decision records, tests and audits are how the work is checked.
+
+{/* Sources: bude-made-marketplace README (two intents, one BM Order engine, Frappe 16); docs/decisions/0001 (modular monolith, adapters), 0002 (Webshop checked on bench 2026-08-18: no e-commerce doctypes in ERPNext 16, Website Item has no seller field, cart single company, "single-vendor by construction"), 0003 (frontend owns no identity/price/totals/state/permissions), 0005 (owner/staff-only coordinates, one-way fingerprint, no third-party tiles); docs/IMPLEMENTATION_STATUS.md (KS-089 nine POST-only actions, KS-090 one immutable event per transition, KS-080/KS-094 concurrency harnesses, KS-137 SAVEPOINT defect + locking read, KS-134 55 DocTypes, 947/947 + 58 tests, studio 123 Vitest + 6 smokes, shop 34 tests); docs/RESTORE_DRILL.md (2026-08-21, RTO 359 s, 2.5 MiB, installed_apps finding, scheduled backup captures no files); docs/API_REFERENCE.md (401 methods, 38 public, audited 2026-09-06); docs/DEMO_SITE.md + RISK_REGISTER.md (R-002/R-003 open, fictional sellers); bude-made-shop README ("Caching is a correctness concern", stableRequestId); bude-made-vendor README (price-per-gram rate cards, Three.js STL inspector); docs/features KS-046/047/048 (3D printing, crochet, honey); bude_core tree (custom_fields, apply_all_custom_fields.py, security/fix_all_csrf_errors.py) and repo dates (bude-connect-web 2025-12-20 → 2026-04-13); AGENTS.md + docs/MASTER_PROMPT.md. */}

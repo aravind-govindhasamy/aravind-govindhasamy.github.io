@@ -1,0 +1,80 @@
+---
+title: "Daily Tech News Buddy: A News Reader That Survives Flaky Feeds"
+summary: "One page for the day's tech news, with AI summaries. Every feed has three ways in, the cache is shared by every visitor, and the Gemini key never leaves the server."
+publishedAt: "2026-10-06"
+period: "Apr 2026 – Jul 2026"
+role: "Solo: design, build, deployment"
+stack: ["React 19", "TypeScript", "Vite", "Express", "Firebase", "Gemini API"]
+image: "/projects/daily-news.png"
+order: 11
+links:
+  - label: "Live site"
+    href: "https://news.budeglobal.in/"
+  - label: "Source"
+    href: "https://github.com/aravind-govindhasamy/Daily-Tech-News-Buddy"
+---
+
+Daily Tech News Buddy puts the day's tech news on one page, with AI summaries on top.
+
+---
+
+## The problem
+
+The feeds live on different sites, in different formats, and fail in different ways. Some block requests from a browser. Some are slow. Some return XML that a JSON converter refuses.
+
+So the real requirement was not "show news". It was "show something useful when half the sources are down".
+
+---
+
+## What I built
+
+A React app served by a small Express server, live at [news.budeglobal.in](https://news.budeglobal.in/).
+
+It has about a dozen category feeds: AI and enterprise, open source, startups, government schemes, cyber crime, deals, competitions, IoT and more. On top of the feeds sit an AI daily summary, a chat, a tool that turns an article into LinkedIn and X posts, a remote jobs explorer, a salary calculator, a trends dashboard, and saved and read-later lists.
+
+```text
+open a category
+ ├─ cached copy? Firestore (shared) → localStorage
+ └─ else fetch every feed in parallel
+      rss2json ─fail→ allorigins ─fail→ codetabs
+                         └─ raw XML → DOMParser
+      nothing came back → old cache → sample items
+
+AI buttons → Express /api/* → Gemini
+```
+
+---
+
+## Decisions that mattered
+
+**Three ways into every feed.** The first try is rss2json, with a 4.5 second timeout. If that fails, allorigins fetches the raw XML and the browser parses it with `DOMParser`. If that fails too, a second proxy gets one more try. A feed that fails all three is dropped. The others still render.
+
+**A cache every visitor shares.** Fetched items go into one Firestore document per category, trimmed to 50 items. Anyone can read it, so one visitor pays for the fetch and the next one loads instantly. Only signed-in users can write to it. A copy also goes to localStorage for when Firestore is unreachable. When everything fails, the page shows built-in sample items instead of an empty screen.
+
+**Gemini stays on the server.** The AI features call three Express endpoints: `/api/generate-posts`, `/api/chat` and `/api/enhance-post`. The API key never reaches the browser. Post generation asks Gemini for a fixed JSON schema (LinkedIn post, X post, thread, image prompt), so the UI receives fields instead of prose to pick apart. A rate-limit error comes back as a plain "limit reached" message, not a stack trace.
+
+**Security rules written as a spec first.** `security_spec.md` lists the invariants and twelve payloads that must be rejected: a spoofed user ID, a client-made timestamp, a 300-character ID, an anonymous write to the shared cache. `firestore.rules` denies everything by default. It allows only those shapes, checks that `userId` matches the signed-in user, and puts a size limit on every string.
+
+---
+
+## What was hard
+
+Public CORS proxies are someone else's free service. Any of them can rate-limit, change format, or vanish. That is why none of them is the only path.
+
+The spec and the rules do not fully agree yet. The spec says `createdAt` must equal the server's time. The rules only check that it is a short string.
+
+The cache has a trade-off I would revisit. The service returns a cached copy even when it is older than the 15-minute freshness window, and only refetches when the caller asks for a refresh. It is fast, but a tab can show old news until someone refreshes it.
+
+---
+
+## Where it stands
+
+Live. Twelve commits between April and July 2026.
+
+It started as a Google AI Studio export; the feeds, the fallback chain, the cache, the rules and the deployment came after.
+
+Still unfinished: the browser tab still says "My Google AI Studio App", the repo root still has debug scripts, and the server-timestamp rule is missing.
+
+It is still in development, and I built it for my own reading first.
+
+{/* Sources: README.md; server.ts (endpoints, model, JSON schema, 429 handling); src/services/newsService.ts (fetchWithTimeout 4500/4000 ms, rss2json → allorigins → codetabs, DOMParser, CACHE_EXPIRY_MS 15 min, slice(0, 50), static fallback); security_spec.md (12 negative payloads); firestore.rules (default deny, request.auth.uid checks, createdAt only size-checked); commit log (12 commits, 2026-04-09 → 2026-07-28); live <title> checked 2026-10-06. */}
