@@ -37,6 +37,7 @@ Full Stack Developer with 4 years of hands-on production experience building bac
 * Expanded **GLPI IT Asset Management** coverage across **1,800+ physical endpoints** using FusionInventory auto-discovery.
 * Administered the college's **Open Journal Systems (OJS)** portal and supported its submission, peer-review, and publishing workflows.
 * Built SQL reports and scheduled daily summaries for movement and asset data used by college leadership.
+* Mentored and guided **two batches of PG final-year interns** (around 8 students) through their internship projects.
 
 #### **Software Developer -- IoT, RFID & Enterprise Systems (2.5 Years)** | 2CQR Automation Private Limited
 *Coimbatore, India* | **May 2022 – Oct 2024**
@@ -58,6 +59,8 @@ Full Stack Developer with 4 years of hands-on production experience building bac
 
 ### EDUCATION
 
+* **Ph.D. in Computer Science (Part-Time)** — *Research area: RFID-enabled systems*
+  PSG College of Arts & Science, Coimbatore *(2026 – Present)*
 * **Master of Computer Applications (MCA)** — *First Class with Distinction (CGPA: 8.0 / 10)*
   Sri Ramakrishna Mission Vidyalaya College of Arts and Science, Coimbatore *(2022 – 2024)*
 * **Bachelor of Science in Computer Science (B.Sc CS)** — *First Class (CGPA: 7.46 / 10)*

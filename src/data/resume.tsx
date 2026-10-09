@@ -160,7 +160,7 @@ export const DATA = {
       start: "Oct 2024",
       end: "Nov 2025",
       description:
-        "Built and piloted an RFID smart campus gate system with synchronized camera snapshots and developed a shared ID-card tagging module for HF, UHF, and QR credentials. Expanded GLPI inventory coverage across 1,800+ physical endpoints with FusionInventory, administered the college's Open Journal Systems publishing portal, and built SQL reports for daily movement and asset data.",
+        "Built and piloted an RFID smart campus gate system with synchronized camera snapshots and developed a shared ID-card tagging module for HF, UHF, and QR credentials. Expanded GLPI inventory coverage across 1,800+ physical endpoints with FusionInventory, administered the college's Open Journal Systems publishing portal, and built SQL reports for daily movement and asset data. Also mentored and guided two batches of PG final-year students (around 8 in total) during their internships.",
     },
     {
       company: "2CQR Automation Private Limited",
@@ -176,6 +176,14 @@ export const DATA = {
     },
   ],
   education: [
+    {
+      school: "PSG College of Arts & Science, Coimbatore",
+      href: "https://www.psgcas.ac.in/",
+      degree: "Ph.D. in Computer Science (Part-Time) - Research area: RFID-enabled systems",
+      logoUrl: "/logos/psgcas.png",
+      start: "2026",
+      end: "Present",
+    },
     {
       school: "Sri Ramakrishna Mission Vidyalaya College of Arts and Science, Coimbatore",
       href: "https://www.srmvcas.edu.in/",
