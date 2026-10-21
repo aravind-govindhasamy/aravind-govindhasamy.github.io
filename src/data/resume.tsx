@@ -21,8 +21,7 @@ import { Csharp } from "@/components/ui/svgs/csharp";
 
 type HackathonLink = { title: string; icon: ReactNode; href: string };
 
-export const RESUME_URL =
-  "/Aravind%20Govindhasamy%20-%20Full%20Stack%20Developer.pdf";
+export const RESUME_URL = "/resume.pdf";
 
 export const DATA = {
   name: "Aravind Govindhasamy",
@@ -237,6 +236,41 @@ export const DATA = {
         },
       ],
       image: "/projects/circuit-digest-cloud.png",
+      video: "",
+    },
+    {
+      title: "FastAPI Supabase Starter - SaaS Starter Kit",
+      href: "https://starter.budeglobal.in/",
+      dates: "Oct 2026 - Present",
+      active: true,
+      featured: true,
+      role: "Creator - backend, database security, frontend, sales page",
+      description:
+        "A commercial SaaS starter kit built on a fork of Tiangolo's full-stack FastAPI template, rebuilt on Supabase Auth and Postgres Row Level Security. Every request runs as the user, whether it comes from the web app, an API key or an MCP client. Includes SMS and WhatsApp sign-in codes, roles and organizations, Stripe and Razorpay webhooks, a Gemini assistant served as an MCP server, an admin console and white-label branding. 36 API tests run against a real Supabase in CI, including privilege-escalation attempts.",
+      technologies: [
+        "FastAPI",
+        "Supabase (PostgreSQL RLS)",
+        "React 19",
+        "TanStack",
+        "shadcn/ui",
+        "Stripe",
+        "Razorpay",
+        "MSG91",
+        "Gemini + MCP",
+      ],
+      links: [
+        {
+          type: "Website",
+          href: "https://starter.budeglobal.in/",
+          icon: <Icons.globe className="size-3" />,
+        },
+        {
+          type: "Blog Post",
+          href: "/blog/fastapi-starter-worth-paying-for",
+          icon: <NotebookIcon className="size-3" />,
+        },
+      ],
+      image: "/projects/fastapi-supabase-starter.png",
       video: "",
     },
     {

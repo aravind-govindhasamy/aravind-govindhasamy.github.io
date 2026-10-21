@@ -52,6 +52,7 @@ Full Stack Developer with 4 years of hands-on production experience building bac
 
 ### SELECTED PROJECTS
 
+* **FastAPI Supabase Starter:** Commercial SaaS starter kit (starter.budeglobal.in) on Supabase Auth and Postgres RLS, where every request runs as the user, including API-key and MCP clients. Roles, organizations, Stripe/Razorpay webhooks, SMS/WhatsApp OTP, and 36 API tests against a real Supabase in CI. *(FastAPI, Supabase, React, MCP)*
 * **BUDE RFID Inventory Platform:** Warehouse inventory application connecting ERPNext/Frappe with Flutter-based handheld RFID and barcode scanning, stock counts, transfers, and offline queueing. *(ERPNext, Frappe, Flutter, RFID)*
 * **Daily Tech News Buddy:** Self-hosted web application that fetches and summarizes daily technology news using the Gemini API. *(Next.js, TypeScript, Gemini API)*
 
