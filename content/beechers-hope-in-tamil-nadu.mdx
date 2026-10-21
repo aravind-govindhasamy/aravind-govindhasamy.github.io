@@ -1,0 +1,327 @@
+---
+title: "Beecher's Hope, Tamil Nadu Edition: A House Drawn in Code"
+publishedAt: "2026-10-02"
+summary: "Red Dead Redemption 2 ends with John Marston building a ranch. Over the Gandhi Jayanti long weekend I drew mine in Three.js: an H-shaped duplex on a 33-cent plot, a compact version 36% smaller, and rule checks that fail if a toilet lands in the north-east or the wash yard has fewer than five banana trees."
+image: "/blog/beechers-hope-in-tamil-nadu/duplex-villa-street-view.png"
+---
+
+Red Dead Redemption 2 has a long epilogue.
+
+The gang is gone. John Marston buys a piece of land, and with Uncle and Charles he builds a house on it. A ranch, really. Walls, a roof, a porch, a barn, cattle, sheep. Abigail and Jack move in.
+
+People finish the main story and keep playing just to stand on that porch.
+
+The place is called Beecher's Hope.
+
+I wanted one. Not in the game. In Tamil Nadu, on real ground, with real rules.
+
+Building it is not a weekend project. Drawing it turned out to be two.
+
+This is the first of two long weekends. The [second one](/blog/fastapi-starter-worth-paying-for) went somewhere else entirely.
+
+---
+
+## The Game Came First
+
+Before any floor plan, there was a game.
+
+On 28 July I started a repo called `homestead`. The first file in it was a research report, and its title says exactly what I was after: *Editable 3D Dream Home (RDR2 "Last of John's Home")*.
+
+Twenty-eight commits went in that day, between 4:15 PM and 10:23 PM. By the end of it the game had:
+
+- terrain you could raise and lower with a brush
+- a third-person character, and a dog called Biscuit that follows at heel
+- farming, fishing and campfire cooking
+- seasons, rain, thunder, morning mist and shooting stars
+- neighbours with daily schedules: work, lunch, evenings by the pond, then bed
+- an aurora borealis
+
+The aurora borealis was not in the research report. It was that kind of evening.
+
+At 9:56 PM the modern glass house was replaced with a Kerala tharavadu. At 10:18 PM it got gamepad support.
+
+It was fun. It was also a game.
+
+A game house does not need a septic tank. It does not need a plinth, a sump or a building permit. It does not even have to stand up.
+
+---
+
+## The Vault
+
+The 3D vault started on Wednesday, 30 September, at 7:29 in the morning. Before office.
+
+It was meant to hold CAD work and 3D prints: Fusion 360 archives, OpenSCAD scripts, STL files, slicer profiles, and a Three.js viewer with a 256 × 256 mm build plate, to check that a part fits the printer before slicing.
+
+By 11 PM that night it had a house in it.
+
+![The first house: a tropical courtyard villa cutaway rendered in OpenSCAD, with brown furniture blocks, teal glass panels and a curved front court](/blog/beechers-hope-in-tamil-nadu/tropical-villa-openscad-cutaway.png)
+
+The first one was a tropical courtyard villa, drawn in OpenSCAD. Single storey, a Kerala hip roof, a thinnai verandah, two suites and a pooja room.
+
+OpenSCAD is code, so the floor plan was code. It even exports a 1:100 STL you could print.
+
+It looked like that. Brown blocks for furniture, teal panels for glass. Honest work. Not something you would show your parents.
+
+---
+
+## Gandhi Jayanti
+
+Friday, 2 October, was Gandhi Jayanti. Three days off.
+
+The duplex villa landed at 6:29 that evening.
+
+![Ground floor 3D cutaway of the H-shaped duplex: car porch and thinnai verandah on the left, family hall and staircase in the middle, dining and formal living on the right, lotus pond court behind and a children's play area in front](/blog/beechers-hope-in-tamil-nadu/duplex-villa-ground-floor-3d.png)
+
+The brief, roughly:
+
+- An east-facing duplex on a walled rural plot, 103' × 140'. About 33 cents.
+- An H-shaped house: two wings joined by a central bar. A sit-out court in front, a courtyard garden with a lotus pond behind.
+- One front door. Only one.
+- Two identical suites. Parents on the ground floor, the master suite directly above, on the same walls and the same plumbing stack.
+- A square staircase that climbs clockwise.
+- Vastu, properly. Not "the kitchen is roughly south-east".
+
+Then the compound around it. This is the part that is most Beecher's Hope:
+
+- a garage, and a worker's room with its own kitchen and bath
+- a small shop with a window onto the road, for milk and parcels
+- a motor room beside a 10,000-litre sump
+- a dog room with grille gates
+- a washing stone, a tap, and banana trees to drink the wash water
+- a play area with swings, a slide, a see-saw and a sandpit
+- an outside toilet in the north-west, 118 feet from the borewell
+
+![The north-east corner of the compound: main gate, the street-window shop, motor room, sump and borewell, the open wash yard with banana trees and a clothes line, and the play area with swings and a slide](/blog/beechers-hope-in-tamil-nadu/sump-corner-and-wash-yard.png)
+
+John had a barn and a chicken coop. This one has a dog room and a sump.
+
+Same idea. Different climate.
+
+---
+
+## One File, Every View
+
+The house is not drawn. It is described.
+
+Each house is one file, `plan.js`. Rooms are rectangles in feet. Doors, windows, furniture, stairs and columns are data. So is the site: plinths, steps, paving, trees, the compound wall.
+
+A viewer reads that file and builds everything else:
+
+- a 3D cutaway plan with room names and sizes
+- a straight-down top view with a scale bar
+- a black-and-white CAD drawing with door swings, window symbols and dimensions
+- an isometric view, a street view and a site view
+- studio, morning and night lighting
+- floors that lift apart, to check that upstairs walls sit on downstairs walls
+- a room inspector: clear size, carpet area, Vastu zone, and the Tamil name of the room
+
+![Black-and-white CAD drawing of the whole 103 by 140 foot plot: the H-shaped house in the middle, the garage and worker block at the bottom left, the sump corner and open yard at the bottom right, the outside bath and septic tank at the top](/blog/beechers-hope-in-tamil-nadu/duplex-villa-cad-site-plan.png)
+
+Change one number in `plan.js`, and every view changes with it.
+
+No redrawing. No "which version of the PDF is the latest".
+
+---
+
+## The Jali
+
+The rule I liked most was the one-door rule.
+
+Visitors come in through one door, into a small foyer. Three and a half feet inside the doorway stands a wooden jali screen. Air goes through it. Eyes do not. From the front door, you cannot see into the family hall.
+
+![Close-up of the entrance foyer: the sit-out, the single front door, and a four-petal wooden jali screen standing just inside it, blocking the view into the family hall behind](/blog/beechers-hope-in-tamil-nadu/jali-screen-foyer.png)
+
+At first this was just a nice idea.
+
+Then it became a test.
+
+---
+
+## The House Has Tests
+
+Every house has a `check-plan.mjs`. It reads the same `plan.js`, and fails if the house breaks the brief.
+
+Some of what the duplex checks:
+
+- no room overlaps another or crosses the plot line
+- exactly one bedroom on the ground floor, and both bedrooms are 16' × 16'
+- no kitchen or pooja room touches a bathroom, or sits under one
+- the jali blocks the straight line of sight from the front door into the family hall
+- the staircase is square, climbs clockwise, and connects all three levels
+- no bathroom in the south-west, and no toilet anywhere in the north-east
+- every cooking hob faces east, and every bed's headboard points south
+- every upstairs wall stands on a ground-floor wall
+- the septic tank stays in the north-west, more than 15 metres from the borewell
+- the wash yard has at least five banana trees
+
+Yes, the banana trees are tested.
+
+As a developer, this felt normal. You do not trust a change because it looks fine. You run the tests.
+
+A house is a program that is very expensive to patch after release.
+
+---
+
+## Thirty Renders, Twenty Pictures
+
+At 7:30 PM the duplex README got thirty renders. Every floor, every view, day and night, close-ups of the stair and the courtyard.
+
+At 9:29 PM, a fix.
+
+Ten of the thirty were copies of two pictures, saved under five names each. The "studio", the "solar deck", the "terrace garden", the "play area" and a few more were the same image with different file names.
+
+The fix re-rendered each one as the view it was named for.
+
+Thirty images in a README look impressive. Nobody checks them. Somebody should.
+
+---
+
+## Then the Bill
+
+At 7:32 PM came the budget. Per square foot, at rural Tamil Nadu rates for 2025–26, with the site works priced separately.
+
+The duplex, as drawn: ₹2.12 to ₹2.56 crore.
+
+At a standard finish: ₹1.82 to ₹2.21 crore.
+
+That is a lot of house. It is 4,651 square feet of carpet area, with a home theatre, a games lounge, and a 27-foot walk-in wardrobe on each floor.
+
+At 8:14 PM I started a smaller one.
+
+---
+
+## The Compact Duplex
+
+The rule for the compact version: keep every room, but make each one only as big as it has to be.
+
+"Has to be" got a definition:
+
+- **Furniture first.** The furniture the room is planned for, plus working space. 2' beside a bed and 2'6" at its foot. 2'6" to pull a dining chair out. A 3'6" galley aisle.
+- **Code minimums.** Every room clears the NBC 2016 minimum for its type. A habitable room is at least 9.5 m² and 2.4 m wide. A kitchen, 5 m². A bath with a WC, 2.8 m².
+- **Daylight.** Window area at least a tenth of the floor.
+
+![Ground floor of the compact duplex: the same H plan, the same rooms in the same places, each one tighter, with the car porch, thinnai, family hall, dining and formal living all visibly smaller](/blog/beechers-hope-in-tamil-nadu/compact-duplex-ground-floor-3d.png)
+
+The result:
+
+- the same plot, the same outbuildings, the same 31 rooms
+- 2,958 sq.ft of carpet area, down from 4,651. 36% less.
+- about ₹42 to ₹60 lakh cheaper
+
+And it is checked. The compact version keeps every rule of the duplex and adds its own: no room bigger than its duplex version, every room above its NBC minimum, the house at least 30% smaller. A later edit cannot quietly shrink a bedroom below the size of its bed.
+
+The README has a section called "What the compact version gives up". The kitchen island becomes a breakfast counter. The theatre seats four instead of six. The solar array drops from about 7.5 kW to about 5. Nothing on the room list goes.
+
+I like that section more than the renders.
+
+---
+
+## Saturday Morning
+
+Saturday was quick. Three commits, between 10:21 and 10:51 in the morning.
+
+The Compact Duplex Lite:
+
+- a third bedroom on the ground floor, where the lotus pond was
+- a step-free bath for the parents, with a seat in the shower and grab bars instead of a tub
+- the open-to-sky courtyard replaced by a reading corner under a skylight: no rain inside, no leak risk over the family hall
+- the staircase moved outside, on the south side beside the car porch
+
+![Street view of the Compact Duplex Lite: the same white two-storey house, now with an open concrete stair climbing up the left side beside the car porch to the porch terrace and the roof](/blog/beechers-hope-in-tamil-nadu/compact-duplex-lite-outside-stair.png)
+
+Then a phase-wise budget at three levels: Low, Medium and Premium.
+
+Even the Low build, without interiors, comes to ₹1.23 to ₹1.54 crore. The plan says plainly that the Low rates are assumptions, and that nobody has checked today's local material or labour prices.
+
+The lotus pond lost to bedroom 3.
+
+That is usually how it goes.
+
+---
+
+## Before You Build
+
+The duplex README ends with a checklist called "Before you build". Five review points, written to be ticked off with an architect and a contractor.
+
+A few from it:
+
+- confirm the real plot: dimensions, road side, true north, slope, soil. The 103' × 140' plot is an assumption, and everything depends on it.
+- raise the terrace parapets from 3' to 3'6". NBC asks for at least a metre, and children will use the roof garden.
+- keep the lotus pond about 1'6" deep, or fit a grille just under the water
+- put the EB meter board on the compound wall, readable from the road
+- add a rainwater recharge pit by the sump. It is mandatory in Tamil Nadu.
+- leave a removable wall section near the borewell, so a drilling rig can get in
+
+None of that is in the game.
+
+This is the part I keep coming back to. A drawing can be beautiful and still not be buildable. Somebody has to ask where the septic tanker parks.
+
+---
+
+## One Viewer for Every House
+
+By then the vault had four houses and four nearly identical viewers. Each was a copy of the last, with small changes.
+
+On Thursday evening, 15 October, they became one.
+
+`viewer/?plan=compact-duplex-lite` loads that house's `plan.js` into a single engine. Everything that used to differ between houses is now data: plinths, steps, ramps, paving, planting, lamps, even the tropical villa's hip roof. That commit added 591 lines and deleted 6,493.
+
+Nine minutes later, a performance fix.
+
+Every chair leg, every palm frond and every door arc was its own mesh. Every wall drew its six faces separately. Now the static meshes are merged by layer and material once the house is built.
+
+The Compact Duplex Lite ground floor went from 1,752 draw calls to 562. The renders came out pixel-identical in every view, CAD included.
+
+The same evening, a 70-cent agro-homestead went in, for a family of six. A tractor barn and workshop. A dairy barn for three cows and two calves. A goat house on stilts, a poultry coop, a fish pond holding 231,000 litres, a polyhouse, a food forest, and a living fence of coconut palms with pepper vines.
+
+That one is closer to Beecher's Hope than any of the houses. It is a ranch. With coconut palms.
+
+---
+
+## Five Acres, Not Yet Committed
+
+On Saturday, 17 October, it went bigger again.
+
+![Isometric view of the five-acre farm in colour: a farm shop with solar panels and parking at the gate, a polyhouse and vegetable beds, a blue lined pond, goat sheds, and a large food forest of labelled guild patches behind, all inside a boundary of tall timber trees](/blog/beechers-hope-in-tamil-nadu/five-acre-farm-iso.png)
+
+A five-acre farm for the dry red-soil belt of Salem and Dharmapuri.
+
+A farm shop at the gate. A lined rainwater pond at the lowest point. Goats and country chickens. A polyhouse. A food forest planted in fourteen guilds, with forty-seven species and thirty-two colonies of Indian honey bees. A timber windbreak around the whole boundary.
+
+It is the first one in colour.
+
+It is also still sitting uncommitted on my disk. That render comes from the working copy.
+
+---
+
+## What the Weekends Were For
+
+None of this is a building yet. It is a set of drawings, one viewer, and a lot of tests.
+
+What I got out of it was not a house. It was a way of thinking about one:
+
+- **The plan is data.** One file describes the house. Every view is generated from it.
+- **The brief is a test.** If the brief says no toilet in the north-east, a script says it too, every time.
+- **Smaller is a feature.** The compact version is the one I would actually take to an engineer.
+- **The checklist matters more than the renders.** Renders show what you want. The checklist shows what you forgot.
+
+John Marston had Uncle and Charles to help raise the walls.
+
+I had Claude Code. Most of the vault's commits carry it as co-author, and it wrote a lot of the geometry. The brief and the rules were mine.
+
+---
+
+## Where Things Stand
+
+- **Houses drawn:** a tropical villa, a duplex, a compact duplex and a compact duplex lite.
+- **Site plans:** a 70-cent homestead, and a five-acre farm still on disk.
+- **Viewer:** one, for every house.
+- **Rule checks:** one per house. `npm run check:plans` runs them all.
+- **Cheapest version:** the Lite at a Low finish, ₹1.23 to ₹1.54 crore before interiors.
+- **Plot:** still the assumed 103' × 140'.
+
+The next long weekend went into something I could sell. That is [the next post](/blog/fastapi-starter-worth-paying-for).
+
+---
+
+*Written on 21 October 2026.*
