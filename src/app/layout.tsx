@@ -1,5 +1,6 @@
 import { MotionProvider } from "@/components/motion-provider";
 import Navbar from "@/components/navbar";
+import { SiteFooter, SiteHeader } from "@/components/site-chrome";
 import { ThemeProvider } from "@/components/theme-provider";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { DATA } from "@/data/resume";
@@ -101,6 +102,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://analytics.google.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://analytics.google.com" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      </head>
       <body
         className={cn(
           "min-h-screen bg-background font-sans antialiased relative",
@@ -122,14 +129,16 @@ export default function RootLayout({
                 }}
               />
             </div>
-            <div className="relative z-10 max-w-2xl mx-auto py-12 pb-24 sm:py-24 px-6">
+            <SiteHeader />
+            <div className="relative z-10 max-w-2xl mx-auto pt-10 pb-16 sm:pt-16 sm:pb-20 px-6">
               {children}
             </div>
+            <SiteFooter />
             <Navbar />
           </TooltipProvider>
           </MotionProvider>
         </ThemeProvider>
-        {(process.env.NEXT_PUBLIC_GA_ID || "G-35LGEDHBKB") && (
+        {process.env.NODE_ENV === "production" && (process.env.NEXT_PUBLIC_GA_ID || "G-35LGEDHBKB") && (
           <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID || "G-35LGEDHBKB"} />
         )}
       </body>

@@ -15,8 +15,11 @@ export function CaseStudyList({ items }: { items: CaseStudy[] }) {
         >
           <img
             src={caseStudy.image}
-            alt=""
+            alt={caseStudy.title}
+            width={80}
+            height={80}
             loading="lazy"
+            decoding="async"
             className="size-20 flex-none rounded-lg border border-border object-cover"
           />
           <div className="flex min-w-0 flex-col gap-1">

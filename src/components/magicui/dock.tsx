@@ -58,7 +58,8 @@ const DockIcon = ({ className, children }: DockIconProps) => {
   const { mouseX, magnification, distance } = context;
 
   const distanceCalc = useTransform(mouseX, (val: number) => {
-    const bounds = ref.current?.getBoundingClientRect() ?? { x: 0, width: 0 };
+    if (val === Infinity || !ref.current) return Infinity;
+    const bounds = ref.current.getBoundingClientRect();
     return val - bounds.x - bounds.width / 2;
   });
 

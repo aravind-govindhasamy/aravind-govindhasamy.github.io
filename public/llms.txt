@@ -1,0 +1,14 @@
+# llms.txt
+# See https://llmstxt.org/ for details
+
+# Aravind Govindhasamy
+
+> Full Stack Developer & IoT / RFID Systems Engineer based in Coimbatore, Tamil Nadu, India.
+> Experienced with Python, FastAPI, React, Next.js, Node.js, C#/.NET, PostgreSQL, MQTT, RFID protocols, and cloud platforms.
+
+## Core Pages
+- [Home](https://aravind-govindhasamy.github.io/): Portfolio, background, production skills, and selected works.
+- [Blog](https://aravind-govindhasamy.github.io/blog/): Technical articles, engineering reflections, and tutorials.
+- [Case Studies](https://aravind-govindhasamy.github.io/case-studies/): Deep dives into enterprise and hardware-connected systems.
+- [Resume](https://aravind-govindhasamy.github.io/resume.pdf): Downloadable curriculum vitae.
+

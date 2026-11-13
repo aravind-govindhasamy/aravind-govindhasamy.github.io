@@ -37,12 +37,24 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# python
+__pycache__/
+*.py[cod]
 .content-collections
 
 # job email automation (keep contacts and logs private)
 send_jobs.py
 send_iotready.py
+send_curated_50.py
+curated_50*
 companies*.csv
 sent_emails.log
 career_portals.md
 email_template*.html
+
+
+# private: anniversary blog post and video project (local only)
+content/one-evening-walk-at-a-time.mdx
+public/blog/one-evening-walk-at-a-time/
+our-timeline/

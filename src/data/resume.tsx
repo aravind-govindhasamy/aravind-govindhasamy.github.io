@@ -36,7 +36,7 @@ export const DATA = {
     "Full Stack Developer with 4 years of hands-on experience building backend services, web applications, and IoT/RFID integrations for production environments.",
   summary:
     `I'm a full-stack developer with 4 years of hands-on production experience across backend services, web applications, databases, Linux, and hardware-connected systems. At [Semicon Media](https://www.circuitdigest.cloud/), I build FastAPI and MQTT services, React dashboards, GPS tracking, payment and M2M SIM integrations, WebRTC video, and computer vision APIs for Circuit Digest Cloud. Previously, I developed campus systems at PSGR Krishnammal College and spent 2.5 years at 2CQR Automation connecting RFID readers and kiosks with ILMS platforms including SOUL, KOHA, and AutoLib. I learn by building, testing, debugging, and iterating until the whole system works reliably. More: [education](/#education), [certifications](/#certifications), or [download my resume](${RESUME_URL}).`,
-  avatarUrl: "/me.jpg",
+  avatarUrl: "/me.webp",
   skills: [
     {
       category: "Backend",
@@ -131,7 +131,7 @@ export const DATA = {
       badges: [],
       location: "Coimbatore, India",
       title: "Full Stack Developer",
-      logoUrl: "/logos/semicon-media.png",
+      logoUrl: "/logos/semicon-media.webp",
       start: "Dec 2025",
       end: "Present",
       description:
@@ -143,7 +143,7 @@ export const DATA = {
       badges: ["Founder & Lead Developer", "Open-Source Initiative"],
       location: "Dell PowerEdge T40 Homelab",
       title: "Founder & Lead Developer — Open-Source Platform Initiative",
-      logoUrl: "/logos/budeglobal.png",
+      logoUrl: "/logos/budeglobal.webp",
       start: "2025",
       end: "Present",
       description:
@@ -155,7 +155,7 @@ export const DATA = {
       badges: [],
       location: "Coimbatore, India",
       title: "ERP Assistant Programmer & Systems Engineer",
-      logoUrl: "/logos/psgrkcw.png",
+      logoUrl: "/logos/psgrkcw.webp",
       start: "Oct 2024",
       end: "Nov 2025",
       description:
@@ -167,7 +167,7 @@ export const DATA = {
       badges: ["2.5 Years Experience"],
       location: "Coimbatore, India",
       title: "Software Developer - IoT, RFID & Enterprise Systems",
-      logoUrl: "/logos/2cqr.png",
+      logoUrl: "/logos/2cqr.webp",
       start: "May 2022",
       end: "Oct 2024",
       description:
@@ -179,7 +179,7 @@ export const DATA = {
       school: "PSG College of Arts & Science, Coimbatore",
       href: "https://www.psgcas.ac.in/",
       degree: "Ph.D. in Computer Science (Part-Time) - Research area: RFID-enabled systems",
-      logoUrl: "/logos/psgcas.png",
+      logoUrl: "/logos/psgcas.webp",
       start: "2026",
       end: "Present",
     },
@@ -187,7 +187,7 @@ export const DATA = {
       school: "Sri Ramakrishna Mission Vidyalaya College of Arts and Science, Coimbatore",
       href: "https://www.srmvcas.edu.in/",
       degree: "Master of Computer Application - First Class with Distinction, CGPA 8.0",
-      logoUrl: "/logos/srmvcas.png",
+      logoUrl: "/logos/srmvcas.webp",
       start: "2022",
       end: "2024",
     },
@@ -195,7 +195,7 @@ export const DATA = {
       school: "Sri Ramakrishna Mission Vidyalaya College of Arts and Science, Coimbatore",
       href: "https://www.srmvcas.edu.in/",
       degree: "Bachelor of Computer Science - First Class, CGPA 7.46",
-      logoUrl: "/logos/srmvcas.png",
+      logoUrl: "/logos/srmvcas.webp",
       start: "2019",
       end: "2022",
     },
@@ -235,7 +235,7 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/projects/circuit-digest-cloud.png",
+      image: "/projects/circuit-digest-cloud.webp",
       video: "",
     },
     {
@@ -270,7 +270,7 @@ export const DATA = {
           icon: <NotebookIcon className="size-3" />,
         },
       ],
-      image: "/projects/fastapi-supabase-starter.png",
+      image: "/projects/fastapi-supabase-starter.webp",
       video: "",
     },
     {
@@ -303,7 +303,7 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/projects/bude-rfid-inventory.png",
+      image: "/projects/bude-rfid-inventory.webp",
       video: "",
     },
     {
@@ -341,7 +341,7 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/projects/glpi-asset-tracking.png",
+      image: "/projects/glpi-asset-tracking.webp",
       video: "",
     },
     {
@@ -386,7 +386,7 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/projects/bude-made-marketplace.png",
+      image: "/projects/bude-made-marketplace.webp",
       video: "",
     },
     {
@@ -440,7 +440,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/bude-rfid-inventory.png",
+      image: "/projects/bude-rfid-inventory.webp",
       video: "",
     },
     {
@@ -494,7 +494,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/bude-hr-workforce.png",
+      image: "/projects/bude-hr-workforce.webp",
       video: "",
     },
     {
@@ -548,7 +548,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/bude-sales-billing.png",
+      image: "/projects/bude-sales-billing.webp",
       video: "",
     },
     {
@@ -602,7 +602,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/bude-helpdesk-ticketing.png",
+      image: "/projects/bude-helpdesk-ticketing.webp",
       video: "",
     },
     {
@@ -630,7 +630,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/daily-news.png",
+      image: "/projects/daily-news.webp",
       video: "",
     },
     {
@@ -658,7 +658,7 @@ export const DATA = {
           icon: <LayersIcon className="size-3" />,
         },
       ],
-      image: "/projects/library-kiosk.png",
+      image: "/projects/library-kiosk.webp",
       video: "",
     },
     {
@@ -686,7 +686,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/neuro-chain.png",
+      image: "/projects/neuro-chain.webp",
       video: "",
     },
     {
@@ -714,7 +714,7 @@ export const DATA = {
           icon: <Icons.github className="size-3" />,
         },
       ],
-      image: "/projects/tech-presentations.png",
+      image: "/projects/tech-presentations.webp",
       video: "",
     },
     {
@@ -739,7 +739,7 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/projects/journal-management.png",
+      image: "/projects/journal-management.webp",
       video: "",
     },
     {
@@ -764,7 +764,7 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/projects/glpi-asset-tracking.png",
+      image: "/projects/glpi-asset-tracking.webp",
       video: "",
     },
     {
@@ -776,7 +776,7 @@ export const DATA = {
         "MySQL backup script that backs up all user databases from a MySQL server with scheduling, error handling for backup integrity, and detailed logging of backup activities.",
       technologies: ["Node.js", "MySQL"],
       links: [],
-      image: "/projects/bulk-db-backup.png",
+      image: "/projects/bulk-db-backup.webp",
       video: "",
     },
     {
@@ -804,7 +804,7 @@ export const DATA = {
           icon: <LayersIcon className="size-3" />,
         },
       ],
-      image: "/projects/jewellery-rfid.png",
+      image: "/projects/jewellery-rfid.webp",
       video: "",
     },
     {
@@ -816,7 +816,7 @@ export const DATA = {
         "Real-time RFID stock audit system supporting Android handheld scanners. Built high-performance REST APIs and complex MySQL/MSSQL stored procedures with duplicate tag filtering, discrepancy reconciliation, and instant reporting under high scan volumes.",
       technologies: ["C#", "ASP.NET", "RFID", "MSSQL", "MySQL", "REST API"],
       links: [],
-      image: "/projects/stock-control.png",
+      image: "/projects/stock-control.webp",
       video: "",
     },
     {
@@ -839,7 +839,7 @@ export const DATA = {
           icon: <Icons.globe className="size-3" />,
         },
       ],
-      image: "/projects/aes-cryptography.png",
+      image: "/projects/aes-cryptography.webp",
       video: "",
     },
     {
@@ -857,7 +857,7 @@ export const DATA = {
           icon: <LayersIcon className="size-3" />,
         },
       ],
-      image: "/projects/library-kiosk.png",
+      image: "/projects/library-kiosk.webp",
       video: "",
     },
     {
@@ -869,7 +869,7 @@ export const DATA = {
         "Smart library system using RFID and IoT to automate book check-in and check-out with real-time monitoring of book inventory and patron transactions, backed by SQL Server.",
       technologies: ["C#", "ASP.NET", "SQL Server", "RFID", "IoT"],
       links: [],
-      image: "/projects/smart-library.png",
+      image: "/projects/smart-library.webp",
       video: "",
     },
     {
@@ -881,7 +881,7 @@ export const DATA = {
         "UG project: developed a low-cost Bitcoin mining system using Raspberry Pi and open-source software, exploring the feasibility of mining cryptocurrencies with energy-efficient hardware and tuning configurations to maximize efficiency.",
       technologies: ["Raspberry Pi", "Kali Linux", "Python"],
       links: [],
-      image: "/projects/bitcoin-mining.png",
+      image: "/projects/bitcoin-mining.webp",
       video: "",
     },
   ],
@@ -957,28 +957,28 @@ export const DATA = {
       title: "NCC - B & C Certificates",
       issuer: "NCC India",
       date: "2019 - 2022",
-      image: "/certificates/ncc.png",
+      image: "/certificates/ncc.webp",
       href: "",
     },
     {
       title: "ChatGPT for Everyone",
       issuer: "GUVI",
       date: "Dec 2023",
-      image: "/certificates/chatgpt.png",
+      image: "/certificates/chatgpt.webp",
       href: "",
     },
     {
       title: "Programming Using Python",
       issuer: "GUVI",
       date: "Dec 2023",
-      image: "/certificates/python.png",
+      image: "/certificates/python.webp",
       href: "",
     },
     {
       title: "Game Development using PyGame",
       issuer: "GUVI",
       date: "Mar 2024",
-      image: "/certificates/PyGame.png",
+      image: "/certificates/PyGame.webp",
       href: "",
     },
   ],
